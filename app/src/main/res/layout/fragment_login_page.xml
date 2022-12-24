@@ -16,7 +16,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="72dp"
-        android:layout_marginLeft="68dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
         android:layout_marginTop="265dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="50dp"
@@ -41,8 +42,48 @@
         android:textAlignment="center"
         android:textFontWeight="400"
         android:textSize="20dp"
-
-
         />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/field"
+        android:layout_below="@id/LoginText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="390dp"
+        android:hint="Username"
+        android:textColorHint="@color/pastel_red"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+        android:drawablePadding="20dp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/field"
+        android:layout_below="@id/username"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="450dp"
+        android:hint="Password"
+        android:textColorHint="@color/pastel_red"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:drawableLeft="@drawable/ic_baseline_password_24"
+        android:drawablePadding="20dp" />
+
+
+
+
+
+
 
 </RelativeLayout>
