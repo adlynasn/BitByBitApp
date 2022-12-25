@@ -1,16 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/onboardingBGwithTint"
+
     tools:context=".onboardingPage">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        android:background="@drawable/onboardingBGwithTint"
+        android:id="@+id/onboardingTitle"
+        android:layout_width="247dp"
+        android:layout_height="67dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="370dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center_horizontal|top"
+        android:text="Bit by Bit"
+        android:textAlignment="center"
+        android:textSize="56sp" />
+
+    <TextView
+        android:id="@+id/onboardingText"
+        android:layout_width="251dp"
+        android:layout_height="65dp"
+        android:layout_below="@id/onboardingTitle"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="455dp"
+        android:fontFamily="@font/poppins"
+        android:gravity="center_horizontal|top"
+        android:text="Your personal companion to a healthier lifestyle"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/onboardingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/onboardingText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/pastel_red"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="GET STARTED"
+        android:textSize="14sp"
+        android:drawableEnd="@drawable/ic_baseline_keyboard_white_double_arrow_right_24"
         />
 
-</FrameLayout>
+</RelativeLayout>
