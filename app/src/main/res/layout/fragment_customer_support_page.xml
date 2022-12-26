@@ -1,14 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".customerSupportPage">
+    tools:context=".customerSupportPage"
+    android:background="@drawable/customerSupportBG"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/customerSupportTitle"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:text="Customer Support"
+        android:textSize="20sp" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/returnToHomePageButton"
+        android:layout_width="54dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="330dp"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="@color/pastel_red"
+        android:drawableLeft="@drawable/ic_baseline_white_home_24"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="14sp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/customerSupportView"
+        android:layout_width="171dp"
+        android:layout_height="131dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="117dp"
+        android:src="@drawable/ic_customer_support" />
+
+    <TextView
+        android:id="@+id/nameTitle"
+        android:layout_width="150dp"
+        android:layout_below="@id/customerSupportView"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:text="Name"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameTitle"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="305dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/field"
+        android:drawablePadding="20dp"
+        android:hint="Name"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textColorHint="@color/pastel_red"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/emailTitle"
+        android:layout_width="150dp"
+        android:layout_below="@id/name"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="360dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:text="Email"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameTitle"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="385dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/field"
+        android:drawablePadding="20dp"
+        android:hint="Email"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textColorHint="@color/pastel_red"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/contactTitle"
+        android:layout_width="150dp"
+        android:layout_below="@id/email"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="440dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:text="Contact Number"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/contactNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contactTitle"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="465dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/field"
+        android:drawablePadding="20dp"
+        android:hint="Contact Number"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textColorHint="@color/pastel_red"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/problemTitle"
+        android:layout_width="200dp"
+        android:layout_below="@id/contactNumber"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="520dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:text="Problem Description"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/problemDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/problemTitle"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="545dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/field"
+        android:drawablePadding="20dp"
+        android:hint="Describe your problem here."
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textColorHint="@color/pastel_red"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/submitReportButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/problemDescription"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/pastel_red"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="SUBMIT"
+        android:textSize="14sp"
+        />
+
+</RelativeLayout>
