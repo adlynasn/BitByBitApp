@@ -129,10 +129,28 @@
         android:gravity="left"
         android:layout_marginLeft="30dp"
         android:backgroundTint="@color/pastel_red"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="ACHIEVEMENTS"
+        android:fontFamily="@font/poppins"
+        android:text="EXERCISES"
+        android:layout_marginTop="-20dp"
+        android:textColor="@color/white"
+        android:drawableLeft="@drawable/ic_baseline_white_run_24"
+        android:textSize="14sp"
+        />
+
+    <Button
+        android:id="@+id/viewCalorieButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userBio"
+        android:gravity="left"
+        android:layout_marginLeft="200dp"
+        android:backgroundTint="@color/pastel_red"
+        android:fontFamily="@font/poppins"
+        android:text="VIEW CALORIES"
         android:layout_marginTop="-20dp"
         android:textSize="14sp"
+        android:drawableLeft="@drawable/ic_baseline_white_view_list_24"
+        android:textColor="@color/white"
         />
 
 </RelativeLayout>
