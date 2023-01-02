@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".missionsPage">
+
+    <TextView
+        android:id="@+id/missionsTitle"
+        android:layout_width="247dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:text="Missions"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/missionsCentreTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/missionsTitle"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/field"
+        android:backgroundTint="@color/pastel_red"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:text="Daily Missions"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+    <TextView
+        android:id="@+id/missionsNameFirst"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/missionsCentreTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/greyfield"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:drawableLeft="@drawable/ic_mission"
+        android:text="Art of Exercise"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/missionsDescFirst"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/missionsNameFirst"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins"
+        android:gravity="left"
+        android:text="Do some Yoga for 10 minutes."
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/missionsNameSecond"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/missionsDescFirst"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/greyfield"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:drawableLeft="@drawable/ic_mission"
+        android:text="Art of Cooking"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/missionsDescSecond"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/missionsNameSecond"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins"
+        android:gravity="left"
+        android:text="Try out cooking new recipes!"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/missionsNameThird"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/missionsDescSecond"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/greyfield"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:drawableLeft="@drawable/ic_mission"
+        android:text="Art of Self Love"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/missionsDescThird"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/missionsNameThird"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins"
+        android:gravity="left"
+        android:text="Do something you love for 10 minutes. It could be listening to music or even strolling at the park!"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+        />
+
+</RelativeLayout>
