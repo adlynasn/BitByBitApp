@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/onboardingPage">
+
+    <fragment
+        android:id="@+id/onboardingPage"
+        android:name="com.example.bitbybit.onboardingPage"
+        android:label="fragment_onboarding"
+        tools:layout="@layout/fragment_onboarding" >
+        <action
+            android:id="@+id/action_onboardingPage_to_loginPage"
+            app:destination="@id/loginPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginPage"
+        android:name="com.example.bitbybit.loginPage"
+        android:label="fragment_login_page"
+        tools:layout="@layout/fragment_login_page" />
+</navigation>

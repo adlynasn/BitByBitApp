@@ -25,13 +25,11 @@
         />
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/profileImage"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:src="@color/pastel_red"
-        app:civ_border_color="#FF000000"
-        app:civ_border_width="1dp"
+       android:src="@color/pastel_red"
         android:layout_alignParentStart="true"
         android:layout_below="@id/profileTitle"
         android:layout_marginStart="30dp"
