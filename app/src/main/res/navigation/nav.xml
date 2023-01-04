@@ -18,5 +18,44 @@
         android:id="@+id/loginPage"
         android:name="com.example.bitbybit.loginPage"
         android:label="fragment_login_page"
-        tools:layout="@layout/fragment_login_page" />
+        tools:layout="@layout/fragment_login_page" >
+        <action
+            android:id="@+id/action_loginPage_to_registerPage"
+            app:destination="@id/registerPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminPostPage"
+        android:name="com.example.bitbybit.adminPostPage"
+        android:label="fragment_admin_post_page"
+        tools:layout="@layout/fragment_admin_post_page" />
+    <fragment
+        android:id="@+id/changePasswordPage"
+        android:name="com.example.bitbybit.changePasswordPage"
+        android:label="fragment_change_password_page"
+        tools:layout="@layout/fragment_change_password_page" />
+    <fragment
+        android:id="@+id/customerSupportPage"
+        android:name="com.example.bitbybit.customerSupportPage"
+        android:label="fragment_customer_support_page"
+        tools:layout="@layout/fragment_customer_support_page" />
+    <fragment
+        android:id="@+id/missionsPage"
+        android:name="com.example.bitbybit.missionsPage"
+        android:label="fragment_missions_page"
+        tools:layout="@layout/fragment_missions_page" />
+    <fragment
+        android:id="@+id/profilePage"
+        android:name="com.example.bitbybit.profilePage"
+        android:label="fragment_profile_page"
+        tools:layout="@layout/fragment_profile_page" />
+    <fragment
+        android:id="@+id/registerPage"
+        android:name="com.example.bitbybit.registerPage"
+        android:label="fragment_register_page"
+        tools:layout="@layout/fragment_register_page" />
+    <fragment
+        android:id="@+id/homePage"
+        android:name="com.example.bitbybit.homePage"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" />
 </navigation>
