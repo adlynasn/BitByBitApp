@@ -33,12 +33,20 @@
         android:id="@+id/adminPostPage"
         android:name="com.example.bitbybit.adminPostPage"
         android:label="fragment_admin_post_page"
-        tools:layout="@layout/fragment_admin_post_page" />
+        tools:layout="@layout/fragment_admin_post_page" >
+        <action
+            android:id="@+id/action_adminPostPage_to_profilePage"
+            app:destination="@id/profilePage" />
+    </fragment>
     <fragment
         android:id="@+id/changePasswordPage"
         android:name="com.example.bitbybit.changePasswordPage"
         android:label="fragment_change_password_page"
-        tools:layout="@layout/fragment_change_password_page" />
+        tools:layout="@layout/fragment_change_password_page" >
+        <action
+            android:id="@+id/action_changePasswordPage_to_loginPage"
+            app:destination="@id/loginPage" />
+    </fragment>
     <fragment
         android:id="@+id/customerSupportPage"
         android:name="com.example.bitbybit.customerSupportPage"
@@ -53,7 +61,26 @@
         android:id="@+id/profilePage"
         android:name="com.example.bitbybit.profilePage"
         android:label="fragment_profile_page"
-        tools:layout="@layout/fragment_profile_page" />
+        tools:layout="@layout/fragment_profile_page" >
+        <action
+            android:id="@+id/action_profilePage_to_editGoalProgressPage"
+            app:destination="@id/editGoalProgressPage" />
+        <action
+            android:id="@+id/action_profilePage_to_viewCaloriesPage"
+            app:destination="@id/viewCaloriesPage" />
+        <action
+            android:id="@+id/action_profilePage_to_exercisesPage"
+            app:destination="@id/exercisesPage" />
+        <action
+            android:id="@+id/action_profilePage_to_adminPostPage"
+            app:destination="@id/adminPostPage" />
+        <action
+            android:id="@+id/action_profilePage_to_editProfilePage"
+            app:destination="@id/editProfilePage" />
+        <action
+            android:id="@+id/action_profilePage_to_homePage"
+            app:destination="@id/homePage" />
+    </fragment>
     <fragment
         android:id="@+id/registerPage"
         android:name="com.example.bitbybit.registerPage"
@@ -62,17 +89,37 @@
         <action
             android:id="@+id/action_registerPage_to_homePage"
             app:destination="@id/homePage" />
+        <action
+            android:id="@+id/action_registerPage_to_loginPage"
+            app:destination="@id/loginPage" />
     </fragment>
     <fragment
         android:id="@+id/homePage"
         android:name="com.example.bitbybit.homePage"
         android:label="fragment_home_page"
-        tools:layout="@layout/fragment_home_page" />
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/action_homePage_to_profilePage"
+            app:destination="@id/profilePage" />
+        <action
+            android:id="@+id/action_homePage_to_recipeDetailsPage"
+            app:destination="@id/recipeDetailsPage" />
+        <action
+            android:id="@+id/action_homePage_to_allRecipesPage"
+            app:destination="@id/allRecipesPage" />
+        <action
+            android:id="@+id/action_homePage_to_socialFeedPage"
+            app:destination="@id/socialFeedPage" />
+    </fragment>
     <fragment
         android:id="@+id/allRecipesPage"
         android:name="com.example.bitbybit.allRecipesPage"
         android:label="fragment_all_recipes_page"
-        tools:layout="@layout/fragment_all_recipes_page" />
+        tools:layout="@layout/fragment_all_recipes_page" >
+        <action
+            android:id="@+id/action_allRecipesPage_to_homePage"
+            app:destination="@id/homePage" />
+    </fragment>
     <fragment
         android:id="@+id/calorieCounterPage"
         android:name="com.example.bitbybit.calorieCounterPage"
@@ -82,27 +129,50 @@
         android:id="@+id/caloriesIntakePage"
         android:name="com.example.bitbybit.caloriesIntakePage"
         android:label="fragment_calories_intake_page"
-        tools:layout="@layout/fragment_calories_intake_page" />
+        tools:layout="@layout/fragment_calories_intake_page" >
+        <action
+            android:id="@+id/action_caloriesIntakePage_to_viewCaloriesPage"
+            app:destination="@id/viewCaloriesPage" />
+    </fragment>
     <fragment
         android:id="@+id/editGoalProgressPage"
         android:name="com.example.bitbybit.editGoalProgressPage"
         android:label="fragment_edit_goal_progress_page"
-        tools:layout="@layout/fragment_edit_goal_progress_page" />
+        tools:layout="@layout/fragment_edit_goal_progress_page" >
+        <action
+            android:id="@+id/action_editGoalProgressPage_to_profilePage"
+            app:destination="@id/profilePage" />
+    </fragment>
     <fragment
         android:id="@+id/editProfilePage"
         android:name="com.example.bitbybit.editProfilePage"
         android:label="fragment_edit_profile_page"
-        tools:layout="@layout/fragment_edit_profile_page" />
+        tools:layout="@layout/fragment_edit_profile_page" >
+        <action
+            android:id="@+id/action_editProfilePage_to_profilePage"
+            app:destination="@id/profilePage" />
+    </fragment>
     <fragment
         android:id="@+id/exercisesPage"
         android:name="com.example.bitbybit.exercisesPage"
         android:label="fragment_exercises_page"
-        tools:layout="@layout/fragment_exercises_page" />
+        tools:layout="@layout/fragment_exercises_page" >
+        <action
+            android:id="@+id/action_exercisesPage_to_profilePage"
+            app:destination="@id/profilePage" />
+    </fragment>
     <fragment
         android:id="@+id/recipeDetailsPage"
         android:name="com.example.bitbybit.recipeDetailsPage"
         android:label="fragment_recipe_details_page"
-        tools:layout="@layout/fragment_recipe_details_page" />
+        tools:layout="@layout/fragment_recipe_details_page" >
+        <action
+            android:id="@+id/action_recipeDetailsPage_to_homePage"
+            app:destination="@id/homePage" />
+        <action
+            android:id="@+id/action_recipeDetailsPage_to_recipeSteps2"
+            app:destination="@id/recipeSteps" />
+    </fragment>
     <fragment
         android:id="@+id/savedRecipesPage"
         android:name="com.example.bitbybit.savedRecipesPage"
@@ -112,15 +182,30 @@
         android:id="@+id/socialFeedPage"
         android:name="com.example.bitbybit.socialFeedPage"
         android:label="fragment_social_feed_page"
-        tools:layout="@layout/fragment_social_feed_page" />
+        tools:layout="@layout/fragment_social_feed_page" >
+        <action
+            android:id="@+id/action_socialFeedPage_to_homePage"
+            app:destination="@id/homePage" />
+    </fragment>
     <fragment
         android:id="@+id/viewCaloriesPage"
         android:name="com.example.bitbybit.viewCaloriesPage"
         android:label="fragment_view_calories_page"
-        tools:layout="@layout/fragment_view_calories_page" />
+        tools:layout="@layout/fragment_view_calories_page" >
+        <action
+            android:id="@+id/action_viewCaloriesPage_to_caloriesIntakePage"
+            app:destination="@id/caloriesIntakePage" />
+        <action
+            android:id="@+id/action_viewCaloriesPage_to_profilePage"
+            app:destination="@id/profilePage" />
+    </fragment>
     <fragment
         android:id="@+id/recipeSteps"
         android:name="com.example.bitbybit.recipeSteps"
         android:label="fragment_recipe_steps"
-        tools:layout="@layout/fragment_recipe_steps" />
+        tools:layout="@layout/fragment_recipe_steps" >
+        <action
+            android:id="@+id/action_recipeSteps_to_recipeDetailsPage"
+            app:destination="@id/recipeDetailsPage" />
+    </fragment>
 </navigation>
