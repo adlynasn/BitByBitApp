@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/register_page_bg"
+    android:id="@+id/registerFragment"
     tools:context=".registerPage">
 
     <TextView
