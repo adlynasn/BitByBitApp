@@ -2,11 +2,17 @@ package com.example.bitbybit;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,5 +66,46 @@ public class registerPage extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_register_page, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        EditText username = view.findViewById(R.id.username);
+        EditText password = view.findViewById(R.id.password);
+        EditText email = view.findViewById(R.id.email);
+        EditText emailConf = view.findViewById(R.id.emailconfirmation);
+        Button BtnReg = view.findViewById(R.id.registerButton);
+
+        View.OnClickListener OCLRegBtn = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(username.getText().toString().equals("")){
+                    Toast.makeText(getContext(), "Please fill the username",Toast.LENGTH_SHORT).show();
+
+                }else if(password.getText().toString().equals("")){
+                    Toast.makeText(getContext(), "Please fill the password",Toast.LENGTH_SHORT).show();
+
+                }else if(email.getText().toString().equals("")){
+                    Toast.makeText(getContext(), "Please fill the email",Toast.LENGTH_SHORT).show();
+
+                }else if(emailConf.getText().toString().equals("")){
+                    Toast.makeText(getContext(), "Please fill the confirmation email",Toast.LENGTH_SHORT).show();
+
+                }else if(!email.getText().toString().contains("@")){
+                    Toast.makeText(getContext(), "Please enter appropriate email",Toast.LENGTH_SHORT).show();
+
+                }else if(!emailConf.getText().toString().equals(email.getText().toString())) {
+                    Toast.makeText(getContext(), "Please fill email confirmation same with email", Toast.LENGTH_SHORT).show();
+
+                }else {
+                    Navigation.findNavController(view).navigate(R.id.loginPage);
+                }
+
+            }
+        };
+        BtnReg.setOnClickListener(OCLRegBtn);
+
     }
 }
