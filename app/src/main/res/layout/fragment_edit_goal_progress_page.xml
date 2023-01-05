@@ -1,14 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".editGoalProgressPage">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <Button
+        android:id="@+id/backToProfilePageButton"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/ic_baseline_black_arrow_back_24"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/pastel_red"
+        android:textSize="14sp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/updateProgressTitle"
+        android:layout_width="247dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:textColor="@color/pastel_red"
+        android:text="Update your progress"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/updateProgressDesc"
+        android:layout_width="333dp"
+        android:layout_height="74dp"
+        android:layout_below="@id/updateProgressTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="-40dp"
+        android:fontFamily="@font/poppins"
+        android:gravity="left"
+        android:textColor="@color/black"
+        android:text="Enter your current weight below to update your progress."
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/currentWeightTitle"
+        android:layout_below="@id/updateProgressDesc"
+        android:layout_width="247dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:text="Current Weight"
+        android:textSize="16sp" />
+
+
+
+
+    <Button
+        android:id="@+id/updateProgressButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentWeight"
+        android:gravity="left"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/pastel_red"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="UPDATE PROGRESS"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        />
+
+    <Button
+        android:id="@+id/returnToProfilePageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentWeight"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="290dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="CANCEL"
+        android:textColor="@color/pastel_red"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/currentWeight"
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentWeightTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/white_field"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="-11dp"
+        android:hint="In Kilogram (Kg)"
+        android:textColorHint="@color/pastel_red"
+        android:drawablePadding="20dp"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textSize="16sp" />
+
+
+</RelativeLayout>

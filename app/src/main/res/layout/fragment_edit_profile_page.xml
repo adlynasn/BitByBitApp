@@ -1,14 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".editProfilePage">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <Button
+        android:id="@+id/backToProfilePageButton"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/ic_baseline_black_arrow_back_24"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/pastel_red"
+        android:textSize="14sp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/editProfileTitle"
+        android:layout_width="247dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:textColor="@color/pastel_red"
+        android:text="Edit Profile"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/editProfileDesc"
+        android:layout_width="333dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/editProfileTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="-40dp"
+        android:fontFamily="@font/poppins"
+        android:gravity="left"
+        android:textColor="@color/black"
+        android:text="Update your details below."
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/userNameTitle"
+        android:layout_below="@id/editProfileDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:text="Update your name or username"
+        android:textSize="16sp" />
+
+
+
+    <TextView
+        android:id="@+id/userBioTitle"
+        android:layout_below="@id/username"
+        android:layout_width="247dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:text="Update your biodata"
+        android:textSize="16sp" />
+
+
+    <Button
+        android:id="@+id/updateProfileButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/choosePictureButton"
+        android:gravity="left"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/pastel_red"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="UPDATE PROFILE"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        />
+
+    <Button
+        android:id="@+id/returnToProfilePageButtonPageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/choosePictureButton"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="290dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="CANCEL"
+        android:textColor="@color/pastel_red"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userNameTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/white_field"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="-11dp"
+        android:hint="username"
+        android:textColorHint="@color/pastel_red"
+        android:drawablePadding="20dp"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textSize="16sp" />
+
+    <EditText
+
+        android:id="@+id/userBio"
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userBioTitle"
+        android:layout_alignParentStart="true"
+        android:hint="User Description"
+        android:background="@drawable/white_field"
+        android:textColorHint="@color/pastel_red"
+        android:layout_marginLeft="30dp"
+        android:drawablePadding="20dp"
+        android:layout_marginTop="-10dp"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/choosePictureTitle"
+        android:layout_below="@id/userBio"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:text="Update your profile picture"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/choosePictureButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/choosePictureTitle"
+        android:layout_alignParentStart="true"
+        android:gravity="left"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="-10dp"
+        android:backgroundTint="@color/white"
+        android:drawableEnd="@drawable/ic_baseline_pastelred_arrow_forward_ios_24"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Select"
+        android:textColor="@color/pastel_red"
+        android:textSize="14sp" />
+
+</RelativeLayout>

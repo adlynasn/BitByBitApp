@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/onboarding_bg"
+    android:background="@drawable/onboarding_bg_with_tint"
 
     tools:context=".onboardingPage">
 
@@ -24,6 +24,7 @@
         android:gravity="center_horizontal|top"
         android:text="Bit by Bit"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="56sp" />
 
     <TextView
@@ -32,10 +33,9 @@
         android:layout_height="65dp"
         android:layout_below="@id/onboardingTitle"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_marginStart="71dp"
-        android:layout_marginTop="455dp"
-        android:fontFamily="@font/poppins"
+        android:layout_marginTop="-40dp"
+        android:fontFamily="@font/poppins_semibold"
         android:gravity="center_horizontal|top"
         android:text="Your personal companion to a healthier lifestyle"
         android:textAlignment="center"
@@ -52,6 +52,7 @@
         android:fontFamily="@font/poppins_semibold"
         android:text="GET STARTED"
         android:textSize="14sp"
+        android:textColor="@color/white"
         android:drawableEnd="@drawable/ic_baseline_keyboard_white_double_arrow_right_24"
         />
 

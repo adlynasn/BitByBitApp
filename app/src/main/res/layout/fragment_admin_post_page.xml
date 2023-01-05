@@ -41,11 +41,9 @@
         android:id="@+id/postTitleName"
         android:layout_width="216dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/postTitle"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="162dp"
-        android:layout_marginRight="30dp"
-        android:drawablePadding="20dp"
+        android:layout_marginTop="20dp"
         android:hint="Title"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -60,7 +58,6 @@
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="50dp"
@@ -80,10 +77,10 @@
         android:layout_marginStart="265dp"
         android:layout_marginTop="42dp"
         android:layout_marginEnd="50dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/pastel_red"
         android:fontFamily="@font/poppins_semibold"
         android:text="Publish"
-        android:textColor="@color/pastel_red"
+        android:textColor="@color/white"
         android:textSize="14sp" />
 
     <Button
@@ -103,44 +100,11 @@
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/selectCategoryText"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/postDescription"        android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="-20dp"
-        android:layout_marginBottom="50dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Select Category"
-        android:textColor="@color/black"
-
-        android:textSize="16dp"
-        />
-
-    <Button
-        android:id="@+id/categoryButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/postDescription"
-        android:layout_alignParentStart="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="241dp"
-        android:layout_marginTop="-30dp"
-        android:layout_marginEnd="50dp"
-        android:backgroundTint="@color/white"
-        android:drawableEnd="@drawable/ic_baseline_pastelred_arrow_forward_ios_24"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Select"
-        android:textColor="@color/pastel_red"
-        android:textSize="14sp" />
-
-    <TextView
         android:id="@+id/uploadPicturesText"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@id/selectCategoryText"
+        android:layout_below="@id/postDescription"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="-20dp"

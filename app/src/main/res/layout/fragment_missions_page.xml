@@ -16,7 +16,8 @@
         android:fontFamily="@font/poppins_semibold"
         android:gravity="left"
         android:text="Missions"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/missionsCentreTitle"
@@ -26,7 +27,7 @@
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/field"
         android:backgroundTint="@color/pastel_red"
         android:fontFamily="@font/poppins_semibold"
@@ -37,13 +38,13 @@
 
 
     <TextView
-        android:id="@+id/missionsNameFirst"
+        android:id="@+id/artOfExerciseMissionTitle"
         android:layout_width="334dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/missionsCentreTitle"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/greyfield"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
@@ -53,10 +54,10 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/missionsDescFirst"
+        android:id="@+id/artOfExerciseMission"
         android:layout_width="334dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/missionsNameFirst"
+        android:layout_below="@id/artOfExerciseMissionTitle"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
@@ -66,14 +67,24 @@
         android:textColor="@color/black"
         android:textSize="14sp" />
 
+    <Button
+        android:id="@+id/exerciseMissionCompleteButton"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/artOfExerciseMission"
+        android:layout_marginStart="300dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/ic_baseline_check_circle_outline_24"
+        android:textSize="14sp" />
+
     <TextView
-        android:id="@+id/missionsNameSecond"
+        android:id="@+id/artOfCookingMissionTitle"
         android:layout_width="334dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/missionsDescFirst"
+        android:layout_below="@id/exerciseMissionCompleteButton"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/greyfield"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
@@ -83,27 +94,37 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/missionsDescSecond"
+        android:id="@+id/artOfCookingMission"
         android:layout_width="334dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/missionsNameSecond"
+        android:layout_below="@id/artOfCookingMissionTitle"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/poppins"
         android:gravity="left"
-        android:text="Try out cooking new recipes!"
+        android:text="Try out cooking a new recipe!"
         android:textColor="@color/black"
         android:textSize="14sp" />
 
+    <Button
+        android:id="@+id/cookingMissionCompleteButton"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/artOfCookingMission"
+        android:layout_marginStart="300dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/ic_baseline_check_circle_outline_24"
+        android:textSize="14sp" />
+
     <TextView
-        android:id="@+id/missionsNameThird"
+        android:id="@+id/artOfSelfLoveMissionTitle"
         android:layout_width="334dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/missionsDescSecond"
+        android:layout_below="@id/cookingMissionCompleteButton"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/greyfield"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
@@ -113,10 +134,10 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/missionsDescThird"
+        android:id="@+id/artOfSelfLoveMission"
         android:layout_width="334dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/missionsNameThird"
+        android:layout_below="@id/artOfSelfLoveMissionTitle"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
@@ -126,6 +147,15 @@
         android:textColor="@color/black"
         android:textSize="14sp" />
 
+    <Button
+        android:id="@+id/selfLoveMissionCompleteButton"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/artOfSelfLoveMission"
+        android:layout_marginStart="300dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/ic_baseline_check_circle_outline_24"
+        android:textSize="14sp" />
 
 
 </RelativeLayout>
