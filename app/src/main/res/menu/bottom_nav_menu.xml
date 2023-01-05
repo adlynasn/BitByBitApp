@@ -14,7 +14,7 @@
         />
 
     <item
-        android:id="@+id/placeholder"
+        android:id="@+id/calorieCounterPage"
         android:title=""
         />
 

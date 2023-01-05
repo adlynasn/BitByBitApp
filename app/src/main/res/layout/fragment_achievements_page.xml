@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,5 +19,180 @@
         android:text="Achievements"
         android:textSize="20sp"
         android:textColor="@color/black"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_below="@id/achievementsTitle"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/exerciseBadge"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@id/achievementsTitle"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/exercise_badge" />
+
+            <TextView
+                android:id="@+id/exerciseAchievementName"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/exerciseBadge"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_horizontal"
+
+                android:text="Art of Exercise"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/exerciseAchievementDescription"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/exerciseAchievementName"
+                android:fontFamily="@font/poppins"
+                android:gravity="center_horizontal"
+                android:text="Number of Times Mission Completed"
+                android:textSize="10dp" />
+
+
+            <TextView
+                android:id="@+id/exerciseAchievementProgress"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/exerciseAchievementDescription"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_horizontal"
+                android:text="2"
+                android:textColor="@color/pastel_red"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/cookingBadge"
+                android:layout_below="@id/achievementsTitle"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/cooking_badge" />
+
+            <TextView
+                android:id="@+id/cookingAchievementName"
+                android:layout_width="200dp"
+                android:layout_below="@id/cookingBadge"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Art of Cooking"
+
+                android:gravity="center_horizontal"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/cookingAchievementDescription"
+                android:layout_width="200dp"
+                android:layout_below="@id/cookingAchievementName"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="Number of Times Mission Completed"
+                android:gravity="center_horizontal"
+                android:textSize="10dp"/>
+
+
+            <TextView
+                android:id="@+id/cookingAchievementProgress"
+                android:layout_width="200dp"
+                android:layout_below="@id/cookingAchievementDescription"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="2"
+                android:gravity="center_horizontal"
+                android:textColor="@color/pastel_red"
+                android:textSize="14dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="380dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/selfLoveBadge"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/self_love_badge" />
+
+            <TextView
+                android:id="@+id/selfLoveAchievementName"
+                android:layout_width="200dp"
+                android:layout_below="@id/selfLoveBadge"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Art of Self Love"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/selfLoveAchievementDescription"
+                android:layout_width="200dp"
+                android:layout_below="@id/cookingAchievementName"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="Number of Times Mission Completed"
+                android:gravity="center_horizontal"
+                android:textSize="10dp"/>
+
+
+            <TextView
+                android:id="@+id/selfLoveAchievementProgress"
+                android:layout_width="200dp"
+                android:layout_below="@id/selfLoveAchievementDescriptionAchievementDescription"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="2"
+                android:gravity="center_horizontal"
+                android:textColor="@color/pastel_red"
+                android:textSize="14dp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 </RelativeLayout>
