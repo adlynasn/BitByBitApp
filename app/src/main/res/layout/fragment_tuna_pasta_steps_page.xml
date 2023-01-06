@@ -6,7 +6,7 @@
     tools:context=".tunaPastaStepsPage">
 
     <Button
-        android:id="@+id/frenchToastIngredientsPageButton"
+        android:id="@+id/tunaPastaIngredientsPageButton"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -26,7 +26,7 @@
         android:id="@+id/tunaPastaStepsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/frenchToastIngredientsPageButton"
+        android:layout_below="@id/tunaPastaIngredientsPageButton"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
