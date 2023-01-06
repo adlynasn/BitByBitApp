@@ -194,7 +194,7 @@
         android:id="@+id/recipeSteps"
         android:name="com.example.bitbybit.tunaPastaRecipePage"
         android:label="fragment_recipe_steps"
-        tools:layout="@layout/fragment_tuna_pasta_recipe_details_page" >
+        tools:layout="@layout/fragment_tuna_pasta_recipe_steps" >
         <action
             android:id="@+id/action_recipeSteps_to_recipeDetailsPage"
             app:destination="@id/recipeDetailsPage" />
