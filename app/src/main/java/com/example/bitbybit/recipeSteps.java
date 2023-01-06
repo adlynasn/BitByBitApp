@@ -62,3 +62,8 @@ public class recipeSteps extends Fragment {
         return inflater.inflate(R.layout.fragment_recipe_steps, container, false);
     }
 }
+
+/*
+TODO
+- Get steps from database
+ */

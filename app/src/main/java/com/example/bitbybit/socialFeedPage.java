@@ -62,3 +62,11 @@ public class socialFeedPage extends Fragment {
         return inflater.inflate(R.layout.fragment_social_feed_page, container, false);
     }
 }
+
+/*
+TODO
+- Display feed
+    - Get info from db
+- If feed is recipe
+    - go to recipe details when clicked
+ */

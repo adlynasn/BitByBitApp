@@ -62,3 +62,14 @@ public class recipeDetailsPage extends Fragment {
         return inflater.inflate(R.layout.fragment_recipe_details_page, container, false);
     }
 }
+
+/*
+TODO
+- display info from database
+    - Pic
+    - Ingredients
+    - Nutritional value
+- Link to
+    - recipe steps
+    - Previous page
+ */
