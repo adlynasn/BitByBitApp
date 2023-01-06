@@ -112,7 +112,6 @@
         android:fontFamily="@font/poppins_semibold"
         android:text="Upload Pictures (optional)"
         android:textColor="@color/black"
-
         android:textSize="16dp"
         />
 
