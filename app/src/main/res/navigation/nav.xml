@@ -156,7 +156,7 @@
         android:id="@+id/recipeDetailsPage"
         android:name="com.example.bitbybit.recipeDetailsPage"
         android:label="fragment_recipe_details_page"
-        tools:layout="@layout/fragment_recipe_details_page" >
+        tools:layout="@layout/fragment_frech_toast_recipe_details_page" >
         <action
             android:id="@+id/action_recipeDetailsPage_to_homePage"
             app:destination="@id/homePage" />
