@@ -19,7 +19,8 @@
         android:drawableLeft="@drawable/ic_baseline_black_arrow_back_24"
         android:fontFamily="@font/poppins_semibold"
         android:textColor="@color/pastel_red"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/editProfileTitle"
