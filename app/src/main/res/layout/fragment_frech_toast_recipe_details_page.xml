@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#000000"
+    android:orientation="vertical"
+    tools:context=".recipeDetailsPage">
+
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginBottom="317dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#F6B1B1"
+        android:fontFamily="@font/poppins_medium"
+        android:text="  Cinnamon - optional"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginBottom="288dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#F6B1B1"
+        android:fontFamily="@font/poppins_medium"
+        android:text="  Fruits of your choice"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/star5"
+        android:layout_width="18dp"
+        android:layout_height="21dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="360dp"
+        android:src="@drawable/star" />
+
+    <ImageButton
+        android:id="@+id/menu3Dot5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="843dp"
+        android:background="@drawable/transparent_background"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_options" />
+
+    <ImageButton
+        android:id="@+id/backButton3"
+        android:layout_width="52dp"
+        android:layout_height="38dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="359dp"
+        android:background="@drawable/transparent_background"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:src="@drawable/ic_baseline_black_arrow_back_24" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="259dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="13dp"
+        app:srcCompat="@drawable/french_toast" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="63dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Low Calorie French Toast"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="361dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="4.5"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginBottom="433dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#F6B1B1"
+        android:fontFamily="@font/poppins_medium"
+        android:text="  Honeywheat Bread"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="68dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="288dp"
+        android:layout_marginBottom="434dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#CFCDCD"
+        android:fontFamily="@font/poppins_medium"
+        android:text="2 Slices"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="68dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="288dp"
+        android:layout_marginBottom="404dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#CFCDCD"
+        android:fontFamily="@font/poppins_medium"
+        android:text="40ml"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="68dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="288dp"
+        android:layout_marginBottom="376dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#CFCDCD"
+        android:fontFamily="@font/poppins_medium"
+        android:text="40g"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="68dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="288dp"
+        android:layout_marginBottom="347dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#CFCDCD"
+        android:fontFamily="@font/poppins_medium"
+        android:text="20g"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="68dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="288dp"
+        android:layout_marginBottom="317dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#CFCDCD"
+        android:fontFamily="@font/poppins_medium"
+        android:text="1tsp"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginBottom="404dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#F6B1B1"
+        android:fontFamily="@font/poppins_medium"
+        android:text="  Almond Milk"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="249dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginBottom="376dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#F6B1B1"
+        android:fontFamily="@font/poppins_medium"
+        android:text="  Egg Whites"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginBottom="347dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#F6B1B1"
+        android:fontFamily="@font/poppins_medium"
+        android:text="  Sugar Free Maple Syrup"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="469dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Ingredients"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginBottom="253dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Steps"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="369dp"
+        android:layout_height="149dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="97dp"
+        android:background="@drawable/transparent_background"
+        app:srcCompat="@drawable/french_toast_steps" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="10dp"
+            app:fabCradleVerticalOffset="10dp">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/transparent_background"
+                app:menu="@menu/bottom_nav_menu"
+
+                />
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/hello_blank_fragment"
+            android:src="@drawable/ic_baseline_white_plus_sign_24"
+
+            app:layout_anchor="@id/bottomAppBar" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>

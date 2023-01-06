@@ -1,47 +1,412 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_insetEdge="bottom"
+    android:backgroundTint="#FFFFFF"
+    android:context=".homePage"
+    android:orientation="vertical"
+    android:textAlignment="center"
     tools:context=".homePage">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/textView"
+        android:layout_width="242dp"
+        android:layout_height="61dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="13dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Find best recipes for cooking"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <SearchView
+
+        android:id="@+id/searchRecipes"
+        android:layout_width="385dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="87dp"
+        android:alwaysDrawnWithCache="false"
+        android:background="#CDCDCD"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search for recipes" />
+
+    <TextView
+        android:id="@+id/latest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="154dp"
+        android:fontFamily="@font/poppins"
+        android:text="Latest"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/allrecipes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="391dp"
+        android:fontFamily="@font/poppins"
+        android:text="ALL RECIPES"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/seeall2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="339dp"
+        android:layout_marginTop="661dp"
+        android:layout_marginEnd="7dp"
+        android:clickable="true"
+        android:fontFamily="@font/poppins"
+        android:minHeight="48dp"
+        android:text="See all →"
+        android:textAllCaps="false"
+        android:textColor="#DE9781"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/seeall3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="339dp"
+        android:layout_marginTop="392dp"
+        android:layout_marginEnd="7dp"
+        android:clickable="true"
+        android:fontFamily="@font/poppins"
+        android:minHeight="48dp"
+        android:text="See all →"
+        android:textAllCaps="false"
+        android:textColor="#DE9781"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/lowCalorieFrenchToast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="355dp"
+        android:clickable="true"
+        android:fontFamily="@font/poppins_medium"
+        android:minHeight="48dp"
+        android:text="Low Calorie French Toast"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/frenchtoast"
+        android:layout_width="290dp"
+        android:layout_height="162dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="190dp"
+        android:background="@drawable/roundcorner"
+        android:clickable="true"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:onClick="clickNew"
+        android:scaleType="fitXY"
+        android:src="@drawable/french_toast" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="510dp"
+        android:background="@drawable/transparent_background"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_options" />
+
+    <ImageButton
+        android:id="@+id/grillchicken"
+        android:layout_width="162dp"
+        android:layout_height="190dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginBottom="238dp"
+        android:background="@drawable/transparent_background"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:src="@drawable/roundcorner"
+        android:textAlignment="center" />
+
+    <ImageButton
+        android:id="@+id/salmon"
+        android:layout_width="162dp"
+        android:layout_height="189dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="198dp"
+        android:layout_marginBottom="239dp"
+        android:background="@drawable/transparent_background"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:src="@drawable/roundcorner"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/asian_salmon"
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="221dp"
+        android:layout_marginBottom="338dp"
+        android:fontFamily="@font/poppins"
+        android:text="Asian Salmon"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/time_30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="212dp"
+        android:layout_marginBottom="258dp"
+        android:fontFamily="@font/poppins"
+        android:text="Time"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/asianSalmon"
+        android:layout_width="121dp"
+        android:layout_height="124dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="69dp"
+        android:layout_marginBottom="357dp"
+        android:src="@drawable/asian_salmon" />
+
+    <ImageView
+        android:id="@+id/grilledChicken"
+        android:layout_width="184dp"
+        android:layout_height="166dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="345dp"
+        android:src="@drawable/chicken_grill" />
+
+    <TextView
+        android:id="@+id/grilled_chicken"
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="47dp"
+        android:layout_marginBottom="317dp"
+        android:fontFamily="@font/poppins"
+        android:text="Grilled Chicken Romesco"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/mins20"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="240dp"
+        android:fontFamily="@font/poppins"
+        android:text="20 Mins"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/mins"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="212dp"
+        android:layout_marginBottom="239dp"
+        android:fontFamily="@font/poppins"
+        android:text="30 Mins"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/time_20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="41dp"
+        android:layout_marginBottom="258dp"
+        android:fontFamily="@font/poppins"
+        android:text="Time"
+        android:textSize="12sp" />
+
+    <ImageButton
+        android:id="@+id/saveButton1"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="139dp"
+        android:layout_marginBottom="238dp"
+        android:background="@drawable/transparent_background"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:src="@drawable/ic_baseline_pastelred_bookmark_border_24" />
+
+    <ImageButton
+        android:id="@+id/saveButton2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="311dp"
+        android:layout_marginBottom="239dp"
+        android:background="@drawable/transparent_background"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:src="@drawable/ic_baseline_pastelred_bookmark_border_24" />
+
+    <TextView
+        android:id="@+id/feed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="663dp"
+        android:fontFamily="@font/poppins"
+        android:text="Feed"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/feedBlock"
+        android:layout_width="355dp"
+        android:layout_height="129dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="694dp"
+        android:background="@drawable/transparent_background"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:src="@drawable/roundcorner"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/quotes"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="90dp"
+        android:fontFamily="@font/poppins_medium"
+        android:linksClickable="true"
+        android:text="“Time and health are two precious assets that we don’t recognize and appreciate until they have been depleted.”  – Denis Waitley "
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/quotesoftheday"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="161dp"
+        android:fontFamily="@font/poppins_medium"
+        android:linksClickable="true"
+        android:text="Quotes of the Day!"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-         />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        tools:context=".MainActivity">
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:id="@+id/bottomAppBar"
-        app:fabCradleMargin="10dp"
-        app:fabCradleRoundedCornerRadius="10dp"
-        app:fabCradleVerticalOffset="10dp"
-        tools:ignore="BottomAppBar">
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
-            app:menu="@menu/bottom_nav_menu"
-            android:background="@drawable/transparent_background">
+            android:layout_gravity="bottom"
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="10dp"
+            app:fabCradleVerticalOffset="10dp">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton"
-                android:layout_width="wrap_content"
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_baseline_white_plus_sign_24"
-                app:layout_anchor="@id/bottomAppBar"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/transparent_background"
+                app:menu="@menu/bottom_nav_menu"
 
                 />
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-    </com.google.android.material.bottomappbar.BottomAppBar>
+        </com.google.android.material.bottomappbar.BottomAppBar>
 
 
-</FrameLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/hello_blank_fragment"
+            android:src="@drawable/ic_baseline_white_plus_sign_24"
+
+            app:layout_anchor="@id/bottomAppBar" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>
