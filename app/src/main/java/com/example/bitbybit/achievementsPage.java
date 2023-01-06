@@ -62,3 +62,5 @@ public class achievementsPage extends Fragment {
         return inflater.inflate(R.layout.fragment_achievements_page, container, false);
     }
 }
+
+// TODO take data of achievements from database and display

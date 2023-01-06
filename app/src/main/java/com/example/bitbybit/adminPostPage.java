@@ -62,3 +62,11 @@ public class adminPostPage extends Fragment {
         return inflater.inflate(R.layout.fragment_admin_post_page, container, false);
     }
 }
+
+/*
+TODO push post data to db
+- when publish is pressed
+- take data and push to db
+- display notification that post was successfully pushed
+- then go to home page
+ */

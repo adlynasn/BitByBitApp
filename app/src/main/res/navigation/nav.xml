@@ -69,9 +69,6 @@
             android:id="@+id/action_profilePage_to_viewCaloriesPage"
             app:destination="@id/viewCaloriesPage" />
         <action
-            android:id="@+id/action_profilePage_to_exercisesPage"
-            app:destination="@id/exercisesPage" />
-        <action
             android:id="@+id/action_profilePage_to_adminPostPage"
             app:destination="@id/adminPostPage" />
         <action
@@ -80,6 +77,9 @@
         <action
             android:id="@+id/action_profilePage_to_homePage"
             app:destination="@id/homePage" />
+        <action
+            android:id="@+id/action_profilePage_to_achievementsPage"
+            app:destination="@id/achievementsPage" />
     </fragment>
     <fragment
         android:id="@+id/registerPage"
@@ -153,15 +153,6 @@
             app:destination="@id/profilePage" />
     </fragment>
     <fragment
-        android:id="@+id/exercisesPage"
-        android:name="com.example.bitbybit.exercisesPage"
-        android:label="fragment_exercises_page"
-        tools:layout="@layout/fragment_exercises_page" >
-        <action
-            android:id="@+id/action_exercisesPage_to_profilePage"
-            app:destination="@id/profilePage" />
-    </fragment>
-    <fragment
         android:id="@+id/recipeDetailsPage"
         android:name="com.example.bitbybit.recipeDetailsPage"
         android:label="fragment_recipe_details_page"
@@ -207,5 +198,14 @@
         <action
             android:id="@+id/action_recipeSteps_to_recipeDetailsPage"
             app:destination="@id/recipeDetailsPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/achievementsPage"
+        android:name="com.example.bitbybit.achievementsPage"
+        android:label="fragment_achievements_page"
+        tools:layout="@layout/fragment_achievements_page" >
+        <action
+            android:id="@+id/action_achievementsPage_to_profilePage"
+            app:destination="@id/profilePage" />
     </fragment>
 </navigation>

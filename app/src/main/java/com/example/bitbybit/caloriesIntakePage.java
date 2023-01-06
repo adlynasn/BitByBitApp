@@ -62,3 +62,11 @@ public class caloriesIntakePage extends Fragment {
         return inflater.inflate(R.layout.fragment_calories_intake_page, container, false);
     }
 }
+
+/*
+TODO display calorie and nutrients consumed
+- check for entries from db related to user and date
+- display each food consumed on that day with calorie and nutritional value
+- show sum of calorie and nutrient at the bottom
+
+ */

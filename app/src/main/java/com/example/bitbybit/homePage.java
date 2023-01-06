@@ -62,3 +62,12 @@ public class homePage extends Fragment {
         return inflater.inflate(R.layout.fragment_home_page, container, false);
     }
 }
+
+/*
+TODO
+- search bar functionalities
+- link to pages
+    - recipe
+    - all recipes
+    - feed
+ */

@@ -87,6 +87,7 @@ public class changePasswordPage extends Fragment {
          View.OnClickListener OCLReset = new View.OnClickListener() {
              @Override
              public void onClick(View v) {
+                 // TODO integrate with database
                  if(password.getText().toString().isEmpty() || RePassword.getText().toString().isEmpty()){
                      Toast.makeText(getContext(),"Please fill both Password and re-Entered Password section", Toast.LENGTH_SHORT).show();
 
@@ -103,3 +104,4 @@ public class changePasswordPage extends Fragment {
     }
 
 }
+

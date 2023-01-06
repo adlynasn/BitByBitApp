@@ -62,3 +62,9 @@ public class missionsPage extends Fragment {
         return inflater.inflate(R.layout.fragment_missions_page, container, false);
     }
 }
+
+/*
+TODO
+- button pressed will send data to database
+    - so that can present how much has been done this week
+ */

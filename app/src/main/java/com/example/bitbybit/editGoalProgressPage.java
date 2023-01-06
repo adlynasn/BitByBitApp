@@ -62,3 +62,7 @@ public class editGoalProgressPage extends Fragment {
         return inflater.inflate(R.layout.fragment_edit_goal_progress_page, container, false);
     }
 }
+
+/*
+TODO send weight data into database
+ */

@@ -62,3 +62,7 @@ public class customerSupportPage extends Fragment {
         return inflater.inflate(R.layout.fragment_customer_support_page, container, false);
     }
 }
+
+/*
+TODO when submit button is pressed send the data to the database
+ */

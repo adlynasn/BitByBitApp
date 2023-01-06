@@ -62,3 +62,9 @@ public class allRecipesPage extends Fragment {
         return inflater.inflate(R.layout.fragment_all_recipes_page, container, false);
     }
 }
+
+/*
+TODO take data of recipe from db to display
+- Use fragment for repeated display
+- While db has entry, add recipe brief
+ */

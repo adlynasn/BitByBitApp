@@ -62,3 +62,9 @@ public class calorieCounterPage extends Fragment {
         return inflater.inflate(R.layout.fragment_calorie_counter_page, container, false);
     }
 }
+
+/*
+TODO upload calorie intake
+- Can add meal component numbers
+- push input data to db when finish button is pressed
+ */

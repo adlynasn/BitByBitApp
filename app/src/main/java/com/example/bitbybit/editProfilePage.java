@@ -62,3 +62,7 @@ public class editProfilePage extends Fragment {
         return inflater.inflate(R.layout.fragment_edit_profile_page, container, false);
     }
 }
+
+/*
+TODO send updated data to database
+ */

@@ -42,6 +42,8 @@ public class loginPage extends Fragment {
         View.OnClickListener OVLlogin = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // TODO connect to database
                 //Check the username and password
                 if(username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){
                     Toast.makeText(getContext(),"SUCCESSFULLY LOGIN",Toast.LENGTH_SHORT).show();

@@ -62,3 +62,13 @@ public class profilePage extends Fragment {
         return inflater.inflate(R.layout.fragment_profile_page, container, false);
     }
 }
+
+/*
+TODO
+- take data from db
+    - display profile pic, name, bio, weight
+- link to pages
+    - edit profile
+    - achievement
+    - view calories
+ */
