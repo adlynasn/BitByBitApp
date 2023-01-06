@@ -73,7 +73,7 @@ public class onboardingPage extends Fragment {
         View.OnClickListener OCLonBoard = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.loginPage);
+                Navigation.findNavController(view).navigate(R.id.onBoard_to_login);
             }
         };
         BtnOnBoard.setOnClickListener(OCLonBoard);

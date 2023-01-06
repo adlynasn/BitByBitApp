@@ -70,6 +70,7 @@ public class registerPage extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        // TODO link to db
         super.onViewCreated(view, savedInstanceState);
 
         EditText username = view.findViewById(R.id.username);

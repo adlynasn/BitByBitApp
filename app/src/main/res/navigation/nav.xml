@@ -154,7 +154,7 @@
     </fragment>
     <fragment
         android:id="@+id/recipeDetailsPage"
-        android:name="com.example.bitbybit.recipeDetailsPage"
+        android:name="com.example.bitbybit.frenchToastRecipePage"
         android:label="fragment_recipe_details_page"
         tools:layout="@layout/fragment_frech_toast_recipe_details_page" >
         <action
@@ -192,9 +192,9 @@
     </fragment>
     <fragment
         android:id="@+id/recipeSteps"
-        android:name="com.example.bitbybit.recipeSteps"
+        android:name="com.example.bitbybit.tunaPastaRecipePage"
         android:label="fragment_recipe_steps"
-        tools:layout="@layout/fragment_recipe_steps" >
+        tools:layout="@layout/fragment_tuna_pasta_recipe_steps" >
         <action
             android:id="@+id/action_recipeSteps_to_recipeDetailsPage"
             app:destination="@id/recipeDetailsPage" />

@@ -62,3 +62,9 @@ public class viewCaloriesPage extends Fragment {
         return inflater.inflate(R.layout.fragment_view_calories_page, container, false);
     }
 }
+
+/*
+TODO
+- list days where there are data regarding calorie
+- Navigate to calories intake page when pressed
+ */
