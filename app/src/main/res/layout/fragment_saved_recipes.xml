@@ -1,14 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".savedRecipesPage">
+    tools:context=".savedRecipesPage" >
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageButton
+        android:id="@+id/frenchtoast3"
+        android:layout_width="374dp"
+        android:layout_height="192dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="62dp"
+        android:background="@drawable/roundcorner"
+        android:clickable="true"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:onClick="clickNew"
+        android:scaleType="fitXY"
+        android:src="@drawable/french_toast" />
+
+    <ImageButton
+        android:id="@+id/grill_chicken_breast"
+        android:layout_width="368dp"
+        android:layout_height="215dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="311dp"
+        android:background="@drawable/roundcorner"
+        android:clickable="true"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:onClick="clickNew"
+        android:scaleType="fitXY"
+        android:src="@drawable/grill_chicken_breast" />
+
+    <ImageButton
+        android:id="@+id/asian_salmon_picture"
+        android:layout_width="368dp"
+        android:layout_height="215dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="586dp"
+        android:background="@drawable/roundcorner"
+        android:clickable="true"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:onClick="clickNew"
+        android:scaleType="fitXY"
+        android:src="@drawable/salmon" />
+
     <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Saved Recipes"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="263dp"
+        android:layout_marginEnd="22dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#FFFFFF"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_options"
+        app:tint="#000000" />
+
+    <ImageButton
+        android:id="@+id/imageButton9"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="535dp"
+        android:layout_marginEnd="26dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#FFFFFF"
+        android:clickable="true"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_options"
+        app:tint="#000000" />
+
+    <ImageButton
+        android:id="@+id/imageButton11"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="809dp"
+        android:layout_marginEnd="23dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#FFFFFF"
+        android:clickable="true"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_options"
+        app:tint="#000000" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="261dp"
+        android:clickable="true"
+        android:fontFamily="@font/poppins_medium"
+        android:linksClickable="true"
+        android:minHeight="48dp"
+        android:text="Low Calorie French Toast"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="535dp"
+        android:clickable="true"
+        android:fontFamily="@font/poppins_medium"
+        android:minHeight="48dp"
+        android:text="Grill Chicken Breast"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="809dp"
+        android:clickable="true"
+        android:fontFamily="@font/poppins_medium"
+        android:minHeight="48dp"
+        android:text="Asian Salmon"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#FFFFFF"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_baseline_pastelred_bookmark_border_24" />
+
+    <ImageButton
+        android:id="@+id/imageButton10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="590dp"
+        android:layout_marginEnd="27dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#FFFFFF"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_baseline_pastelred_bookmark_border_24" />
+
+    <ImageButton
+        android:id="@+id/imageButton12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="314dp"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/roundcorner"
+        android:backgroundTint="#FFFFFF"
+        android:contentDescription="@string/hello_blank_fragment"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_baseline_pastelred_bookmark_border_24" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".MainActivity">
 
-</FrameLayout>
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="10dp"
+            app:fabCradleVerticalOffset="10dp">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/transparent_background"
+                app:menu="@menu/bottom_nav_menu"
+
+                />
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/hello_blank_fragment"
+            android:src="@drawable/ic_baseline_white_plus_sign_24"
+
+            app:layout_anchor="@id/bottomAppBar" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>
