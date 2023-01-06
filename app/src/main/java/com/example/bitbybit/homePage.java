@@ -3,6 +3,8 @@ package com.example.bitbybit;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,8 @@ import android.view.ViewGroup;
  */
 public class homePage extends Fragment {
 
+    RecyclerView recyclerView;
+    //UserPlacedApplicationAdapter adapter;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -59,15 +63,22 @@ public class homePage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_page, container, false);
+        View view= inflater.inflate(R.layout.fragment_home_page2, container, false);
+        recyclerView = (RecyclerView) view.findViewById(R.id.RecylerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        //String userId = GoogleSignIn.getLastSignedInAccount(getContext()).getId();
+
+        //Firebase Recycler Options to get the data form firebase database using model class and reference
+        //FirebaseRecyclerOptions<Model> options =
+                //new FirebaseRecyclerOptions.Builder<Model>()
+                       // .setQuery(FirebaseDatabase.getInstance().getReference().child("selectedApplications").child(userId), Model.class)
+                        //.build();
+
+
+        //adapter = new UserPlacedApplicationAdapter(options);
+        //recyclerView.setAdapter(adapter);
+
+        return view;
     }
 }
-
-/*
-TODO
-- search bar functionalities
-- link to pages
-    - recipe
-    - all recipes
-    - feed
- */

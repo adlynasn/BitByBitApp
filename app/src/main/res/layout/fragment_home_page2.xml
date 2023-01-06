@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".homePage">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/TitleHomePage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Find best receipes\nfor cooking"
+                android:textSize="25dp">
+
+            </TextView>
+
+
+
+            <SearchView
+                android:id="@+id/seacrhHomePage"
+                android:layout_width="353dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/rectangular_roundcorner_white"
+                android:drawablePadding="20dp"
+                app:queryHint="@string/search">
+
+            </SearchView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="0dp"
+                    android:drawableRight="@drawable/ic_baseline_local_fire_department_24"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Latest"
+                    android:textSize="20dp">
+
+                </TextView>
+
+                <Button
+                    android:id="@+id/buttonAllReceipes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="170dp"
+                    android:backgroundTint="@color/white"
+                    android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
+                    android:text="See all "
+                    android:textColor="@color/light_pitch"></Button>
+
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="397dp"
+                android:layout_height="225dp"
+                android:id="@+id/RecylerView"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="194dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Feed"
+                    android:textSize="20dp"></TextView>
+
+                <Button
+                    android:id="@+id/buttonFeed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="200dp"
+                    android:backgroundTint="@color/white"
+                    android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
+                    android:text="See all "
+                    android:textColor="@color/light_pitch"></Button>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+</RelativeLayout>
