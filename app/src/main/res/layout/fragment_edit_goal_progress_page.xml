@@ -5,14 +5,31 @@
     android:layout_height="match_parent"
     tools:context=".editGoalProgressPage">
 
+    <Button
+        android:id="@+id/backToProfilePageButton"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/ic_baseline_black_arrow_back_24"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/pastel_red"
+        android:textSize="14sp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
     <TextView
         android:id="@+id/updateProgressTitle"
+        android:layout_below="@id/backToProfilePageButton"
         android:layout_width="247dp"
         android:layout_height="40dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="35dp"
         android:layout_marginBottom="50dp"
@@ -48,8 +65,6 @@
         android:gravity="left"
         android:text="Current Weight"
         android:textSize="16sp" />
-
-
 
 
     <Button
