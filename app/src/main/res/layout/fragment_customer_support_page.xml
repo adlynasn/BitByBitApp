@@ -28,19 +28,6 @@
         android:text="Customer Support"
         android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/returnToHomePageButton"
-        android:layout_width="54dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="330dp"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="@color/pastel_red"
-        android:drawableLeft="@drawable/ic_baseline_white_home_24"
-        android:fontFamily="@font/poppins_semibold"
-        android:textSize="14sp"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <ImageView
         android:id="@+id/customerSupportView"
         android:layout_below="@id/customerSupportTitle"

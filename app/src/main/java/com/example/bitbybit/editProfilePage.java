@@ -8,10 +8,14 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -98,6 +102,38 @@ public class editProfilePage extends Fragment {
             }
         };
         btnUpdateProf.setOnClickListener(OCLUpdate);
+
+        BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.home:
+                        Navigation.findNavController(view).navigate(R.id.homePage);
+                        return true;
+                    case R.id.savedRecipes:
+                        Navigation.findNavController(view).navigate(R.id.savedRecipesPage);
+                        return true;
+                    case R.id.missions:
+                        Navigation.findNavController(view).navigate(R.id.missionsPage);
+                        return true;
+                    case R.id.profile:
+                        Navigation.findNavController(view).navigate(R.id.profilePage);
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton2);
+        View.OnClickListener OCLfloatButton = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.calorieCounterPage);
+            }
+        };
+        floatButton.setOnClickListener(OCLfloatButton);
+
     }
 }
 

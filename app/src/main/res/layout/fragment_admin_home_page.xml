@@ -57,12 +57,11 @@
             >
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:orientation="vertical"
                 android:padding="30dp"
-                android:layout_marginStart="30dp"
-
 
 
                 >
@@ -78,16 +77,17 @@
                     android:id="@+id/adminPostPageButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
                     android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_horizontal"
                     android:text="POST"
-                    android:textSize="14sp"
-                    android:textColor="@color/pastel_red" />
+                    android:textColor="@color/pastel_red"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="30dp"
@@ -105,11 +105,11 @@
                     android:id="@+id/adminUploadRecipeButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="UPLOAD"
-                    android:backgroundTint="@color/white"
-                    android:textSize="14sp"
-                    android:textColor="@color/pastel_red" />
+                    android:textColor="@color/pastel_red"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
@@ -124,7 +124,7 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:orientation="vertical"
@@ -143,11 +143,12 @@
                     android:id="@+id/adminViewReportsButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="VIEW"
-                    android:textSize="14sp"
                     android:backgroundTint="@color/white"
-                    android:textColor="@color/pastel_red" />
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_horizontal"
+                    android:text="VIEW"
+                    android:textColor="@color/pastel_red"
+                    android:textSize="14sp" />
 
             </LinearLayout>
         </LinearLayout>
