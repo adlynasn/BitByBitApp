@@ -2,11 +2,16 @@ package com.example.bitbybit;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,5 +65,47 @@ public class adminHomePage extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_admin_home_page, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Button btnAdminPostPage = view.findViewById(R.id.adminPostPageButton);
+        View.OnClickListener OCLAdminPostPage = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.adminPostPage);
+            }
+        };
+        btnAdminPostPage.setOnClickListener(OCLAdminPostPage);
+
+        Button btnAdminUpload = view.findViewById(R.id.adminUploadRecipeButton);
+        View.OnClickListener OCLUploadAdmin = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.adminUploadRecipePage);
+            }
+        };
+        btnAdminUpload.setOnClickListener(OCLUploadAdmin);
+
+        Button btnAdminViewRep = view.findViewById(R.id.adminViewReportsButton);
+        View.OnClickListener OCLViewRep = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.adminViewReportsPage);
+            }
+        };
+        btnAdminViewRep.setOnClickListener(OCLViewRep);
+
+        Button btnLogoutAdmin = view.findViewById(R.id.adminLogoutButton);
+        View.OnClickListener OCLLogOut = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.loginPage);
+                Toast.makeText(getContext(),"You have log out",Toast.LENGTH_SHORT).show();
+            }
+        };
+        btnLogoutAdmin.setOnClickListener(OCLLogOut);
     }
 }

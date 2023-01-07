@@ -17,7 +17,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        tools:ignore="UnknownIdInLayout">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton2"
@@ -143,7 +144,7 @@
         />
 
     <Button
-        android:id="@+id/returnToProfilePageButtonPageButton"
+        android:id="@+id/CancelToProfilePage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/choosePictureButton"

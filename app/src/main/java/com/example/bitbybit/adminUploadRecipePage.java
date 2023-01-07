@@ -2,11 +2,16 @@ package com.example.bitbybit;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,5 +65,28 @@ public class adminUploadRecipePage extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_admin_upload_recipe_page, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Button BtnaddRecipe = view.findViewById(R.id.addRecipeButton);
+        View.OnClickListener OCLAddRecipe = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"The Recipe has been Upload",Toast.LENGTH_SHORT).show();
+            }
+        };
+        BtnaddRecipe.setOnClickListener(OCLAddRecipe);
+
+        Button btnBackToAdminHP = view.findViewById(R.id.returnToAdminHomePageButton);
+        View.OnClickListener OCLBackAdminHP = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.adminHomePage);
+            }
+        };
+        btnBackToAdminHP.setOnClickListener(OCLBackAdminHP);
     }
 }
