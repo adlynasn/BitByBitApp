@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,9 +13,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
         android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/ic_baseline_black_arrow_back_24"
         android:fontFamily="@font/poppins_semibold"
@@ -22,147 +22,200 @@
         android:textSize="14sp"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <TextView
-        android:id="@+id/tunaPastaStepsTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tunaPastaIngredientsPageButton"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="587dp"
+        android:layout_above="@+id/coordinatorLayout"
+        android:layout_below="@+id/tunaPastaIngredientsPageButton"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:gravity="left"
-        android:text="Tuna and Caper Pasta with Crispy Breadcrumbs"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_below="@id/tunaPastaStepsTitle"
-        >
+        android:layout_marginBottom="-44dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
+            <TextView
+                android:id="@+id/tunaPastaStepsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/rectangle"
-                android:orientation="horizontal">
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="left"
+                android:text="Tuna and Caper Pasta with Crispy Breadcrumbs"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/tnpStep1"
-                    android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:padding="10dp"
-                    android:text="Heat half the oil in a non-stick frypan over medium heat. Add breadcrumbs and dried herbs. "
-                    android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rectangle"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tnpStep1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:padding="10dp"
+                            android:text="Heat half the oil in a non-stick frypan over medium heat. Add breadcrumbs and dried herbs. "
+                            android:textColor="@color/black"
+                            android:textSize="15dp" />
 
 
-            </LinearLayout>
+                    </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/rectangle"
-                android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rectangle"
+                        android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tnpStep2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:padding="10dp"
-                    android:text="Cook, stirring, for 4-5 minutes until crisp and golden. Transfer to a bowl and set aside. Wipe pan clean and return to medium heat."
-                    android:textColor="@color/black"
-                    android:textSize="15dp" />
-
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/rectangle"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tnpStep3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:padding="10dp"
-                    android:text="Add remaining 75ml oil then add garlic and fennel seeds. Cook, stirring, for 2-3 minutes until fragrant and garlic has softened."
-                    android:textColor="@color/black"
-                    android:textSize="15dp" />
+                        <TextView
+                            android:id="@+id/tnpStep2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:padding="10dp"
+                            android:text="Cook, stirring, for 4-5 minutes until crisp and golden. Transfer to a bowl and set aside. Wipe pan clean and return to medium heat."
+                            android:textColor="@color/black"
+                            android:textSize="15dp" />
 
 
+                    </LinearLayout>
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rectangle"
+                        android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/rectangle"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tnpStep4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:padding="10dp"
-                    android:text="Add capers, chilli flakes, tuna and tuna oil, lemon zest and juice, and stir for 1 minute to heat through."
-                    android:textColor="@color/black"
-                    android:textSize="15dp" />
+                        <TextView
+                            android:id="@+id/tnpStep3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:padding="10dp"
+                            android:text="Add remaining 75ml oil then add garlic and fennel seeds. Cook, stirring, for 2-3 minutes until fragrant and garlic has softened."
+                            android:textColor="@color/black"
+                            android:textSize="15dp" />
 
 
-            </LinearLayout>
+                    </LinearLayout>
 
-            <LinearLayout
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rectangle"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tnpStep4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:padding="10dp"
+                            android:text="Add capers, chilli flakes, tuna and tuna oil, lemon zest and juice, and stir for 1 minute to heat through."
+                            android:textColor="@color/black"
+                            android:textSize="15dp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rectangle"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tnpStep5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:padding="10dp"
+                            android:text="Stir pasta through the sauce and season. Scatter with crispy breadcrumbs to serve."
+                            android:textColor="@color/black"
+                            android:textSize="15dp" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:foregroundGravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:context=".MainActivity">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/hello_blank_fragment"
+            android:src="@drawable/ic_baseline_white_plus_sign_24"
+
+            app:layout_anchor="@id/bottomAppBar" />
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="10dp"
+            app:fabCradleVerticalOffset="10dp">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:background="@drawable/rectangle">
+                android:layout_marginRight="16dp"
+                android:background="@drawable/transparent_background"
+                app:menu="@menu/bottom_nav_menu"
 
-                <TextView
-                    android:id="@+id/tnpStep5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:padding="10dp"
-                    android:text="Stir pasta through the sauce and season. Scatter with crispy breadcrumbs to serve."
-                    android:textColor="@color/black"
-                    android:textSize="15dp" />
+                />
+        </com.google.android.material.bottomappbar.BottomAppBar>
 
-
-
-            </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </RelativeLayout>

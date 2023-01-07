@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_loginPage_to_changePasswordPage"
             app:destination="@id/changePasswordPage" />
+        <action
+            android:id="@+id/action_loginPage_to_adminHomePage"
+            app:destination="@id/adminHomePage" />
     </fragment>
     <fragment
         android:id="@+id/adminPostPage"
@@ -35,8 +38,8 @@
         android:label="fragment_admin_post_page"
         tools:layout="@layout/fragment_admin_post_page" >
         <action
-            android:id="@+id/action_adminPostPage_to_profilePage"
-            app:destination="@id/profilePage" />
+            android:id="@+id/action_adminPostPage_to_adminHomePage"
+            app:destination="@id/adminHomePage" />
     </fragment>
     <fragment
         android:id="@+id/changePasswordPage"
@@ -68,9 +71,6 @@
         <action
             android:id="@+id/action_profilePage_to_viewCaloriesPage"
             app:destination="@id/viewCaloriesPage" />
-        <action
-            android:id="@+id/action_profilePage_to_adminPostPage"
-            app:destination="@id/adminPostPage" />
         <action
             android:id="@+id/action_profilePage_to_editProfilePage"
             app:destination="@id/editProfilePage" />
@@ -208,4 +208,75 @@
             android:id="@+id/action_achievementsPage_to_profilePage"
             app:destination="@id/profilePage" />
     </fragment>
+    <fragment
+        android:id="@+id/frenchToastDetailsPage"
+        android:name="com.example.bitbybit.frenchToastDetailsPage"
+        android:label="fragment_french_toast_details_page"
+        tools:layout="@layout/fragment_french_toast_details_page" />
+    <fragment
+        android:id="@+id/frenchToastIngredientsPage"
+        android:name="com.example.bitbybit.frenchToastIngredientsPage"
+        android:label="fragment_french_toast_ingredients_page"
+        tools:layout="@layout/fragment_french_toast_ingredients_page" />
+    <fragment
+        android:id="@+id/frenchToastStepsPage"
+        android:name="com.example.bitbybit.frenchToastStepsPage"
+        android:label="fragment_french_toast_steps_page"
+        tools:layout="@layout/fragment_french_toast_steps_page" />
+    <fragment
+        android:id="@+id/updateAchievementsPage"
+        android:name="com.example.bitbybit.updateAchievementsPage"
+        android:label="fragment_update_achievements_page"
+        tools:layout="@layout/fragment_update_achievements_page" />
+    <fragment
+        android:id="@+id/adminHomePage"
+        android:name="com.example.bitbybit.adminHomePage"
+        android:label="fragment_admin_home_page"
+        tools:layout="@layout/fragment_admin_home_page" >
+        <action
+            android:id="@+id/action_adminHomePage_to_adminUploadRecipePage"
+            app:destination="@id/adminUploadRecipePage" />
+        <action
+            android:id="@+id/action_adminHomePage_to_adminViewReportsPage"
+            app:destination="@id/adminViewReportsPage" />
+        <action
+            android:id="@+id/action_adminHomePage_to_loginPage"
+            app:destination="@id/loginPage" />
+        <action
+            android:id="@+id/action_adminHomePage_to_adminPostPage"
+            app:destination="@id/adminPostPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminUploadRecipePage"
+        android:name="com.example.bitbybit.adminUploadRecipePage"
+        android:label="fragment_admin_upload_recipe_page"
+        tools:layout="@layout/fragment_admin_upload_recipe_page" >
+        <action
+            android:id="@+id/action_adminUploadRecipePage_to_adminHomePage"
+            app:destination="@id/adminHomePage" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminViewReportsPage"
+        android:name="com.example.bitbybit.adminViewReportsPage"
+        android:label="fragment_admin_view_reports_page"
+        tools:layout="@layout/fragment_admin_view_reports_page" >
+        <action
+            android:id="@+id/action_adminViewReportsPage_to_adminHomePage"
+            app:destination="@id/adminHomePage" />
+    </fragment>
+    <fragment
+        android:id="@+id/tunaPastaDetailsPage"
+        android:name="com.example.bitbybit.tunaPastaDetailsPage"
+        android:label="fragment_tuna_pasta_details_page"
+        tools:layout="@layout/fragment_tuna_pasta_details_page" />
+    <fragment
+        android:id="@+id/tunaPastaIngredientsPage"
+        android:name="com.example.bitbybit.tunaPastaIngredientsPage"
+        android:label="fragment_tuna_pasta_ingredients_page"
+        tools:layout="@layout/fragment_tuna_pasta_ingredients_page" />
+    <fragment
+        android:id="@+id/tunaPastaStepsPage"
+        android:name="com.example.bitbybit.tunaPastaStepsPage"
+        android:label="fragment_tuna_pasta_steps_page"
+        tools:layout="@layout/fragment_tuna_pasta_steps_page" />
 </navigation>
