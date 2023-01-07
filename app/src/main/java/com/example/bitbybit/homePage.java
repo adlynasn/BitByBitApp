@@ -64,8 +64,8 @@ public class homePage extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_home_page2, container, false);
-        recyclerView = (RecyclerView) view.findViewById(R.id.RecylerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//        recyclerView = (RecyclerView) view.findViewById(R.id.RecylerView);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         //String userId = GoogleSignIn.getLastSignedInAccount(getContext()).getId();
 

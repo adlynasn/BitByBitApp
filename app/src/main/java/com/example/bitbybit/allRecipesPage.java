@@ -59,12 +59,6 @@ public class allRecipesPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_all_recipes_page, container, false);
+        return inflater.inflate(R.layout.fragment_all_recipes_page2, container, false);
     }
 }
-
-/*
-TODO take data of recipe from db to display
-- Use fragment for repeated display
-- While db has entry, add recipe brief
- */

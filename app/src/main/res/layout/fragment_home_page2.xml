@@ -29,7 +29,8 @@
                     android:layout_marginLeft="18dp"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="Find best receipes\nfor cooking"
-                    android:textSize="25dp">
+                    android:textSize="25dp"
+                    android:textColor="@color/black">
 
                 </TextView>
 
@@ -63,18 +64,39 @@
                         android:drawableRight="@drawable/ic_baseline_local_fire_department_24"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="Latest"
-                        android:textSize="20dp">
+                        android:textSize="20dp"
+                        android:textColor="@color/black">
 
                     </TextView>
 
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/RecylerView"
-                    android:layout_width="397dp"
-                    android:layout_height="225dp" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/asian_salmon">
+
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="SUMA SEDAP"
+                        android:textAlignment="center"
+                        android:textSize="25dp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -88,7 +110,8 @@
                         android:layout_marginLeft="18dp"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="All receipes"
-                        android:textSize="20dp"></TextView>
+                        android:textSize="20dp"
+                        android:textColor="@color/black"></TextView>
 
                     <Button
                         android:id="@+id/buttonAllReceipe"
@@ -218,13 +241,14 @@
                         android:layout_marginLeft="18dp"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="Feed"
-                        android:textSize="20dp"></TextView>
+                        android:textSize="20dp"
+                        android:textColor="@color/black"></TextView>
 
                     <Button
                         android:id="@+id/buttonFeed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="190dp"
+                        android:layout_marginLeft="180dp"
                         android:backgroundTint="@color/white"
                         android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
                         android:text="See all "
