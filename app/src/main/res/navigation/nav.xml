@@ -43,9 +43,9 @@
     </fragment>
     <fragment
         android:id="@+id/changePasswordPage"
-        android:name="com.example.bitbybit.changePasswordPage"
+        android:name="com.example.bitbybit.forgotPasswordPage"
         android:label="fragment_change_password_page"
-        tools:layout="@layout/fragment_change_password_page" >
+        tools:layout="@layout/fragment_forgot_password_page" >
         <action
             android:id="@+id/action_changePasswordPage_to_loginPage"
             app:destination="@id/loginPage" />

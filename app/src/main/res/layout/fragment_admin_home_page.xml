@@ -102,7 +102,7 @@
                     android:src="@drawable/ic_baseline_black_upload_file_24" />
 
                 <Button
-                    android:id="@+id/uploadRecipeButton"
+                    android:id="@+id/adminUploadRecipeButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
@@ -140,7 +140,7 @@
                     android:src="@drawable/ic_baseline_black_report_gmailerrorred_24" />
 
                 <Button
-                    android:id="@+id/viewReportsButton"
+                    android:id="@+id/adminViewReportsButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"

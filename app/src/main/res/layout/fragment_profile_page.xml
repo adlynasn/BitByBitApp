@@ -18,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        tools:ignore="UnknownIdInLayout">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton2"
@@ -98,19 +99,15 @@
         />
 
     <Button
-        android:id="@+id/optionsButton"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:id="@+id/LogoutButton"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="320dp"
-        android:layout_marginTop="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="15dp"
         android:backgroundTint="@color/white"
-        android:drawableLeft="@drawable/ic_black_options"
-        android:fontFamily="@font/poppins_semibold"
-        android:textAlignment="center"
-        android:textSize="14sp"
+        android:drawableEnd="@drawable/ic_baseline_black_logout_24"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView

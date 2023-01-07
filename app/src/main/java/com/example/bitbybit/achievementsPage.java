@@ -2,6 +2,7 @@ package com.example.bitbybit;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -66,15 +67,26 @@ public class achievementsPage extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
-        Button BtnBack = view.findViewById(R.id.backToProfilePageButton);
-        View.OnClickListener OCLBtnBack = new View.OnClickListener() {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Button btnBackToProf = view.findViewById(R.id.backToProfilePageButton);
+        View.OnClickListener OCLBackProfile = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_achievementsPage_to_profilePage);
+                Navigation.findNavController(view).navigate(R.id.profilePage);
             }
         };
-        BtnBack.setOnClickListener(OCLBtnBack);
+        btnBackToProf.setOnClickListener(OCLBackProfile);
+
+        Button btnUpdateAch = view.findViewById(R.id.editAchievementsPageButton);
+        View.OnClickListener OCLUpdateAch = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.profilePage);
+            }
+        };
+        btnUpdateAch.setOnClickListener(OCLUpdateAch);
     }
 }
 

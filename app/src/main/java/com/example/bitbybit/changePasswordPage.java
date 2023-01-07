@@ -2,17 +2,11 @@ package com.example.bitbybit;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,50 +61,4 @@ public class changePasswordPage extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_change_password_page, container, false);
     }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-         Button BtnCancel = view.findViewById(R.id.returnToProfilePageButtonPageButton);
-         View.OnClickListener OCLChgPass = new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 Navigation.findNavController(view).navigate(R.id.loginPage);
-             }
-         };
-         BtnCancel.setOnClickListener(OCLChgPass);
-
-         EditText password = view.findViewById(R.id.newPassword);
-         EditText RePassword = view.findViewById(R.id.reEnteredPassword);
-         Button BtnResetPass = view.findViewById(R.id.resetPasswordButton);
-         View.OnClickListener OCLReset = new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 // TODO integrate with database
-                 if(password.getText().toString().isEmpty() || RePassword.getText().toString().isEmpty()){
-                     Toast.makeText(getContext(),"Please fill both Password and re-Entered Password section", Toast.LENGTH_SHORT).show();
-
-                 }else if(!password.getText().toString().equals(RePassword.getText().toString())) {
-                     Toast.makeText(getContext(), "Please make sure that password and reEntered password is same", Toast.LENGTH_SHORT).show();
-
-                 }else {
-                     Navigation.findNavController(view).navigate(R.id.loginPage);
-                     Toast.makeText(getContext(), "PASSWORD HAS BEEN SUCCESFULLY CHANGED!!", Toast.LENGTH_SHORT).show();
-                 }
-             }
-         };
-         BtnResetPass.setOnClickListener(OCLReset);
-
-        Button BtnBackPass = view.findViewById(R.id.backToProfilePageButton);
-        View.OnClickListener OCLBackPass = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.loginPage);
-            }
-        };
-        BtnBackPass.setOnClickListener(OCLBackPass);
-    }
-
 }
-
