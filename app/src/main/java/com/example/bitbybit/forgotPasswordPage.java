@@ -16,10 +16,10 @@ import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link changePasswordPage#newInstance} factory method to
+ * Use the {@link forgotPasswordPage#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class changePasswordPage extends Fragment {
+public class forgotPasswordPage extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +30,7 @@ public class changePasswordPage extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public changePasswordPage() {
+    public forgotPasswordPage() {
         // Required empty public constructor
     }
 
@@ -43,8 +43,8 @@ public class changePasswordPage extends Fragment {
      * @return A new instance of fragment changePasswordPage.
      */
     // TODO: Rename and change types and number of parameters
-    public static changePasswordPage newInstance(String param1, String param2) {
-        changePasswordPage fragment = new changePasswordPage();
+    public static forgotPasswordPage newInstance(String param1, String param2) {
+        forgotPasswordPage fragment = new forgotPasswordPage();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,7 +65,7 @@ public class changePasswordPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_change_password_page, container, false);
+        return inflater.inflate(R.layout.fragment_forgot_password_page, container, false);
     }
 
     @Override
