@@ -2,11 +2,19 @@ package com.example.bitbybit;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +69,70 @@ public class missionsPage extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_missions_page, container, false);
     }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
+
+        Button BtnExMis = view.findViewById(R.id.exerciseMissionCompleteButton);
+        View.OnClickListener OCLExMis = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //add data to db
+            }
+        };
+        BtnExMis.setOnClickListener(OCLExMis);
+
+        Button BtnCook = view.findViewById(R.id.cookingMissionCompleteButton);
+        View.OnClickListener OCLCook = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //add data to db
+            }
+        };
+        BtnCook.setOnClickListener(OCLCook);
+
+        Button BtnSelfLove = view.findViewById(R.id.selfLoveMissionCompleteButton);
+        View.OnClickListener OCLSelfLove = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //add data to db
+            }
+        };
+        BtnSelfLove.setOnClickListener(OCLSelfLove);
+
+        BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.home:
+                        Navigation.findNavController(view).navigate(R.id.homePage);
+                        return true;
+                    case R.id.savedRecipes:
+                        Navigation.findNavController(view).navigate(R.id.savedRecipesPage);
+                        return true;
+                    case R.id.missions:
+                        Navigation.findNavController(view).navigate(R.id.missionsPage);
+                        return true;
+                    case R.id.profile:
+                        Navigation.findNavController(view).navigate(R.id.profilePage);
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton2);
+        View.OnClickListener OCLfloatButton = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.calorieCounterPage);
+            }
+        };
+        floatButton.setOnClickListener(OCLfloatButton);
+
+    }
+
 }
 
 /*
