@@ -73,5 +73,6 @@ public class loginPage extends Fragment {
             }
         };
         BtnChgPass.setOnClickListener(OVLChPass);
+
     }
 }
