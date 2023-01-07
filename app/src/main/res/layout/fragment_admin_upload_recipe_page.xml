@@ -97,11 +97,25 @@
         android:textColor="@color/pastel_red"
         android:textSize="16sp" />
 
+    <Button
+        android:id="@+id/addNutritonsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nutritionalTitle"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="ADD NUTRITIONAL VALUE"
+        android:textColor="@color/pastel_red"
+        android:textSize="12sp" />
+
     <ListView
         android:id="@+id/nutritional_listView"
         android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/nutritionalTitle" />
+        android:layout_below="@id/addNutritonsButton" />
 
     <TextView
         android:id="@+id/ingredientsTitle"
@@ -116,11 +130,24 @@
         android:textColor="@color/pastel_red"
         android:textSize="16sp" />
 
+    <Button
+        android:id="@+id/addIngredientsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ingredientsTitle"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="ADD INGREDIENTS"
+        android:textColor="@color/pastel_red"
+        android:textSize="12sp" />
+
     <ListView
         android:id="@+id/ingredients_listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ingredientsTitle" />
+        android:layout_below="@id/addIngredientsButton" />
 
     <TextView
         android:id="@+id/stepsTitle"
@@ -135,11 +162,25 @@
         android:textColor="@color/pastel_red"
         android:textSize="16sp" />
 
+    <Button
+        android:id="@+id/addStepsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stepsTitle"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="ADD STEPS"
+        android:textColor="@color/pastel_red"
+        android:textSize="12sp" />
+
     <ListView
         android:id="@+id/steps_listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/stepsTitle" />
+        android:layout_below="@id/addStepsButton"
+        android:layout_marginBottom="50dp"/>
 
 
 </RelativeLayout>
