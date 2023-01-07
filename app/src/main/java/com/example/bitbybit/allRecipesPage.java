@@ -70,7 +70,7 @@ public class allRecipesPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button btnBackToHP = view.findViewById(R.id.btnbackAllRecipeToHomePage);
+        Button btnBackToHP = view.findViewById(R.id.btnbackSavedRecipeToHomePage);
         View.OnClickListener OCLBackHP = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

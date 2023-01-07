@@ -74,7 +74,7 @@ public class savedRecipesPage extends Fragment {
         View.OnClickListener OCLBackSavedHP = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.adminHomePage);
+                Navigation.findNavController(view).navigate(R.id.homePage);
             }
         };
         btnBackToHp.setOnClickListener(OCLBackSavedHP);

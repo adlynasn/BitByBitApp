@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".frenchToastDetailsPage">
+    tools:context=".foodDetailsPage">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"
@@ -17,7 +17,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        tools:ignore="UnknownIdInLayout">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton2"
@@ -51,7 +52,7 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <Button
-        android:id="@+id/returnToHomePageButton"
+        android:id="@+id/backButton"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -79,7 +80,8 @@
         android:gravity="left"
         android:text="Low Calorie French Toast"
         android:textSize="20sp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        tools:ignore="NotSibling" />
 
     <LinearLayout
         android:layout_width="360dp"
@@ -262,7 +264,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/frenchToastIngredientsPageButton"
+                android:id="@+id/foodIngredientsPageButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"

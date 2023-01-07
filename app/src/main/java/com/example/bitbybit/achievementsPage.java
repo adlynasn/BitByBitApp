@@ -79,7 +79,6 @@ public class achievementsPage extends Fragment {
         };
         btnBackToProf.setOnClickListener(OCLBackProfile);
 
-
     }
 }
 
