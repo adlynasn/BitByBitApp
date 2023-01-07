@@ -64,6 +64,7 @@
                 android:layout_marginStart="30dp"
 
 
+
                 >
 
                 <ImageView
@@ -78,9 +79,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
+                    android:backgroundTint="@color/white"
                     android:text="POST"
                     android:textSize="14sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/pastel_red" />
 
             </LinearLayout>
 
@@ -105,8 +107,9 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="UPLOAD"
+                    android:backgroundTint="@color/white"
                     android:textSize="14sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/pastel_red" />
 
             </LinearLayout>
 
@@ -143,7 +146,8 @@
                     android:fontFamily="@font/poppins_semibold"
                     android:text="VIEW"
                     android:textSize="14sp"
-                    android:textColor="@color/white" />
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/pastel_red" />
 
             </LinearLayout>
         </LinearLayout>
