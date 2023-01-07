@@ -6,16 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".editGoalProgressPage">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        >
+
     <Button
         android:id="@+id/backToProfilePageButton"
         android:layout_width="64dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="312dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="50dp"
         android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/ic_baseline_black_arrow_back_24"
         android:fontFamily="@font/poppins_semibold"
@@ -25,14 +30,10 @@
 
     <TextView
         android:id="@+id/updateProgressTitle"
-        android:layout_width="247dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginBottom="50dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="left"
         android:textColor="@color/pastel_red"
@@ -45,35 +46,61 @@
         android:layout_height="74dp"
         android:layout_below="@id/updateProgressTitle"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="-40dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins"
         android:gravity="left"
         android:textColor="@color/black"
-        android:text="Enter your current weight below to update your progress."
+        android:text="Enter your current weight and height below to update your progress."
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/currentWeightTitle"
         android:layout_below="@id/updateProgressDesc"
-        android:layout_width="247dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="left"
         android:text="Current Weight"
         android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/currentHeightTitle"
+            android:layout_below="@id/currentWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="left"
+            android:text="Current Height"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/currentHeight"
+            android:layout_width="356dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/currentHeightTitle"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/white_field"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="10dp"
+            android:hint="In centimetres (cm)"
+            android:textColorHint="@color/pastel_red"
+            android:drawablePadding="20dp"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
 
     <Button
         android:id="@+id/updateProgressButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/currentWeight"
+        android:layout_below="@id/currentHeight"
         android:gravity="left"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="40dp"
         android:backgroundTint="@color/pastel_red"
         android:fontFamily="@font/poppins_semibold"
@@ -86,9 +113,9 @@
         android:id="@+id/cancelToProfilePageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/currentWeight"
+        android:layout_below="@id/currentHeight"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="290dp"
+        android:layout_alignParentEnd="true"
         android:backgroundTint="@color/white"
         android:fontFamily="@font/poppins_semibold"
         android:text="CANCEL"
@@ -101,18 +128,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/currentWeightTitle"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
         android:background="@drawable/white_field"
         android:ems="10"
         android:inputType="numberDecimal"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="-11dp"
-        android:hint="In Kilogram (Kg)"
+        android:layout_marginTop="10dp"
+        android:hint="In kilograms (kg)"
         android:textColorHint="@color/pastel_red"
         android:drawablePadding="20dp"
         android:minHeight="48dp"
         android:padding="10dp"
         android:textSize="16sp" />
+
+    </RelativeLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"
