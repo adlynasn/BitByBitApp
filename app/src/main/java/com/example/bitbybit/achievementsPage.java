@@ -79,14 +79,7 @@ public class achievementsPage extends Fragment {
         };
         btnBackToProf.setOnClickListener(OCLBackProfile);
 
-        Button btnUpdateAch = view.findViewById(R.id.editAchievementsPageButton);
-        View.OnClickListener OCLUpdateAch = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.profilePage);
-            }
-        };
-        btnUpdateAch.setOnClickListener(OCLUpdateAch);
+
     }
 }
 
