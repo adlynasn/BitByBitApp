@@ -14,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
         android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/ic_baseline_black_arrow_back_24"
@@ -38,23 +38,21 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="230dp"
         android:layout_below="@id/achievementsTitle"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:orientation="horizontal">
 
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/exerciseBadge"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_below="@id/achievementsTitle"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
@@ -103,9 +101,9 @@
 
             <ImageView
                 android:id="@+id/cookingBadge"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_below="@id/achievementsTitle"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
@@ -115,59 +113,56 @@
             <TextView
                 android:id="@+id/cookingAchievementName"
                 android:layout_width="200dp"
-                android:layout_below="@id/cookingBadge"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/cookingBadge"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Art of Cooking"
-
                 android:gravity="center_horizontal"
+
+                android:text="Art of Cooking"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/cookingAchievementDescription"
                 android:layout_width="200dp"
-                android:layout_below="@id/cookingAchievementName"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/cookingAchievementName"
                 android:fontFamily="@font/poppins"
-                android:text="Number of Times Mission Completed"
                 android:gravity="center_horizontal"
-                android:textSize="10dp"/>
+                android:text="Number of Times Mission Completed"
+                android:textSize="10dp" />
 
 
             <TextView
                 android:id="@+id/cookingAchievementProgress"
                 android:layout_width="200dp"
-                android:layout_below="@id/cookingAchievementDescription"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/cookingAchievementDescription"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="2"
                 android:gravity="center_horizontal"
+                android:text="2"
                 android:textColor="@color/pastel_red"
-                android:textSize="14dp"/>
+                android:textSize="14dp" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="230dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="380dp"
-        android:layout_marginRight="10dp"
-        android:layout_height="250dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="350dp"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="20dp"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/selfLoveBadge"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
@@ -177,34 +172,34 @@
             <TextView
                 android:id="@+id/selfLoveAchievementName"
                 android:layout_width="200dp"
-                android:layout_below="@id/selfLoveBadge"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/selfLoveBadge"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Art of Self Love"
                 android:gravity="center_horizontal"
+                android:text="Art of Self Love"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/selfLoveAchievementDescription"
                 android:layout_width="200dp"
-                android:layout_below="@id/cookingAchievementName"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/cookingAchievementName"
                 android:fontFamily="@font/poppins"
-                android:text="Number of Times Mission Completed"
                 android:gravity="center_horizontal"
-                android:textSize="10dp"/>
+                android:text="Number of Times Mission Completed"
+                android:textSize="10dp" />
 
 
             <TextView
                 android:id="@+id/selfLoveAchievementProgress"
                 android:layout_width="200dp"
-                android:layout_below="@id/selfLoveAchievementDescription"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/selfLoveAchievementDescription"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="2"
                 android:gravity="center_horizontal"
+                android:text="2"
                 android:textColor="@color/pastel_red"
-                android:textSize="14dp"/>
+                android:textSize="14dp" />
         </LinearLayout>
 
 
@@ -215,11 +210,50 @@
         android:id="@+id/editAchievementsPageButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="650dp"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="580dp"
         android:layout_marginEnd="30dp"
-        android:text="UPDATE NEW PROGRESS"
         android:fontFamily="@font/poppins_semibold"
-        android:textColor="@color/white"
-         />
+        android:text="UPDATE NEW PROGRESS"
+        android:textColor="@color/white" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        tools:context=".MainActivity">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="10dp"
+            app:fabCradleVerticalOffset="10dp">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/transparent_background"
+                app:menu="@menu/bottom_nav_menu"
+
+                />
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/hello_blank_fragment"
+            android:src="@drawable/ic_baseline_white_plus_sign_24"
+
+            app:layout_anchor="@id/bottomAppBar" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </RelativeLayout>
