@@ -2,11 +2,15 @@ package com.example.bitbybit;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,7 +38,7 @@ public class savedRecipesPage extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment savedRecipesFragment.
+     * @return A new instance of fragment savedRecipesPage.
      */
     // TODO: Rename and change types and number of parameters
     public static savedRecipesPage newInstance(String param1, String param2) {
@@ -59,12 +63,20 @@ public class savedRecipesPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_saved_recipes, container, false);
+        return inflater.inflate(R.layout.fragment_saved_recipes_page, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Button btnBackToHp = view.findViewById(R.id.btnbackSavedRecipeToHomePage);
+        View.OnClickListener OCLBackSavedHP = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.adminHomePage);
+            }
+        };
+        btnBackToHp.setOnClickListener(OCLBackSavedHP);
     }
 }
-
-/*
-TODO
-- Check which recipes saved by user from db
-- Display recipes like in all recipes
- */
