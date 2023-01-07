@@ -18,10 +18,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link achievementsPage#newInstance} factory method to
+ * Use the {@link frenchToastStepsPage#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class achievementsPage extends Fragment {
+public class frenchToastStepsPage extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,7 +32,7 @@ public class achievementsPage extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public achievementsPage() {
+    public frenchToastStepsPage() {
         // Required empty public constructor
     }
 
@@ -42,11 +42,11 @@ public class achievementsPage extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment achievementsPage.
+     * @return A new instance of fragment frenchToastStepsPage.
      */
     // TODO: Rename and change types and number of parameters
-    public static achievementsPage newInstance(String param1, String param2) {
-        achievementsPage fragment = new achievementsPage();
+    public static frenchToastStepsPage newInstance(String param1, String param2) {
+        frenchToastStepsPage fragment = new frenchToastStepsPage();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -67,21 +67,19 @@ public class achievementsPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_achievements_page, container, false);
+        return inflater.inflate(R.layout.fragment_french_toast_steps_page, container, false);
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        Button btnBackToProf = view.findViewById(R.id.backToProfilePageButton);
-        View.OnClickListener OCLBackProfile = new View.OnClickListener() {
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
+        Button BtnBack = view.findViewById(R.id.frenchToastIngredientsPageButton);
+        View.OnClickListener OCLBack = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.profilePage);
+                Navigation.findNavController(view).navigate(R.id.action_frenchToastStepsPage_to_frenchToastIngredientsPage);
             }
         };
-        btnBackToProf.setOnClickListener(OCLBackProfile);
+        BtnBack.setOnClickListener(OCLBack);
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -105,7 +103,7 @@ public class achievementsPage extends Fragment {
             }
         });
 
-        FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton);
+        FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton2);
         View.OnClickListener OCLfloatButton = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,8 +111,6 @@ public class achievementsPage extends Fragment {
             }
         };
         floatButton.setOnClickListener(OCLfloatButton);
-
     }
-}
 
-// TODO take data of achievements from database and display
+}
