@@ -1,14 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="30dp"
+    android:layout_marginTop="20dp"
     tools:context=".adminUploadRecipePage">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayoutAdmin2"
+        android:orientation="horizontal">
 
-</FrameLayout>
+        <Button
+            android:id="@+id/returnToAdminHomePageButton"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/ic_baseline_black_arrow_back_24"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/pastel_red"
+            android:textSize="14sp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/newRecipeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Create"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/addRecipeButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="60dp"
+            android:backgroundTint="@color/pastel_red"
+            android:fontFamily="@font/poppins_semibold"
+            android:background="@drawable/ic_baseline_black_post_add_24"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/recipeNameTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayoutAdmin2"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:text="Recipe Name"
+        android:textColor="@color/pastel_red"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/recipeName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recipeNameTitle"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/white_field"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/nutritionalTitle"
+        android:layout_below="@id/recipeName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:text="Nutritional Values"
+        android:textColor="@color/pastel_red"
+        android:textSize="16sp" />
+
+    <ListView
+        android:id="@+id/nutritional_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nutritionalTitle" />
+
+    <TextView
+        android:id="@+id/ingredientsTitle"
+        android:layout_below="@id/nutritional_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:text="Recipe Ingredients"
+        android:textColor="@color/pastel_red"
+        android:textSize="16sp" />
+
+    <ListView
+        android:id="@+id/ingredients_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ingredientsTitle" />
+
+    <TextView
+        android:id="@+id/stepsTitle"
+        android:layout_below="@id/ingredients_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:text="Recipe Steps"
+        android:textColor="@color/pastel_red"
+        android:textSize="16sp" />
+
+    <ListView
+        android:id="@+id/steps_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stepsTitle" />
+
+
+</RelativeLayout>
+</ScrollView>
