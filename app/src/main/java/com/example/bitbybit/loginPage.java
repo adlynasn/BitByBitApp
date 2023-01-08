@@ -41,73 +41,60 @@ public class loginPage extends Fragment {
         Button BtnLogin = view.findViewById(R.id.LoginButton);
         EditText username = view.findViewById(R.id.username);
         EditText password = view.findViewById(R.id.password);
-        View.OnClickListener OVLlogin = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        View.OnClickListener OVLLogin = v -> {
 
-                //connect to database
-                AtomicReference<Boolean> status = new AtomicReference<>();
-                AtomicReference<Boolean> status2 = new AtomicReference<>();
-                Thread dataThread = new Thread(() -> {
-                    try{
-                        Connection connection = Line.getConnection();
-                        PreparedStatement preparedStatement = connection.prepareStatement("SELECT user_id FROM user WHERE user_id = '" + username.getText().toString().trim() + "' AND password = '" + password.getText().toString().trim() + "' AND status = 1");
-                        ResultSet res = preparedStatement.executeQuery();
-                        PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT user_id FROM user WHERE user_id = '" + username.getText().toString().trim() + "' AND password = '" + password.getText().toString().trim() + "' AND status = 0");
-                        ResultSet res2 = preparedStatement2.executeQuery();
+            //connect to database
+            AtomicReference<Boolean> status = new AtomicReference<>();
+            AtomicReference<Boolean> status2 = new AtomicReference<>();
+            Thread dataThread = new Thread(() -> {
+                try{
+                    Connection connection = Line.getConnection();
+                    PreparedStatement preparedStatement = connection.prepareStatement("SELECT user_id FROM user WHERE user_id = '" + username.getText().toString().trim() + "' AND password = '" + password.getText().toString().trim() + "' AND status = 1");
+                    ResultSet res = preparedStatement.executeQuery();
+                    PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT user_id FROM user WHERE user_id = '" + username.getText().toString().trim() + "' AND password = '" + password.getText().toString().trim() + "' AND status = 0");
+                    ResultSet res2 = preparedStatement2.executeQuery();
 
-                        if(res.next()){
-                            status.set(true);
-                            status2.set(false);
-                        }
-                        else if (res2.next()){
-                            status.set(false);
-                            status2.set(true);
-                        }
-                        else{
-                            status.set(false);
-                            status2.set(false);
-                        }
-                    } catch (SQLException e) {
-                        e.printStackTrace();
+                    if(res.next()){
+                        status.set(true);
+                        status2.set(false);
                     }
-                });
-                dataThread.start();
-                while(dataThread.isAlive()){
+                    else if (res2.next()){
+                        status.set(false);
+                        status2.set(true);
+                    }
+                    else{
+                        status.set(false);
+                        status2.set(false);
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            });
+            dataThread.start();
+            while(dataThread.isAlive()){
 
-                }
+            }
 
-                if (status.get()) {
-                    Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
-                    Navigation.findNavController(view).navigate(R.id.homePage);
-                }
-                else if (status2.get()){
-                    Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
-                    Navigation.findNavController(view).navigate(R.id.adminHomePage);
-                }
-                else {
-                    Toast.makeText(getContext(), "LOGIN FAILED!!PLEASE TRY AGAIN", Toast.LENGTH_SHORT).show();
-                }
+            if (status.get()) {
+                Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(view).navigate(R.id.homePage);
+            }
+            else if (status2.get()){
+                Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(view).navigate(R.id.adminHomePage);
+            }
+            else {
+                Toast.makeText(getContext(), "LOGIN FAILED!!PLEASE TRY AGAIN", Toast.LENGTH_SHORT).show();
             }
         };
-                BtnLogin.setOnClickListener(OVLlogin);
+                BtnLogin.setOnClickListener(OVLLogin);
 
                 Button BtnReg = view.findViewById(R.id.registerPageButton);
-                View.OnClickListener OVLregister = new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Navigation.findNavController(view).navigate(R.id.registerPage);
-                    }
-                };
-                BtnReg.setOnClickListener(OVLregister);
+                View.OnClickListener OVLRegister = v -> Navigation.findNavController(view).navigate(R.id.registerPage);
+                BtnReg.setOnClickListener(OVLRegister);
 
                 Button BtnChgPass = view.findViewById(R.id.forgotPasswordPageButton);
-                View.OnClickListener OVLChPass = new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Navigation.findNavController(view).navigate(R.id.forgotPasswordPage);
-                    }
-                };
+                View.OnClickListener OVLChPass = v -> Navigation.findNavController(view).navigate(R.id.forgotPasswordPage);
                 BtnChgPass.setOnClickListener(OVLChPass);
 
             }

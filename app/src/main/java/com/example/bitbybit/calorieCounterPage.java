@@ -70,30 +70,16 @@ public class calorieCounterPage extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
 
         Button BtnCancel = view.findViewById(R.id.cancelButton);
-        View.OnClickListener OCLCancelBut = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.homePage);
-            }
-        };
+        View.OnClickListener OCLCancelBut = v -> Navigation.findNavController(view).navigate(R.id.homePage);
         BtnCancel.setOnClickListener(OCLCancelBut);
 
 
         Button BtnAddMeal = view.findViewById(R.id.addMealsButton);
-        View.OnClickListener OCLAddMeal = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "MEAL ADDED", Toast.LENGTH_SHORT).show();
-                Navigation.findNavController(view).navigate(R.id.homePage);
-            }
+        View.OnClickListener OCLAddMeal = v -> {
+            Toast.makeText(getContext(), "MEAL ADDED", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(view).navigate(R.id.homePage);
         };
         BtnAddMeal.setOnClickListener(OCLAddMeal);
     }
 
 }
-
-/*
-TODO upload calorie intake
-- Can add meal component numbers
-- push input data to db when finish button is pressed
- */

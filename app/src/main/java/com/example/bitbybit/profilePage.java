@@ -77,87 +77,56 @@ public class profilePage extends Fragment {
 
 
         Button BtnEditProf = view.findViewById(R.id.editProfilePageButton);
-        View.OnClickListener OCLEditProf = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.editProfilePage);
-            }
-        };
+        View.OnClickListener OCLEditProf = v -> Navigation.findNavController(view).navigate(R.id.editProfilePage);
         BtnEditProf.setOnClickListener(OCLEditProf);
 
 
         Button BtnAchievement = view.findViewById(R.id.gotoAchievementsPageButton);
-        View.OnClickListener OCLAchievement = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.achievementsPage);
-            }
-        };
+        View.OnClickListener OCLAchievement = v -> Navigation.findNavController(view).navigate(R.id.achievementsPage);
         BtnAchievement.setOnClickListener(OCLAchievement);
 
 
         Button BtnViewCal = view.findViewById(R.id.viewCalorieButton);
-        View.OnClickListener OCLCalIntake = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.caloriesIntakePage);
-            }
-        };
+        View.OnClickListener OCLCalIntake = view1 -> Navigation.findNavController(view1).navigate(R.id.caloriesIntakePage);
         BtnViewCal.setOnClickListener(OCLCalIntake);
 
 
         Button btnLogout = view.findViewById(R.id.LogoutButton);
-        View.OnClickListener OCLLogOut = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.loginPage);
-                Toast.makeText(getContext(),"You have log out",Toast.LENGTH_SHORT).show();
-            }
+        View.OnClickListener OCLLogOut = v -> {
+            Navigation.findNavController(view).navigate(R.id.loginPage);
+            Toast.makeText(getContext(),"You have log out",Toast.LENGTH_SHORT).show();
         };
         btnLogout.setOnClickListener(OCLLogOut);
 
 
         Button btnUpdateProgress = view.findViewById(R.id.editProgressButton);
-        View.OnClickListener OCLUpdProg = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_profilePage_to_editGoalProgressPage);
-            }
-        };
-        btnUpdateProgress.setOnClickListener(OCLUpdProg);
+        View.OnClickListener OCLUpdateProgress = v -> Navigation.findNavController(view).navigate(R.id.action_profilePage_to_editGoalProgressPage);
+        btnUpdateProgress.setOnClickListener(OCLUpdateProgress);
 
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()){
-                    case R.id.home:
-                        Navigation.findNavController(view).navigate(R.id.homePage);
-                        return true;
-                    case R.id.savedRecipes:
-                        Navigation.findNavController(view).navigate(R.id.savedRecipesPage);
-                        return true;
-                    case R.id.missions:
-                        Navigation.findNavController(view).navigate(R.id.missionsPage);
-                        return true;
-                    case R.id.profile:
-                        Navigation.findNavController(view).navigate(R.id.profilePage);
-                        return true;
-                }
-                return false;
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch(item.getItemId()){
+                case R.id.home:
+                    Navigation.findNavController(view).navigate(R.id.homePage);
+                    return true;
+                case R.id.savedRecipes:
+                    Navigation.findNavController(view).navigate(R.id.savedRecipesPage);
+                    return true;
+                case R.id.missions:
+                    Navigation.findNavController(view).navigate(R.id.missionsPage);
+                    return true;
+                case R.id.profile:
+                    Navigation.findNavController(view).navigate(R.id.profilePage);
+                    return true;
             }
+            return false;
         });
 
 
         FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton2);
-        View.OnClickListener OCLfloatButton = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.calorieCounterPage);
-            }
-        };
-        floatButton.setOnClickListener(OCLfloatButton);
+        View.OnClickListener OCLFloatButton = v -> Navigation.findNavController(view).navigate(R.id.calorieCounterPage);
+        floatButton.setOnClickListener(OCLFloatButton);
 
     }
 }

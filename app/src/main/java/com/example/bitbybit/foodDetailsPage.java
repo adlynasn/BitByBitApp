@@ -75,53 +75,35 @@ public class foodDetailsPage extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button btnBackFoodDetails = view.findViewById(R.id.returnToHomePageButton);
-        View.OnClickListener OCLBackHP = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.homePage);
-            }
-        };
+        View.OnClickListener OCLBackHP = v -> Navigation.findNavController(view).navigate(R.id.homePage);
         btnBackFoodDetails.setOnClickListener(OCLBackHP);
 
         Button btnPrepareIng = view.findViewById(R.id.frenchToastIngredientsPageButton);
-        View.OnClickListener OCLlistIngredient = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.foodIngredientPage);
-            }
-        };
-        btnPrepareIng.setOnClickListener(OCLlistIngredient);
+        View.OnClickListener OCLListIngredient = v -> Navigation.findNavController(view).navigate(R.id.foodIngredientPage);
+        btnPrepareIng.setOnClickListener(OCLListIngredient);
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()){
-                    case R.id.home:
-                        Navigation.findNavController(view).navigate(R.id.homePage);
-                        return true;
-                    case R.id.savedRecipes:
-                        Navigation.findNavController(view).navigate(R.id.savedRecipesPage);
-                        return true;
-                    case R.id.missions:
-                        Navigation.findNavController(view).navigate(R.id.missionsPage);
-                        return true;
-                    case R.id.profile:
-                        Navigation.findNavController(view).navigate(R.id.profilePage);
-                        return true;
-                }
-                return false;
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch(item.getItemId()){
+                case R.id.home:
+                    Navigation.findNavController(view).navigate(R.id.homePage);
+                    return true;
+                case R.id.savedRecipes:
+                    Navigation.findNavController(view).navigate(R.id.savedRecipesPage);
+                    return true;
+                case R.id.missions:
+                    Navigation.findNavController(view).navigate(R.id.missionsPage);
+                    return true;
+                case R.id.profile:
+                    Navigation.findNavController(view).navigate(R.id.profilePage);
+                    return true;
             }
+            return false;
         });
 
         FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton2);
-        View.OnClickListener OCLfloatButton = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.calorieCounterPage);
-            }
-        };
-        floatButton.setOnClickListener(OCLfloatButton);
+        View.OnClickListener OCLFloatButton = v -> Navigation.findNavController(view).navigate(R.id.calorieCounterPage);
+        floatButton.setOnClickListener(OCLFloatButton);
 
     }
 

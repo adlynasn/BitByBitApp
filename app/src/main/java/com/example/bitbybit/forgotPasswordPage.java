@@ -78,54 +78,46 @@ public class forgotPasswordPage extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
          Button BtnCancel = view.findViewById(R.id.returnToLoginPageButtonPageButton);
-         View.OnClickListener OCLChgPass = new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 Navigation.findNavController(view).navigate(R.id.loginPage);
-             }
-         };
+         View.OnClickListener OCLChgPass = v -> Navigation.findNavController(view).navigate(R.id.loginPage);
          BtnCancel.setOnClickListener(OCLChgPass);
 
          EditText password = view.findViewById(R.id.newPassword);
          EditText RePassword = view.findViewById(R.id.reEnteredPassword);
          EditText email = view.findViewById(R.id.email);
          Button BtnResetPass = view.findViewById(R.id.resetPasswordButton);
-         View.OnClickListener OCLReset = new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 // TODO integrate with database
+         View.OnClickListener OCLReset = v -> {
+             // TODO integrate with database
 
-                 try{
-                     Connection connection = Line.getConnection();
-                     PreparedStatement ps = connection.prepareStatement("SELECT * FROM user where email = '" +email.getText().toString()+ "'");
-                     PreparedStatement ps1 = connection.prepareStatement("INSERT INTO user(password)VALUES('" +password.getText().toString()+ "'");
-                     ResultSet res = ps.executeQuery();
+             try{
+                 Connection connection = Line.getConnection();
+                 PreparedStatement ps = connection.prepareStatement("SELECT * FROM user where email = '" +email.getText().toString()+ "'");
+                 PreparedStatement ps1 = connection.prepareStatement("INSERT INTO user(password)VALUES('" +password.getText().toString()+ "'");
+                 ResultSet res = ps.executeQuery();
 
-                     if(res.next()){
-                         int executeUpdate = ps1.executeUpdate();
-                         Navigation.findNavController(view).navigate(R.id.loginPage);
-                         Toast.makeText(getContext(), "PASSWORD HAS BEEN SUCCESFULLY CHANGED!!", Toast.LENGTH_SHORT).show();
-
-                     }else {
-                         Toast.makeText(getContext(), "WRONG EMAIL!", Toast.LENGTH_SHORT).show();
-
-                     }
-
-
-                 }catch (SQLException e){
-                     e.printStackTrace();
-                 }
-
-                 if(password.getText().toString().isEmpty() || RePassword.getText().toString().isEmpty()){
-                     Toast.makeText(getContext(),"Please fill both Password and re-Entered Password section", Toast.LENGTH_SHORT).show();
-
-                 }else if(!password.getText().toString().equals(RePassword.getText().toString())) {
-                     Toast.makeText(getContext(), "Please make sure that password and reEntered password is same", Toast.LENGTH_SHORT).show();
+                 if(res.next()){
+                     int executeUpdate = ps1.executeUpdate();
+                     Navigation.findNavController(view).navigate(R.id.loginPage);
+                     Toast.makeText(getContext(), "PASSWORD HAS BEEN SUCCESSFULLY CHANGED!!", Toast.LENGTH_SHORT).show();
 
                  }else {
-                     Navigation.findNavController(view).navigate(R.id.loginPage);
-                     Toast.makeText(getContext(), "PASSWORD HAS BEEN SUCCESFULLY CHANGED!!", Toast.LENGTH_SHORT).show();
+                     Toast.makeText(getContext(), "WRONG EMAIL!", Toast.LENGTH_SHORT).show();
+
                  }
+
+
+             }catch (SQLException e){
+                 e.printStackTrace();
+             }
+
+             if(password.getText().toString().isEmpty() || RePassword.getText().toString().isEmpty()){
+                 Toast.makeText(getContext(),"Please fill both Password and re-Entered Password section", Toast.LENGTH_SHORT).show();
+
+             }else if(!password.getText().toString().equals(RePassword.getText().toString())) {
+                 Toast.makeText(getContext(), "Please make sure that password and reEntered password is same", Toast.LENGTH_SHORT).show();
+
+             }else {
+                 Navigation.findNavController(view).navigate(R.id.loginPage);
+                 Toast.makeText(getContext(), "PASSWORD HAS BEEN SUCCESSFULLY CHANGED!!", Toast.LENGTH_SHORT).show();
              }
          };
          BtnResetPass.setOnClickListener(OCLReset);

@@ -91,25 +91,22 @@ public class editGoalProgressPage extends Fragment {
         btnUpdateGoal.setOnClickListener(OCLProgress);
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()){
-                    case R.id.home:
-                        Navigation.findNavController(view).navigate(R.id.homePage);
-                        return true;
-                    case R.id.savedRecipes:
-                        Navigation.findNavController(view).navigate(R.id.savedRecipesPage);
-                        return true;
-                    case R.id.missions:
-                        Navigation.findNavController(view).navigate(R.id.missionsPage);
-                        return true;
-                    case R.id.profile:
-                        Navigation.findNavController(view).navigate(R.id.profilePage);
-                        return true;
-                }
-                return false;
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch(item.getItemId()){
+                case R.id.home:
+                    Navigation.findNavController(view).navigate(R.id.homePage);
+                    return true;
+                case R.id.savedRecipes:
+                    Navigation.findNavController(view).navigate(R.id.savedRecipesPage);
+                    return true;
+                case R.id.missions:
+                    Navigation.findNavController(view).navigate(R.id.missionsPage);
+                    return true;
+                case R.id.profile:
+                    Navigation.findNavController(view).navigate(R.id.profilePage);
+                    return true;
             }
+            return false;
         });
 
         FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton2);

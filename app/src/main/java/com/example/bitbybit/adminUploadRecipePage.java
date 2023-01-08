@@ -71,22 +71,12 @@ public class adminUploadRecipePage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button BtnaddRecipe = view.findViewById(R.id.addRecipeButton);
-        View.OnClickListener OCLAddRecipe = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(),"The Recipe has been Upload",Toast.LENGTH_SHORT).show();
-            }
-        };
-        BtnaddRecipe.setOnClickListener(OCLAddRecipe);
+        Button BtnAddRecipe = view.findViewById(R.id.addRecipeButton);
+        View.OnClickListener OCLAddRecipe = v -> Toast.makeText(getContext(),"The Recipe has been Upload",Toast.LENGTH_SHORT).show();
+        BtnAddRecipe.setOnClickListener(OCLAddRecipe);
 
         Button btnBackToAdminHP = view.findViewById(R.id.returnToAdminHomePageButton);
-        View.OnClickListener OCLBackAdminHP = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.adminHomePage);
-            }
-        };
+        View.OnClickListener OCLBackAdminHP = v -> Navigation.findNavController(view).navigate(R.id.adminHomePage);
         btnBackToAdminHP.setOnClickListener(OCLBackAdminHP);
     }
 }

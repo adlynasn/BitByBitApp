@@ -72,21 +72,13 @@ public class adminPostPage extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button btnBackToAdminHP = view.findViewById(R.id.returnToAdminHomePageButton);
-        View.OnClickListener OCLBackAdminHP = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.adminHomePage);
-            }
-        };
+        View.OnClickListener OCLBackAdminHP = v -> Navigation.findNavController(view).navigate(R.id.adminHomePage);
         btnBackToAdminHP.setOnClickListener(OCLBackAdminHP);
 
         Button btnAdminPublish = view.findViewById(R.id.publishPostButton);
-        View.OnClickListener OCLAdminPublish = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(),"The post has been published",Toast.LENGTH_SHORT).show();
-                Navigation.findNavController(view).navigate(R.id.adminHomePage);
-            }
+        View.OnClickListener OCLAdminPublish = v -> {
+            Toast.makeText(getContext(),"The post has been published",Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(view).navigate(R.id.adminHomePage);
         };
         btnAdminPublish.setOnClickListener(OCLAdminPublish);
 

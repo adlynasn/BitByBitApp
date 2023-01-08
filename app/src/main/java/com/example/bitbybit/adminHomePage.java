@@ -72,39 +72,21 @@ public class adminHomePage extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button btnAdminPostPage = view.findViewById(R.id.adminPostPageButton);
-        View.OnClickListener OCLAdminPostPage = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.adminPostPage);
-            }
-        };
+        View.OnClickListener OCLAdminPostPage = v -> Navigation.findNavController(view).navigate(R.id.adminPostPage);
         btnAdminPostPage.setOnClickListener(OCLAdminPostPage);
 
         Button btnAdminUpload = view.findViewById(R.id.adminUploadRecipeButton);
-        View.OnClickListener OCLUploadAdmin = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.adminUploadRecipePage);
-            }
-        };
+        View.OnClickListener OCLUploadAdmin = v -> Navigation.findNavController(view).navigate(R.id.adminUploadRecipePage);
         btnAdminUpload.setOnClickListener(OCLUploadAdmin);
 
         Button btnAdminViewRep = view.findViewById(R.id.adminViewReportsButton);
-        View.OnClickListener OCLViewRep = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.adminViewReportsPage);
-            }
-        };
+        View.OnClickListener OCLViewRep = v -> Navigation.findNavController(view).navigate(R.id.adminViewReportsPage);
         btnAdminViewRep.setOnClickListener(OCLViewRep);
 
         Button btnLogoutAdmin = view.findViewById(R.id.adminLogoutButton);
-        View.OnClickListener OCLLogOut = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.loginPage);
-                Toast.makeText(getContext(),"You have log out",Toast.LENGTH_SHORT).show();
-            }
+        View.OnClickListener OCLLogOut = v -> {
+            Navigation.findNavController(view).navigate(R.id.loginPage);
+            Toast.makeText(getContext(),"You have log out",Toast.LENGTH_SHORT).show();
         };
         btnLogoutAdmin.setOnClickListener(OCLLogOut);
     }
