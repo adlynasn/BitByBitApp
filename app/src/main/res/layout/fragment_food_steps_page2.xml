@@ -52,7 +52,7 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <Button
-        android:id="@+id/foodDetailsPageButton"
+        android:id="@+id/foodIngredientsPageButton"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -60,7 +60,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="50dp"
         android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/ic_baseline_black_arrow_back_24"
         android:fontFamily="@font/poppins_semibold"
@@ -70,25 +69,37 @@
 
     <TextView
         android:id="@+id/foodTitle"
-        android:layout_below="@id/foodDetailsPageButton"
+        android:layout_below="@id/foodIngredientsPageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="left"
         android:text="Steps to cook"
         android:textSize="20sp"
         android:textColor="@color/black"/>
 
-
-    <androidx.recyclerview.widget.RecyclerView
+    <ScrollView
+        android:id="@+id/scrollViewFoodSteps"
         android:layout_width="match_parent"
-        android:layout_height="406dp"
-        android:layout_below="@+id/foodTitle">
+        android:layout_height="400dp"
+        android:layout_below="@id/foodTitle"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:fillViewport="true">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/foodTitle">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
+
 
 
 </RelativeLayout>

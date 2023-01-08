@@ -52,7 +52,7 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <Button
-        android:id="@+id/backIngredientButton"
+        android:id="@+id/foodDetailsPageButton"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -60,7 +60,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="50dp"
         android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/ic_baseline_black_arrow_back_24"
         android:fontFamily="@font/poppins_semibold"
@@ -69,42 +68,45 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/foodTitle"
+        android:id="@+id/foodIngredientsTitle"
         android:layout_below="@id/foodDetailsPageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="left"
-        android:text="List of Ingredients"
+        android:text="Recipe Ingredients"
         android:textSize="20sp"
-        android:textColor="@color/black"
-        tools:ignore="NotSibling" />
+        android:textColor="@color/black"/>
 
-
-    <androidx.recyclerview.widget.RecyclerView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="406dp"
-        android:layout_below="@+id/foodTitle"
-        android:layout_marginTop="49dp">
+        android:layout_height="320dp"
+        android:layout_below="@id/foodIngredientsTitle"
+        android:layout_margin="30dp"
+        android:id="@+id/scrollViewFoodIngredients"
+        android:fillViewport="true"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/foodTitle">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        </androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
 
     <Button
-        android:id="@+id/foodStepsButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/recipeStepsPageButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="540dp"
-        android:backgroundTint="@color/pastel_red"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/scrollViewFoodIngredients"
         android:text="START COOKING"
         android:fontFamily="@font/poppins_semibold"
         android:textColor="@color/white"
         />
-
 </RelativeLayout>
