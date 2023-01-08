@@ -76,29 +76,17 @@ public class editGoalProgressPage extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button btnBackToProf = view.findViewById(R.id.backToProfilePageButton);
-        View.OnClickListener OCLBackProfile = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.profilePage);
-            }
-        };
+        View.OnClickListener OCLBackProfile = v -> Navigation.findNavController(view).navigate(R.id.action_editGoalProgressPage_to_profilePage);
         btnBackToProf.setOnClickListener(OCLBackProfile);
 
-        Button btnCancelToProf = view.findViewById(R.id.CancelToProfilePage);
-        View.OnClickListener OCLCancelProfile = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.profilePage);
-            }
-        };
+        Button btnCancelToProf = view.findViewById(R.id.cancelToProfilePageButton);
+        View.OnClickListener OCLCancelProfile = v -> Navigation.findNavController(view).navigate(R.id.profilePage);
         btnCancelToProf.setOnClickListener(OCLCancelProfile);
 
         Button btnUpdateGoal = view.findViewById(R.id.updateProgressButton);
-        View.OnClickListener OCLProgress = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "Update Progress Successful!", Toast.LENGTH_SHORT).show();
-            }
+        View.OnClickListener OCLProgress = v -> {
+            Toast.makeText(getContext(), "Update Progress Successful!", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(view).navigate(R.id.profilePage);
         };
         btnUpdateGoal.setOnClickListener(OCLProgress);
 
@@ -125,13 +113,8 @@ public class editGoalProgressPage extends Fragment {
         });
 
         FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton2);
-        View.OnClickListener OCLfloatButton = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.calorieCounterPage);
-            }
-        };
-        floatButton.setOnClickListener(OCLfloatButton);
+        View.OnClickListener OCLFloatButton = v -> Navigation.findNavController(view).navigate(R.id.calorieCounterPage);
+        floatButton.setOnClickListener(OCLFloatButton);
 
     }
 }

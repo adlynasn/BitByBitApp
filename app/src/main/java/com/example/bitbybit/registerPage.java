@@ -113,6 +113,7 @@ public class registerPage extends Fragment {
                         res1.close();
 
                         if(status.get() == false && status1.get() == false){
+                            System.out.println("abc");
                             ps2.execute();
                         }
                         ps.close();
