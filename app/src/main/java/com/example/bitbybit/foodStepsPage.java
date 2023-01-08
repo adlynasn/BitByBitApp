@@ -72,11 +72,11 @@ public class foodStepsPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button btnBackFoodSteps = view.findViewById(R.id.backButton);
+        Button btnBackFoodSteps = view.findViewById(R.id.foodDetailsPageButton);
         View.OnClickListener OCLBackIngredient = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.foodIngredientPage2);
+                Navigation.findNavController(view).navigate(R.id.foodDetailsPage);
             }
         };
         btnBackFoodSteps.setOnClickListener(OCLBackIngredient);

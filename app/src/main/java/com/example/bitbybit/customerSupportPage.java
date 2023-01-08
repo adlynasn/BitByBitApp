@@ -115,14 +115,6 @@ public class customerSupportPage extends Fragment {
         };
         floatButton.setOnClickListener(OCLfloatButton);
 
-        ImageView recipeImage = view.findViewById(R.id.LatestRecipeImage);
-        View.OnClickListener OCLLRI = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.frenchToastDetailsPage);
-            }
-        };
-        recipeImage.setOnClickListener(OCLLRI);
     }
 
 }

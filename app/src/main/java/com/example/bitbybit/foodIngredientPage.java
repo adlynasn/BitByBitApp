@@ -70,7 +70,7 @@ public class foodIngredientPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button btnBackIngredient = view.findViewById(R.id.backButton);
+        Button btnBackIngredient = view.findViewById(R.id.backIngredientButton);
         View.OnClickListener OCLBackIngredient = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

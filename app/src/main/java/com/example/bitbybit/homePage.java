@@ -149,7 +149,7 @@ public class homePage extends Fragment {
         View.OnClickListener OCLLRI = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.frenchToastDetailsPage);
+                Navigation.findNavController(view).navigate(R.id.foodDetailsPage);
             }
         };
         recipeImage.setOnClickListener(OCLLRI);

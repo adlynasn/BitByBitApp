@@ -63,14 +63,14 @@ public class foodDetailsPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_food_details_page2, container, false);
+        return inflater.inflate(R.layout.fragment_food_details_page, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button btnBackFoodDetails = view.findViewById(R.id.backButton);
+        Button btnBackFoodDetails = view.findViewById(R.id.returnToHomePageButton);
         View.OnClickListener OCLBackHP = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,11 +79,11 @@ public class foodDetailsPage extends Fragment {
         };
         btnBackFoodDetails.setOnClickListener(OCLBackHP);
 
-        Button btnPrepareIng = view.findViewById(R.id.foodIngredientsPageButton);
+        Button btnPrepareIng = view.findViewById(R.id.frenchToastIngredientsPageButton);
         View.OnClickListener OCLlistIngredient = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.foodIngredientPage2);
+                Navigation.findNavController(view).navigate(R.id.foodIngredientPage);
             }
         };
         btnPrepareIng.setOnClickListener(OCLlistIngredient);
