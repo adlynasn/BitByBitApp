@@ -16,6 +16,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link onboardingPage#newInstance} factory method to
@@ -44,18 +49,35 @@ public class loginPage extends Fragment {
             public void onClick(View v) {
 
                 // TODO connect to database
-                //Check the username and password
-                if (username.getText().toString().equals("user") && password.getText().toString().equals("user")) {
-                    Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
-                    Navigation.findNavController(view).navigate(R.id.homePage);
 
-                } else if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
-                    Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
-                    Navigation.findNavController(view).navigate(R.id.adminHomePage);
+                try {
+                    Connection connection = Line.getConnection();
+                    Statement statement = connection.createStatement();
+                    ResultSet res = statement.executeQuery("SELECT * FROM user where user_id = '" + username.getText().toString()
+                                                            + "' AND password = '" + password.getText().toString() + "'");
 
-                } else {
-                    Toast.makeText(getContext(), "LOGIN FAILED!!PLEASE TRY AGAIN", Toast.LENGTH_SHORT).show();
+                    if (res.next()){
+                        Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.homePage);
+                    }
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
+
+
+                //Check the username and password
+//                if (username.getText().toString().equals("user") && password.getText().toString().equals("user")) {
+//                    Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
+//                    Navigation.findNavController(view).navigate(R.id.homePage);
+//
+//                } else if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
+//                    Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
+//                    Navigation.findNavController(view).navigate(R.id.adminHomePage);
+//
+//                } else {
+//                    Toast.makeText(getContext(), "LOGIN FAILED!!PLEASE TRY AGAIN", Toast.LENGTH_SHORT).show();
+//                }
             }
         };
         BtnLogin.setOnClickListener(OVLlogin);
