@@ -47,6 +47,7 @@ public class loginPage extends Fragment {
 
                 // TODO connect to database
 
+                System.out.println("clicked");
                 AtomicReference<Boolean> status = new AtomicReference<>();
                 Thread dataThread = new Thread(() -> {
                     try{

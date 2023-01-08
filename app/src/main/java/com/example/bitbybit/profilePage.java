@@ -74,6 +74,8 @@ public class profilePage extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
         Button BtnEditProf = view.findViewById(R.id.editProfilePageButton);
         View.OnClickListener OCLEditProf = new View.OnClickListener() {
             @Override
@@ -83,14 +85,16 @@ public class profilePage extends Fragment {
         };
         BtnEditProf.setOnClickListener(OCLEditProf);
 
+
         Button BtnAchievement = view.findViewById(R.id.gotoAchievementsPageButton);
-        View.OnClickListener OCLAcievement = new View.OnClickListener() {
+        View.OnClickListener OCLAchievement = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(view).navigate(R.id.achievementsPage);
             }
         };
-        BtnAchievement.setOnClickListener(OCLAcievement);
+        BtnAchievement.setOnClickListener(OCLAchievement);
+
 
         Button BtnViewCal = view.findViewById(R.id.viewCalorieButton);
         View.OnClickListener OCLViewCal = new View.OnClickListener() {
@@ -101,6 +105,7 @@ public class profilePage extends Fragment {
         };
         BtnViewCal.setOnClickListener(OCLViewCal);
 
+
         Button btnLogout = view.findViewById(R.id.LogoutButton);
         View.OnClickListener OCLLogOut = new View.OnClickListener() {
             @Override
@@ -110,6 +115,17 @@ public class profilePage extends Fragment {
             }
         };
         btnLogout.setOnClickListener(OCLLogOut);
+
+
+        Button btnUpdateProgress = view.findViewById(R.id.editProgressButton);
+        View.OnClickListener OCLUpdProg = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_profilePage_to_editGoalProgressPage);
+            }
+        };
+        btnUpdateProgress.setOnClickListener(OCLUpdProg);
+
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -132,6 +148,7 @@ public class profilePage extends Fragment {
                 return false;
             }
         });
+
 
         FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton2);
         View.OnClickListener OCLfloatButton = new View.OnClickListener() {
