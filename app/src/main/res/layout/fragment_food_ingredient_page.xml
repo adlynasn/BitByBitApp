@@ -82,13 +82,16 @@
         android:textColor="@color/black"/>
 
     <ScrollView
+        android:id="@+id/scrollViewFoodIngredients"
         android:layout_width="match_parent"
         android:layout_height="320dp"
         android:layout_below="@id/foodIngredientsTitle"
-        android:layout_margin="30dp"
-        android:id="@+id/scrollViewFoodIngredients"
-        android:fillViewport="true"
-        >
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:fillViewport="true">
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

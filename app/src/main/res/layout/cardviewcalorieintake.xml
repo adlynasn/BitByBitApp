@@ -1,73 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp">
 
         <RelativeLayout
+            android:id="@+id/relativeLayoutCalorieIntake1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/relativeLayoutCalorieIntake1"
-            android:layout_margin="10dp">
+            android:layout_margin="15dp">
 
             <TextView
                 android:id="@+id/mealDate"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="21 January"
                 android:fontFamily="@font/poppins_semibold"
+                android:text="21 January 2022"
+                android:layout_marginStart="5dp"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/mealTime"
-                android:layout_below="@id/mealDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_semibold"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:text="11:00 am" />
-
-            <TextView
-                android:id="@+id/mealText"
-                android:layout_below="@id/mealTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_semibold"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:text="Meals" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/mealText"
-            android:orientation="horizontal">
-
-            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_below="@id/mealDate"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="11:00 am"
+                android:textColor="@color/pastel_red"
+                android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/mealCalorieText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
+            <Button
+                android:id="@+id/viewCaloriesButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/mealTime"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="5dp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/pastel_red"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="View Meals"
+                android:textSize="14sp" />
 
-                <TextView
-                    android:id="@+id/mealCalorie"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
-            </LinearLayout>
-        </LinearLayout>
+
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
