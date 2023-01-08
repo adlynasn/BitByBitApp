@@ -100,7 +100,7 @@ public class homePage extends Fragment {
         View.OnClickListener OCLAllRecipe = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_homePage_to_allRecipesPage);
+                Navigation.findNavController(view).navigate(R.id.allRecipesPage);
             }
         };
         btnAllrecipe.setOnClickListener(OCLAllRecipe);

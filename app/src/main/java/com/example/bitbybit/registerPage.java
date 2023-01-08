@@ -108,5 +108,14 @@ public class registerPage extends Fragment {
         };
         BtnReg.setOnClickListener(OCLRegBtn);
 
+        Button btncancelRegis = view.findViewById(R.id.returnToLoginPageButton);
+        View.OnClickListener OCLCancel = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.loginPage);
+            }
+        };
+        btncancelRegis.setOnClickListener(OCLCancel);
+
     }
 }

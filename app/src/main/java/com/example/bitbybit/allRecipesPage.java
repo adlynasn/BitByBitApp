@@ -105,7 +105,7 @@ public class allRecipesPage extends Fragment {
             }
         });
 
-        FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton);
+        FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton2);
         View.OnClickListener OCLfloatButton = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
