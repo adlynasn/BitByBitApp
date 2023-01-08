@@ -87,29 +87,39 @@ public class registerPage extends Fragment {
         View.OnClickListener OCLRegBtn = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("Entered on click");
 
-                AtomicReference<Boolean> status = new AtomicReference<>();
-                AtomicReference<Boolean> status1 = new AtomicReference<>();
+                AtomicReference<Boolean> status = new AtomicReference<>(true);
+                AtomicReference<Boolean> status1 = new AtomicReference<>(true);
                 Thread dataThread = new Thread(() -> {
                     try{
+                        System.out.println("Entered");
                         Connection connection = Line.getConnection();
                         PreparedStatement ps = connection.prepareStatement("SELECT * FROM user where user_id = '" + username.getText().toString() + "'");
                         PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM user where email  = '" + email.getText().toString() + "'");
                         PreparedStatement ps2 = connection.prepareStatement("INSERT INTO user(user_id, password, email)VALUES('"+username.getText().toString()+"','"+password.getText().toString()+"','"+email.getText().toString()+"'");
                         ResultSet res = ps.executeQuery();
+
+                        if(!res.next()){
+                            status.set(false);
+                        }
+                        res.close();
+
                         ResultSet res1 = ps1.executeQuery();
 
-
-                        if(res.next()){
-                            status.set(true);
-                        }else if (res1.next()){
-                            status1.set(true);
-                        }
-                        else{
-                            int res2 = ps2.executeUpdate();
-                            status.set(false);
+                        if(!res1.next()){
                             status1.set(false);
                         }
+                        res1.close();
+
+                        if(status.get() == false && status1.get() == false){
+                            ps2.execute();
+                        }
+                        ps.close();
+                        ps1.close();
+                        ps2.close();
+                        connection.close();
+
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }

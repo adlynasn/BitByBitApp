@@ -113,6 +113,9 @@
         <action
             android:id="@+id/action_allRecipesPage_to_homePage"
             app:destination="@id/homePage" />
+        <action
+            android:id="@+id/action_allRecipesPage_to_foodDetailsPage"
+            app:destination="@id/foodDetailsPage" />
     </fragment>
     <fragment
         android:id="@+id/calorieCounterPage"
@@ -225,17 +228,35 @@
     <fragment
         android:id="@+id/foodDetailsPage"
         android:name="com.example.bitbybit.foodDetailsPage"
-        android:label="foodDetailsPage" />
+        android:label="foodDetailsPage" >
+        <action
+            android:id="@+id/action_foodDetailsPage_to_foodIngredientPage"
+            app:destination="@id/foodIngredientPage" />
+        <action
+            android:id="@+id/action_foodDetailsPage_to_allRecipesPage"
+            app:destination="@id/allRecipesPage" />
+    </fragment>
     <fragment
         android:id="@+id/foodIngredientPage"
         android:name="com.example.bitbybit.foodIngredientPage"
         android:label="fragment_food_ingredient_page"
-        tools:layout="@layout/fragment_food_ingredient_page" />
+        tools:layout="@layout/fragment_food_ingredient_page" >
+        <action
+            android:id="@+id/action_foodIngredientPage_to_foodStepsPage"
+            app:destination="@id/foodStepsPage" />
+        <action
+            android:id="@+id/action_foodIngredientPage_to_foodDetailsPage"
+            app:destination="@id/foodDetailsPage" />
+    </fragment>
     <fragment
         android:id="@+id/foodStepsPage"
         android:name="com.example.bitbybit.foodStepsPage"
         android:label="fragment_food_steps_page2"
-        tools:layout="@layout/fragment_food_steps_page2" />
+        tools:layout="@layout/fragment_food_steps_page2" >
+        <action
+            android:id="@+id/action_foodStepsPage_to_foodIngredientPage"
+            app:destination="@id/foodIngredientPage" />
+    </fragment>
     <fragment
         android:id="@+id/forgotPasswordPage"
         android:name="com.example.bitbybit.forgotPasswordPage"
