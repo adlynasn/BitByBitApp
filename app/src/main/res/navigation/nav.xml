@@ -109,7 +109,7 @@
         android:id="@+id/allRecipesPage"
         android:name="com.example.bitbybit.allRecipesPage"
         android:label="fragment_all_recipes_page"
-        tools:layout="@layout/fragment_all_recipes_page" >
+        tools:layout="@layout/fragment_all_recipes_template" >
         <action
             android:id="@+id/action_allRecipesPage_to_homePage"
             app:destination="@id/homePage" />
@@ -153,7 +153,7 @@
         android:id="@+id/savedRecipesPage"
         android:name="com.example.bitbybit.savedRecipesPage"
         android:label="fragment_saved_recipes"
-        tools:layout="@layout/fragment_saved_recipes" />
+        tools:layout="@layout/fragment_saved_recipes_template" />
     <fragment
         android:id="@+id/socialFeedPage"
         android:name="com.example.bitbybit.socialFeedPage"
@@ -184,11 +184,6 @@
             android:id="@+id/action_achievementsPage_to_profilePage"
             app:destination="@id/profilePage" />
     </fragment>
-    <fragment
-        android:id="@+id/updateAchievementsPage"
-        android:name="com.example.bitbybit.updateAchievementsPage"
-        android:label="fragment_update_achievements_page"
-        tools:layout="@layout/fragment_update_achievements_page" />
     <fragment
         android:id="@+id/adminHomePage"
         android:name="com.example.bitbybit.adminHomePage"
@@ -252,7 +247,7 @@
         android:id="@+id/foodStepsPage"
         android:name="com.example.bitbybit.foodStepsPage"
         android:label="fragment_food_steps_page2"
-        tools:layout="@layout/fragment_food_steps_page2" >
+        tools:layout="@layout/fragment_food_steps_page" >
         <action
             android:id="@+id/action_foodStepsPage_to_foodIngredientPage"
             app:destination="@id/foodIngredientPage" />
