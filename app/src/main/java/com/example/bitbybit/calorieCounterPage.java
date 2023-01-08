@@ -2,11 +2,15 @@ package com.example.bitbybit;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +65,31 @@ public class calorieCounterPage extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_calorie_counter_page, container, false);
     }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
+
+        Button BtnCancel = view.findViewById(R.id.cancelButton);
+        View.OnClickListener OCLCancelBut = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.homePage);
+            }
+        };
+        BtnCancel.setOnClickListener(OCLCancelBut);
+
+
+        Button BtnAddMeal = view.findViewById(R.id.addMealsButton);
+        View.OnClickListener OCLAddMeal = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "MEAL ADDED", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(view).navigate(R.id.homePage);
+            }
+        };
+        BtnAddMeal.setOnClickListener(OCLAddMeal);
+    }
+
 }
 
 /*

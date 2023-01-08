@@ -16,7 +16,7 @@
         >
 
     <Button
-        android:id="@+id/backToProfilePageButton"
+        android:id="@+id/backToLoginPageButton"
         android:layout_width="64dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

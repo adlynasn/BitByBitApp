@@ -75,7 +75,7 @@ public class editGoalProgressPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button btnBackToProf = view.findViewById(R.id.backToProfilePageButton);
+        Button btnBackToProf = view.findViewById(R.id.backToLoginPageButton);
         View.OnClickListener OCLBackProfile = v -> Navigation.findNavController(view).navigate(R.id.action_editGoalProgressPage_to_profilePage);
         btnBackToProf.setOnClickListener(OCLBackProfile);
 

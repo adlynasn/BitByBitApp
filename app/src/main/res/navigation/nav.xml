@@ -66,9 +66,6 @@
             android:id="@+id/action_profilePage_to_editGoalProgressPage"
             app:destination="@id/editGoalProgressPage" />
         <action
-            android:id="@+id/action_profilePage_to_viewCaloriesPage"
-            app:destination="@id/viewCaloriesPage" />
-        <action
             android:id="@+id/action_profilePage_to_editProfilePage"
             app:destination="@id/editProfilePage" />
         <action
@@ -77,6 +74,9 @@
         <action
             android:id="@+id/action_profilePage_to_achievementsPage"
             app:destination="@id/achievementsPage" />
+        <action
+            android:id="@+id/action_profilePage_to_caloriesIntakePage"
+            app:destination="@id/caloriesIntakePage" />
     </fragment>
     <fragment
         android:id="@+id/registerPage"
@@ -130,6 +130,9 @@
         <action
             android:id="@+id/action_caloriesIntakePage_to_viewCaloriesPage"
             app:destination="@id/viewCaloriesPage" />
+        <action
+            android:id="@+id/action_caloriesIntakePage_to_profilePage"
+            app:destination="@id/profilePage" />
     </fragment>
     <fragment
         android:id="@+id/editGoalProgressPage"
@@ -171,9 +174,6 @@
         <action
             android:id="@+id/action_viewCaloriesPage_to_caloriesIntakePage"
             app:destination="@id/caloriesIntakePage" />
-        <action
-            android:id="@+id/action_viewCaloriesPage_to_profilePage"
-            app:destination="@id/profilePage" />
     </fragment>
     <fragment
         android:id="@+id/achievementsPage"

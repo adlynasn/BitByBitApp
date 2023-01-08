@@ -45,21 +45,28 @@ public class loginPage extends Fragment {
             @Override
             public void onClick(View v) {
 
-                // TODO connect to database
-
-                System.out.println("clicked");
+                //connect to database
                 AtomicReference<Boolean> status = new AtomicReference<>();
+                AtomicReference<Boolean> status2 = new AtomicReference<>();
                 Thread dataThread = new Thread(() -> {
                     try{
                         Connection connection = Line.getConnection();
-                        PreparedStatement preparedStatement = connection.prepareStatement("SELECT user_id FROM user WHERE user_id = '" + username.getText().toString().trim() + "' AND password = '" + password.getText().toString().trim() + "'");
+                        PreparedStatement preparedStatement = connection.prepareStatement("SELECT user_id FROM user WHERE user_id = '" + username.getText().toString().trim() + "' AND password = '" + password.getText().toString().trim() + "' AND status = 1");
                         ResultSet res = preparedStatement.executeQuery();
+                        PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT user_id FROM user WHERE user_id = '" + username.getText().toString().trim() + "' AND password = '" + password.getText().toString().trim() + "' AND status = 0");
+                        ResultSet res2 = preparedStatement2.executeQuery();
 
                         if(res.next()){
                             status.set(true);
+                            status2.set(false);
+                        }
+                        else if (res2.next()){
+                            status.set(false);
+                            status2.set(true);
                         }
                         else{
                             status.set(false);
+                            status2.set(false);
                         }
                     } catch (SQLException e) {
                         e.printStackTrace();
@@ -73,8 +80,12 @@ public class loginPage extends Fragment {
                 if (status.get()) {
                     Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
                     Navigation.findNavController(view).navigate(R.id.homePage);
-
-                } else {
+                }
+                else if (status2.get()){
+                    Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
+                    Navigation.findNavController(view).navigate(R.id.adminHomePage);
+                }
+                else {
                     Toast.makeText(getContext(), "LOGIN FAILED!!PLEASE TRY AGAIN", Toast.LENGTH_SHORT).show();
                 }
             }

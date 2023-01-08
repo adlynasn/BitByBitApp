@@ -8,9 +8,13 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,7 +74,7 @@ public class foodIngredientPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button btnBackIngredient = view.findViewById(R.id.backIngredientButton);
+        Button btnBackIngredient = view.findViewById(R.id.foodDetailsPageButton);
         View.OnClickListener OCLBackIngredient = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +83,7 @@ public class foodIngredientPage extends Fragment {
         };
         btnBackIngredient.setOnClickListener(OCLBackIngredient);
 
-        Button btnListIngredienttoStep = view.findViewById(R.id.foodStepsButton);
+        Button btnListIngredienttoStep = view.findViewById(R.id.recipeStepsPageButton);
         View.OnClickListener OCLlistIngredient = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +91,38 @@ public class foodIngredientPage extends Fragment {
             }
         };
         btnListIngredienttoStep.setOnClickListener(OCLlistIngredient);
+
+        BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.home:
+                        Navigation.findNavController(view).navigate(R.id.homePage);
+                        return true;
+                    case R.id.savedRecipes:
+                        Navigation.findNavController(view).navigate(R.id.savedRecipesPage);
+                        return true;
+                    case R.id.missions:
+                        Navigation.findNavController(view).navigate(R.id.missionsPage);
+                        return true;
+                    case R.id.profile:
+                        Navigation.findNavController(view).navigate(R.id.profilePage);
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton2);
+        View.OnClickListener OCLfloatButton = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.calorieCounterPage);
+            }
+        };
+        floatButton.setOnClickListener(OCLfloatButton);
+
     }
 
 }

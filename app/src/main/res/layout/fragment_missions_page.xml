@@ -13,12 +13,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="left"
         android:text="Missions"
-        android:textSize="20sp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/missionsCentreTitle"
@@ -45,11 +45,11 @@
         android:layout_below="@id/missionsCentreTitle"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/greyfield"
+        android:drawableLeft="@drawable/ic_mission"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
-        android:drawableLeft="@drawable/ic_mission"
         android:text="Art of Exercise"
         android:textColor="@color/black"
         android:textSize="16sp" />

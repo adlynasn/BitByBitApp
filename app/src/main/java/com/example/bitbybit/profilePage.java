@@ -97,13 +97,13 @@ public class profilePage extends Fragment {
 
 
         Button BtnViewCal = view.findViewById(R.id.viewCalorieButton);
-        View.OnClickListener OCLViewCal = new View.OnClickListener() {
+        View.OnClickListener OCLCalIntake = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.viewCaloriesPage);
+                Navigation.findNavController(view).navigate(R.id.caloriesIntakePage);
             }
         };
-        BtnViewCal.setOnClickListener(OCLViewCal);
+        BtnViewCal.setOnClickListener(OCLCalIntake);
 
 
         Button btnLogout = view.findViewById(R.id.LogoutButton);

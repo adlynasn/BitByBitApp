@@ -75,7 +75,7 @@ public class editProfilePage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button btnBackToProf = view.findViewById(R.id.backToProfilePageButton);
+        Button btnBackToProf = view.findViewById(R.id.backToLoginPageButton);
         View.OnClickListener OCLBackProfile = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -50,9 +50,9 @@
                 android:layout_centerInParent="true"
                 android:layout_marginEnd="5dp"
                 android:backgroundTint="@color/white"
-                android:textColor="@color/pastel_red"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="View Meals"
+                android:textColor="@color/pastel_red"
                 android:textSize="14sp" />
 
 
