@@ -50,34 +50,38 @@ public class loginPage extends Fragment {
 
                 // TODO connect to database
 
-                try {
-                    Connection connection = Line.getConnection();
-                    Statement statement = connection.createStatement();
-                    ResultSet res = statement.executeQuery("SELECT * FROM user where user_id = '" + username.getText().toString()
-                                                            + "' AND password = '" + password.getText().toString() + "'");
-
-                    if (res.next()){
-                        Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
-                        Navigation.findNavController(view).navigate(R.id.homePage);
-                    }
-
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+//                try {
+//                    Connection connection = Line.getConnection();
+//                    Statement statement = connection.createStatement();
+//                    ResultSet res = statement.executeQuery("SELECT * FROM user where user_id = '" + username.getText().toString()
+//                                                            + "' AND password = '" + password.getText().toString() + "'");
+//
+//                    if (res.next()){
+//                        Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
+//                        Navigation.findNavController(view).navigate(R.id.homePage);
+//                    }
+//
+//                    else {
+//                        Toast.makeText(getContext(), "LOGIN FAILED!!PLEASE TRY AGAIN", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                }
 
 
                 //Check the username and password
-//                if (username.getText().toString().equals("user") && password.getText().toString().equals("user")) {
-//                    Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
-//                    Navigation.findNavController(view).navigate(R.id.homePage);
-//
-//                } else if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
-//                    Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
-//                    Navigation.findNavController(view).navigate(R.id.adminHomePage);
-//
-//                } else {
-//                    Toast.makeText(getContext(), "LOGIN FAILED!!PLEASE TRY AGAIN", Toast.LENGTH_SHORT).show();
-//                }
+                if (username.getText().toString().equals("user") && password.getText().toString().equals("user")) {
+                    Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
+                    Navigation.findNavController(view).navigate(R.id.homePage);
+
+                } else if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
+                    Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
+                    Navigation.findNavController(view).navigate(R.id.adminHomePage);
+
+                } else {
+                    Toast.makeText(getContext(), "LOGIN FAILED!!PLEASE TRY AGAIN", Toast.LENGTH_SHORT).show();
+                }
             }
         };
         BtnLogin.setOnClickListener(OVLlogin);

@@ -1,315 +1,317 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".profilePage" >
+    tools:context=".profilePage">
 
-    <RelativeLayout
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-       tools:context=".profilePage">
-
-
-    <TextView
-        android:id="@+id/profileTitle"
-        android:layout_width="247dp"
-        android:layout_height="40dp"
+        android:layout_height="99dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginBottom="50dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:gravity="left"
-        android:text="My Profile"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        />
+        android:layout_alignParentBottom="true"
+        android:foregroundGravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:context=".MainActivity">
 
-
-    <ImageView
-        android:id="@+id/profileImage"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-       android:src="@color/pastel_red"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/profileTitle"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="-25dp"
-        />
-
-    <Button
-        android:id="@+id/editProfilePageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="-25dp"
-        android:layout_below="@id/profileTitle"
-        android:backgroundTint="@color/white"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Edit Profile"
-        android:textColor="@color/pastel_red"
-        android:textSize="14sp"
-        />
-
-    <Button
-        android:id="@+id/LogoutButton"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:backgroundTint="@color/white"
-        android:drawableEnd="@drawable/ic_baseline_black_logout_24"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="247dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/profileImage"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:gravity="left"
-        android:text="sarah meow meow"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        />
-
-    <TextView
-        android:id="@+id/userBio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/username"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginBottom="50dp"
-        android:fontFamily="@font/poppins_medium"
-        android:gravity="left"
-        android:text="A girl who likes to travel and eat."
-        android:textSize="14dp" />
-
-    <Button
-        android:id="@+id/gotoAchievementsPageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/userBio"
-        android:gravity="left"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:backgroundTint="@color/pastel_red"
-        android:fontFamily="@font/poppins"
-        android:text="ACHIEVEMENTS"
-        android:layout_marginTop="-20dp"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        />
-
-    <Button
-        android:id="@+id/viewCalorieButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/userBio"
-        android:gravity="left"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="30dp"
-        android:backgroundTint="@color/pastel_red"
-        android:fontFamily="@font/poppins"
-        android:text="VIEW CALORIES"
-        android:layout_marginTop="-20dp"
-        android:textSize="14sp"
-        android:drawableLeft="@drawable/ic_baseline_white_view_list_24"
-        android:textColor="@color/white"
-        />
-
-
-        <TextView
-            android:id="@+id/currentWeightText"
-            android:layout_below="@id/gotoAchievementsPageButton"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Current Weight"
-            android:textSize="18sp" />
+            android:contentDescription="@string/hello_blank_fragment"
+            android:src="@drawable/ic_baseline_white_plus_sign_24"
 
+            app:layout_anchor="@id/bottomAppBar" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/currentWeightText"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:orientation="vertical">
-
-        <LinearLayout
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_gravity="bottom"
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="10dp"
+            app:fabCradleVerticalOffset="10dp">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/weightText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:padding="10dp"
-                    android:text="Weight (kg)"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/userWeight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:padding="10dp"
-                    android:text="67"
-                    android:textColor="@color/pastel_red"
-                    android:textSize="22sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/heightText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:textSize="18sp"
-                    android:padding="10dp"
-                    android:textColor="@color/black"
-                    android:text="Height (cm)" />
-
-                <TextView
-                    android:id="@+id/userHeight"
-                    android:padding="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:textSize="22sp"
-                    android:textColor="@color/pastel_red"
-                    android:text="160"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/bmiText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/poppins_semibold"
-                android:textSize="18sp"
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:text="Body Mass Index (BMI)" />
-
-            <TextView
-                android:id="@+id/userBMI"
-                android:padding="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/poppins_semibold"
-                android:textSize="22sp"
-                android:textColor="@color/pastel_red"
-                android:text="26.2"/>
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/editProgressButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/poppins_semibold"
-            android:layout_marginTop="10dp"
-            android:drawableRight="@drawable/ic_baseline_pastel_red_edit_24"
-            android:text="UPDATE PROGRESS"
-            android:textColor="@color/pastel_red"
-            android:textSize="14sp"
-            />
-    </LinearLayout>
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:id="@+id/coordinatorLayout"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:foregroundGravity="bottom"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            tools:context=".MainActivity"
-            tools:ignore="UnknownIdInLayout">
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/hello_blank_fragment"
-                android:src="@drawable/ic_baseline_white_plus_sign_24"
-
-                app:layout_anchor="@id/bottomAppBar" />
-
-            <com.google.android.material.bottomappbar.BottomAppBar
-                android:id="@+id/bottomAppBar"
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                app:fabCradleMargin="10dp"
-                app:fabCradleRoundedCornerRadius="10dp"
-                app:fabCradleVerticalOffset="10dp">
+                android:layout_marginRight="16dp"
+                android:background="@drawable/transparent_background"
+                app:menu="@menu/bottom_nav_menu"
 
-                <com.google.android.material.bottomnavigation.BottomNavigationView
-                    android:id="@+id/bottomNavigationView"
-                    android:layout_width="match_parent"
+                />
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/coordinatorLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/profileTitle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
-                    android:background="@drawable/transparent_background"
-                    app:menu="@menu/bottom_nav_menu"
+                    android:layout_marginStart="34dp"
+                    android:layout_marginTop="34dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="left"
+                    android:text="My Profile"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    />
-            </com.google.android.material.bottomappbar.BottomAppBar>
+                <Button
+                    android:id="@+id/editProgressButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="11dp"
+                    android:backgroundTint="@color/white"
+                    android:drawableRight="@drawable/ic_baseline_pastel_red_edit_24"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="UPDATE PROGRESS"
+                    android:textColor="@color/pastel_red"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+                <ImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="34dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@color/pastel_red"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profileTitle" />
 
-</RelativeLayout>
+                <Button
+                    android:id="@+id/viewCalorieButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="@color/pastel_red"
+                    android:drawableLeft="@drawable/ic_baseline_white_view_list_24"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="left"
+                    android:text="VIEW CALORIES"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/userBio" />
 
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="34dp"
+                    android:layout_marginTop="29dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="left"
+                    android:text="sarah meow meow"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profileImage" />
 
+                <TextView
+                    android:id="@+id/currentWeightText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="34dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Current"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gotoAchievementsPageButton" />
+
+                <Button
+                    android:id="@+id/gotoAchievementsPageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="15dp"
+                    android:backgroundTint="@color/pastel_red"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="left"
+                    android:text="ACHIEVEMENTS"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/userBio" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout4"
+                    android:layout_width="130dp"
+                    android:layout_height="115dp"
+                    android:layout_marginTop="23dp"
+                    android:layout_marginEnd="25dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/currentWeightText">
+
+                    <TextView
+                        android:id="@+id/weightText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:padding="10dp"
+                        android:text="Weight (kg)"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/userWeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:foregroundGravity="center_horizontal"
+                        android:padding="10dp"
+                        android:text="67"
+                        android:textAlignment="center"
+                        android:textColor="@color/pastel_red"
+                        android:textSize="22sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout3"
+                    android:layout_width="130dp"
+                    android:layout_height="115dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="72dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/linearLayout4"
+                    app:layout_constraintTop_toBottomOf="@+id/viewCalorieButton">
+
+                    <TextView
+                        android:id="@+id/heightText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:padding="10dp"
+                        android:text="Height (cm)"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/userHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:padding="10dp"
+                        android:text="160"
+                        android:textAlignment="center"
+                        android:textColor="@color/pastel_red"
+                        android:textSize="22sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/LogoutButton"
+                    android:layout_width="56dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="21dp"
+                    android:layout_marginEnd="33dp"
+                    android:backgroundTint="@color/white"
+                    android:drawableEnd="@drawable/ic_baseline_black_logout_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <Button
+                    android:id="@+id/editProfilePageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="114dp"
+                    android:layout_marginTop="23dp"
+                    android:layout_marginEnd="33dp"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Edit Profile"
+                    android:textColor="@color/pastel_red"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/profileImage"
+                    app:layout_constraintTop_toBottomOf="@+id/LogoutButton" />
+
+                <TextView
+                    android:id="@+id/userBio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="34dp"
+                    android:layout_marginTop="22dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="left"
+                    android:text="A girl who likes to travel and eat."
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/username" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout5"
+                    android:layout_width="230dp"
+                    android:layout_height="115dp"
+                    android:layout_marginTop="33dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+                    <TextView
+                        android:id="@+id/bmiText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:padding="10dp"
+                        android:text="Body Mass Index (BMI)"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/userBMI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:padding="10dp"
+                        android:text="26.2"
+                        android:textAlignment="center"
+                        android:textColor="@color/pastel_red"
+                        android:textSize="22sp" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
     </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
