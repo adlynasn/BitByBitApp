@@ -2,10 +2,8 @@ package com.example.bitbybit;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -13,13 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,8 +30,7 @@ public class loginPage extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login_page, container, false);
     }
@@ -50,55 +47,56 @@ public class loginPage extends Fragment {
 
                 // TODO connect to database
 
-                try {
-                    Connection connection = Line.getConnection();
-                    Statement statement = connection.createStatement();
-                    ResultSet res = statement.executeQuery("SELECT * FROM user where user_id = '" + username.getText().toString()
-                                                            + "' AND password = '" + password.getText().toString() + "'");
+                AtomicReference<Boolean> status = new AtomicReference<>();
+                Thread dataThread = new Thread(() -> {
+                    try{
+                        Connection connection = Line.getConnection();
+                        PreparedStatement preparedStatement = connection.prepareStatement("SELECT user_id FROM user WHERE user_id = '" + username.getText().toString().trim() + "' AND password = '" + password.getText().toString().trim() + "'");
+                        ResultSet res = preparedStatement.executeQuery();
 
-                    if (res.next()){
-                        Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
-                        Navigation.findNavController(view).navigate(R.id.homePage);
+                        if(res.next()){
+                            status.set(true);
+                        }
+                        else{
+                            status.set(false);
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
                     }
+                });
+                dataThread.start();
+                while(dataThread.isAlive()){
 
-                } catch (SQLException e) {
-                    e.printStackTrace();
                 }
 
+                if (status.get()) {
+                    Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
+                    Navigation.findNavController(view).navigate(R.id.homePage);
 
-                //Check the username and password
-//                if (username.getText().toString().equals("user") && password.getText().toString().equals("user")) {
-//                    Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
-//                    Navigation.findNavController(view).navigate(R.id.homePage);
-//
-//                } else if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
-//                    Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
-//                    Navigation.findNavController(view).navigate(R.id.adminHomePage);
-//
-//                } else {
-//                    Toast.makeText(getContext(), "LOGIN FAILED!!PLEASE TRY AGAIN", Toast.LENGTH_SHORT).show();
-//                }
+                } else {
+                    Toast.makeText(getContext(), "LOGIN FAILED!!PLEASE TRY AGAIN", Toast.LENGTH_SHORT).show();
+                }
             }
         };
-        BtnLogin.setOnClickListener(OVLlogin);
+                BtnLogin.setOnClickListener(OVLlogin);
 
-        Button BtnReg = view.findViewById(R.id.registerPageButton);
-        View.OnClickListener OVLregister = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.registerPage);
+                Button BtnReg = view.findViewById(R.id.registerPageButton);
+                View.OnClickListener OVLregister = new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Navigation.findNavController(view).navigate(R.id.registerPage);
+                    }
+                };
+                BtnReg.setOnClickListener(OVLregister);
+
+                Button BtnChgPass = view.findViewById(R.id.forgotPasswordPageButton);
+                View.OnClickListener OVLChPass = new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Navigation.findNavController(view).navigate(R.id.forgotPasswordPage);
+                    }
+                };
+                BtnChgPass.setOnClickListener(OVLChPass);
+
             }
-        };
-        BtnReg.setOnClickListener(OVLregister);
-
-        Button BtnChgPass = view.findViewById(R.id.forgotPasswordPageButton);
-        View.OnClickListener OVLChPass = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.changePasswordPage);
-            }
-        };
-        BtnChgPass.setOnClickListener(OVLChPass);
-
-    }
-}
+        }

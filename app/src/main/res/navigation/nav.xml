@@ -31,6 +31,12 @@
         <action
             android:id="@+id/action_loginPage_to_adminHomePage"
             app:destination="@id/adminHomePage" />
+        <action
+            android:id="@+id/action_loginPage_to_changePasswordPage2"
+            app:destination="@id/changePasswordPage" />
+        <action
+            android:id="@+id/action_loginPage_to_forgotPasswordPage"
+            app:destination="@id/forgotPasswordPage" />
     </fragment>
     <fragment
         android:id="@+id/adminPostPage"
@@ -40,15 +46,6 @@
         <action
             android:id="@+id/action_adminPostPage_to_adminHomePage"
             app:destination="@id/adminHomePage" />
-    </fragment>
-    <fragment
-        android:id="@+id/changePasswordPage"
-        android:name="com.example.bitbybit.forgotPasswordPage"
-        android:label="fragment_change_password_page"
-        tools:layout="@layout/fragment_forgot_password_page" >
-        <action
-            android:id="@+id/action_changePasswordPage_to_loginPage"
-            app:destination="@id/loginPage" />
     </fragment>
     <fragment
         android:id="@+id/customerSupportPage"
@@ -230,11 +227,6 @@
         android:name="com.example.bitbybit.foodDetailsPage"
         android:label="foodDetailsPage" />
     <fragment
-        android:id="@+id/changePasswordPage2"
-        android:name="com.example.bitbybit.changePasswordPage"
-        android:label="fragment_change_password_page"
-        tools:layout="@layout/fragment_change_password_page" />
-    <fragment
         android:id="@+id/foodIngredientPage"
         android:name="com.example.bitbybit.foodIngredientPage"
         android:label="fragment_food_ingredient_page"
@@ -244,4 +236,22 @@
         android:name="com.example.bitbybit.foodStepsPage"
         android:label="fragment_food_steps_page2"
         tools:layout="@layout/fragment_food_steps_page2" />
+    <fragment
+        android:id="@+id/forgotPasswordPage"
+        android:name="com.example.bitbybit.forgotPasswordPage"
+        android:label="fragment_forgot_password_page"
+        tools:layout="@layout/fragment_forgot_password_page" >
+        <action
+            android:id="@+id/action_forgotPasswordPage_to_loginPage"
+            app:destination="@id/loginPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordPage"
+        android:name="com.example.bitbybit.changePasswordPage"
+        android:label="fragment_change_password_page"
+        tools:layout="@layout/fragment_change_password_page" >
+        <action
+            android:id="@+id/action_changePasswordPage_to_loginPage"
+            app:destination="@id/loginPage" />
+    </fragment>
 </navigation>

@@ -14,6 +14,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.concurrent.atomic.AtomicReference;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link registerPage#newInstance} factory method to
@@ -78,32 +84,96 @@ public class registerPage extends Fragment {
         EditText email = view.findViewById(R.id.email);
         EditText emailConf = view.findViewById(R.id.emailconfirmation);
         Button BtnReg = view.findViewById(R.id.registerButton);
-
         View.OnClickListener OCLRegBtn = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(username.getText().toString().equals("")){
-                    Toast.makeText(getContext(), "Please fill the username",Toast.LENGTH_SHORT).show();
 
-                }else if(password.getText().toString().equals("")){
-                    Toast.makeText(getContext(), "Please fill the password",Toast.LENGTH_SHORT).show();
+                AtomicReference<Boolean> status = new AtomicReference<>();
+                AtomicReference<Boolean> status1 = new AtomicReference<>();
+                Thread dataThread = new Thread(() -> {
+                    try{
+                        Connection connection = Line.getConnection();
+                        PreparedStatement ps = connection.prepareStatement("SELECT * FROM user where user_id = '" + username.getText().toString() + "'");
+                        PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM user where email  = '" + email.getText().toString() + "'");
+                        PreparedStatement ps2 = connection.prepareStatement("INSERT INTO user(user_id, password, email)VALUES('"+username.getText().toString()+"','"+password.getText().toString()+"','"+email.getText().toString()+"'");
+                        ResultSet res = ps.executeQuery();
+                        ResultSet res1 = ps1.executeQuery();
 
-                }else if(email.getText().toString().equals("")){
-                    Toast.makeText(getContext(), "Please fill the email",Toast.LENGTH_SHORT).show();
 
-                }else if(emailConf.getText().toString().equals("")){
-                    Toast.makeText(getContext(), "Please fill the confirmation email",Toast.LENGTH_SHORT).show();
+                        if(res.next()){
+                            status.set(true);
+                        }else if (res1.next()){
+                            status1.set(true);
+                        }
+                        else{
+                            int res2 = ps2.executeUpdate();
+                            status.set(false);
+                            status1.set(false);
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                });
+                dataThread.start();
+                while(dataThread.isAlive()){
 
-                }else if(!email.getText().toString().contains("@")){
-                    Toast.makeText(getContext(), "Please enter appropriate email",Toast.LENGTH_SHORT).show();
+                }
 
-                }else if(!emailConf.getText().toString().equals(email.getText().toString())) {
+                if(status.get()){
+                    Toast.makeText(getContext(), "Username has been used. Please enter another username.",Toast.LENGTH_SHORT).show();
+
+                }else if(status1.get()){
+                    Toast.makeText(getContext(), "Email has been used. Please enter another email.",Toast.LENGTH_SHORT).show();
+
+                }else if(username.getText().toString().equals("")){
+                    Toast.makeText(getContext(), "Please fill the username", Toast.LENGTH_SHORT).show();
+
+                } else if (password.getText().toString().equals("")) {
+                    Toast.makeText(getContext(), "Please fill the password", Toast.LENGTH_SHORT).show();
+
+                } else if (email.getText().toString().equals("")) {
+                    Toast.makeText(getContext(), "Please fill the email", Toast.LENGTH_SHORT).show();
+
+                } else if (emailConf.getText().toString().equals("")) {
+                    Toast.makeText(getContext(), "Please fill the confirmation email", Toast.LENGTH_SHORT).show();
+
+                } else if (!email.getText().toString().contains("@")) {
+                    Toast.makeText(getContext(), "Please enter appropriate email", Toast.LENGTH_SHORT).show();
+
+                } else if (!emailConf.getText().toString().equals(email.getText().toString())) {
                     Toast.makeText(getContext(), "Please fill email confirmation same with email", Toast.LENGTH_SHORT).show();
 
                 }else {
+                    Toast.makeText(getContext(), "You have register.", Toast.LENGTH_SHORT).show();
                     Navigation.findNavController(view).navigate(R.id.loginPage);
                 }
 
+
+
+
+//
+//                if(username.getText().toString().equals("")){
+//                    Toast.makeText(getContext(), "Please fill the username",Toast.LENGTH_SHORT).show();
+//
+//                }else if(password.getText().toString().equals("")){
+//                    Toast.makeText(getContext(), "Please fill the password",Toast.LENGTH_SHORT).show();
+//
+//                }else if(email.getText().toString().equals("")){
+//                    Toast.makeText(getContext(), "Please fill the email",Toast.LENGTH_SHORT).show();
+//
+//                }else if(emailConf.getText().toString().equals("")){
+//                    Toast.makeText(getContext(), "Please fill the confirmation email",Toast.LENGTH_SHORT).show();
+//
+//                }else if(!email.getText().toString().contains("@")){
+//                    Toast.makeText(getContext(), "Please enter appropriate email",Toast.LENGTH_SHORT).show();
+//
+//                }else if(!emailConf.getText().toString().equals(email.getText().toString())) {
+//                    Toast.makeText(getContext(), "Please fill email confirmation same with email", Toast.LENGTH_SHORT).show();
+//
+//                }else {
+//                    Navigation.findNavController(view).navigate(R.id.loginPage);
+//                }
+//
             }
         };
         BtnReg.setOnClickListener(OCLRegBtn);
