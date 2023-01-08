@@ -1,13 +1,11 @@
 package com.example.bitbybit;
 
-import android.bluetooth.le.ScanSettings;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -73,7 +71,7 @@ public class homePage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_home_page2, container, false);
+        View view= inflater.inflate(R.layout.fragment_home_page, container, false);
 //        recyclerView = (RecyclerView) view.findViewById(R.id.RecylerView);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
