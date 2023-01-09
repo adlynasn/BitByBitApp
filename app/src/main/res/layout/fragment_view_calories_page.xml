@@ -42,7 +42,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/scrollViewCaloriesPage1"
+            android:layout_height="wrap_content"
             android:fillViewport="true"
             android:layout_marginTop="20dp"
             android:layout_below="@id/viewMealsText"
@@ -55,6 +56,142 @@
                 android:layout_marginBottom="10dp"
                 android:id="@+id/recyclerViewMeals"/>
         </ScrollView>
+
+        <TextView
+            android:id="@+id/totalDetailsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/scrollViewCaloriesPage1"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="left"
+            android:text="Total Nutritional Details"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/totalDetailsText">
+
+            <LinearLayout
+                android:id="@+id/linearLayout6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/linearLayout9"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout7">
+
+                <TextView
+                    android:id="@+id/totalMealProteinTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Protein"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/totalMealProtein"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="8g"
+                    android:textAlignment="center"
+                    android:textColor="@color/pastel_red"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout6">
+
+                <TextView
+                    android:id="@+id/totalFatTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Fat"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/totalMealFat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="11g"
+                    android:textAlignment="center"
+                    android:textColor="@color/pastel_red"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/linearLayout7"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/mealCaloriesTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Calories"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/totalMealCalories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="72 kcal"
+                    android:textAlignment="center"
+                    android:textColor="@color/pastel_red"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/linearLayout6"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout8">
+
+                <TextView
+                    android:id="@+id/mealCarboTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Carbohydrate"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/totalMealCarbo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="25g"
+                    android:textAlignment="center"
+                    android:textColor="@color/pastel_red"
+                    android:textSize="16dp" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </RelativeLayout>
