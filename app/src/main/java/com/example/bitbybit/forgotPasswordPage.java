@@ -98,7 +98,7 @@ public class forgotPasswordPage extends Fragment {
                     try {
                         Connection connection = Line.getConnection();
                         PreparedStatement ps = connection.prepareStatement("SELECT * FROM user where email = '" + email.getText().toString() + "'");
-                        PreparedStatement ps1 = connection.prepareStatement("INSERT INTO user(password)VALUES('" + password.getText().toString() + "'");
+                        PreparedStatement ps1 = connection.prepareStatement("UPDATE user SET password = '" + password.getText().toString() + "' WHERE password = '" + password.getText().toString() + "'");
                         ResultSet res = ps.executeQuery();
 
                         if (res.next()) {
@@ -110,7 +110,7 @@ public class forgotPasswordPage extends Fragment {
                             }else if (!password.getText().toString().equals(RePassword.getText().toString())){
                                 status2.set(true);
                             }else {
-                                int executeUpdate = ps1.executeUpdate();
+                                boolean executeUpdate = ps1.execute();
 
                             }
 
@@ -120,6 +120,7 @@ public class forgotPasswordPage extends Fragment {
                         res.close();
                         ps.close();
                         ps1.close();
+                        connection.close();
 
 
                     } catch (SQLException e) {
