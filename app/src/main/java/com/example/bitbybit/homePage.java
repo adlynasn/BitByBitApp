@@ -1,19 +1,17 @@
 package com.example.bitbybit;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -70,24 +68,7 @@ public class homePage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_home_page, container, false);
-//        recyclerView = (RecyclerView) view.findViewById(R.id.RecylerView);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        //String userId = GoogleSignIn.getLastSignedInAccount(getContext()).getId();
-
-        //Firebase Recycler Options to get the data form firebase database using model class and reference
-        //FirebaseRecyclerOptions<Model> options =
-                //new FirebaseRecyclerOptions.Builder<Model>()
-                       // .setQuery(FirebaseDatabase.getInstance().getReference().child("selectedApplications").child(userId), Model.class)
-                        //.build();
-
-
-        //adapter = new UserPlacedApplicationAdapter(options);
-        //recyclerView.setAdapter(adapter);
-
-        return view;
+        return inflater.inflate(R.layout.fragment_home_page, container, false);
     }
 
     @Override
@@ -95,7 +76,7 @@ public class homePage extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button BtnAllRecipe = view.findViewById(R.id.buttonAllReceipe);
-        View.OnClickListener OCLAllRecipe = v -> Navigation.findNavController(view).navigate(R.id.allRecipesPage);
+        View.OnClickListener OCLAllRecipe = v -> Navigation.findNavController(view).navigate(R.id.action_homePage_to_allRecipesPage);
         BtnAllRecipe.setOnClickListener(OCLAllRecipe);
 
         Button btnFeed = view.findViewById(R.id.buttonFeed);

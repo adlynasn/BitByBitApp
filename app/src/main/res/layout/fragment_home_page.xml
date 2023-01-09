@@ -24,7 +24,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginLeft="18dp"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Find best receipes\nfor cooking"
@@ -56,7 +55,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:src="@drawable/asian_salmon">
+                    android:src="@drawable/asian_salmon"
+                    tools:ignore="SpeakableTextPresentCheck">
 
                 </ImageView>
 

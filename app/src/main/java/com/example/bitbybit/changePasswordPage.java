@@ -19,7 +19,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicReference;
-
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link changePasswordPage#newInstance} factory method to
@@ -90,7 +89,7 @@ public class changePasswordPage extends Fragment {
         EditText ReEntersPass = view.findViewById(R.id.reEnteredPassword);
 
 
-        Button btnChangePass = view.findViewById(R.id.changePasswordButton);
+        Button btnChangePass = view.findViewById(R.id.changePasswordBut);
         View.OnClickListener OCLChange = v -> {
 
             //Connect to database

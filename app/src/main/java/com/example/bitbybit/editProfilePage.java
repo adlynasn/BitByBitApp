@@ -75,10 +75,6 @@ public class editProfilePage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button btnBackToProf = view.findViewById(R.id.backToLoginPageButton);
-        View.OnClickListener OCLBackProfile = v -> Navigation.findNavController(view).navigate(R.id.profilePage);
-        btnBackToProf.setOnClickListener(OCLBackProfile);
-
         Button btnCancelToProf = view.findViewById(R.id.CancelToProfilePage);
         View.OnClickListener OCLCancelProfile = v -> Navigation.findNavController(view).navigate(R.id.profilePage);
         btnCancelToProf.setOnClickListener(OCLCancelProfile);
@@ -89,6 +85,10 @@ public class editProfilePage extends Fragment {
             Navigation.findNavController(view).navigate(R.id.profilePage);
         };
         btnUpdateProf.setOnClickListener(OCLUpdate);
+
+        Button BtnChangePass = view.findViewById(R.id.ChangePassBut);
+        View.OnClickListener OCLCngPass = v -> Navigation.findNavController(view).navigate(R.id.changePasswordPage);
+        BtnChangePass.setOnClickListener(OCLCngPass);
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {

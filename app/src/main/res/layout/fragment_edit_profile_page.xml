@@ -51,38 +51,21 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <Button
-        android:id="@+id/backToLoginPageButton"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="50dp"
-        android:backgroundTint="@color/white"
-        android:drawableLeft="@drawable/ic_baseline_black_arrow_back_24"
-        android:fontFamily="@font/poppins_semibold"
-        android:textColor="@color/pastel_red"
-        android:textSize="14sp"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <TextView
         android:id="@+id/editProfileTitle"
         android:layout_width="247dp"
         android:layout_height="40dp"
+        android:layout_below="@+id/backToLoginPageButton"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="35dp"
         android:layout_marginBottom="50dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="left"
-        android:textColor="@color/pastel_red"
         android:text="Edit Profile"
+        android:textColor="@color/pastel_red"
         android:textSize="20sp" />
 
     <TextView
@@ -113,12 +96,11 @@
         android:textSize="16sp" />
 
 
-
     <TextView
         android:id="@+id/userBioTitle"
-        android:layout_below="@id/username"
         android:layout_width="247dp"
         android:layout_height="40dp"
+        android:layout_below="@+id/ChangePassTitle"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
@@ -127,6 +109,18 @@
         android:text="Update your biodata"
         android:textSize="16sp" />
 
+    <TextView
+        android:id="@+id/ChangePassTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/username"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:text="Change your password"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/updateProfileButton"
@@ -163,14 +157,14 @@
         android:layout_below="@id/userNameTitle"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:background="@drawable/white_field"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="-11dp"
-        android:hint="username"
-        android:textColorHint="@color/pastel_red"
+        android:background="@drawable/white_field"
         android:drawablePadding="20dp"
+        android:hint="Username"
         android:minHeight="48dp"
         android:padding="10dp"
+        android:textColorHint="@color/pastel_red"
         android:textSize="16sp" />
 
     <EditText
@@ -218,5 +212,21 @@
         android:text="Select"
         android:textColor="@color/pastel_red"
         android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/ChangePassBut"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/username"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/white"
+        android:drawableEnd="@drawable/ic_baseline_pastelred_arrow_forward_ios_24"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
+        android:text="change"
+        android:textColor="@color/pastel_red"
+        android:textSize="13sp" />
 
 </RelativeLayout>
