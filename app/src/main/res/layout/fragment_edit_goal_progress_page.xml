@@ -15,20 +15,7 @@
         android:layout_marginBottom="40dp"
         >
 
-    <Button
-        android:id="@+id/backToLoginPageButton"
-        android:layout_width="64dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:backgroundTint="@color/white"
-        android:drawableLeft="@drawable/ic_baseline_black_arrow_back_24"
-        android:fontFamily="@font/poppins_semibold"
-        android:textColor="@color/pastel_red"
-        android:textSize="14sp"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
+        <TextView
         android:id="@+id/updateProgressTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

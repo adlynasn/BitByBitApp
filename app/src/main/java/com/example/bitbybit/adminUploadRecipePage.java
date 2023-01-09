@@ -72,7 +72,10 @@ public class adminUploadRecipePage extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button BtnAddRecipe = view.findViewById(R.id.addRecipeButton);
-        View.OnClickListener OCLAddRecipe = v -> Toast.makeText(getContext(),"The Recipe has been Upload",Toast.LENGTH_SHORT).show();
+        View.OnClickListener OCLAddRecipe = v -> {
+            Toast.makeText(getContext(),"The Recipe has been uploaded",Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(view).navigate(R.id.adminHomePage);
+        };
         BtnAddRecipe.setOnClickListener(OCLAddRecipe);
 
         Button btnBackToAdminHP = view.findViewById(R.id.returnToAdminHomePageButton);
