@@ -91,76 +91,81 @@ public class registerPage extends Fragment {
 
                 AtomicReference<Boolean> status = new AtomicReference<>(true);
                 AtomicReference<Boolean> status1 = new AtomicReference<>(true);
+                AtomicReference<Boolean> status2 = new AtomicReference<>(false);
+                AtomicReference<Boolean> status3 = new AtomicReference<>(false);
+                AtomicReference<Boolean> status4 = new AtomicReference<>(false);
                 Thread dataThread = new Thread(() -> {
-                    try{
+                    try {
                         System.out.println("Entered");
                         Connection connection = Line.getConnection();
                         PreparedStatement ps = connection.prepareStatement("SELECT * FROM user where user_id = '" + username.getText().toString() + "'");
                         PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM user where email  = '" + email.getText().toString() + "'");
-                        PreparedStatement ps2 = connection.prepareStatement("INSERT INTO bitbybit.user(user_id, password, email, status) VALUES('" + username.getText().toString() + "','" + password.getText().toString() + "','" + email.getText().toString() + "',1");
+                        PreparedStatement ps2 = connection.prepareStatement("INSERT INTO user(user_id, password, email, status) VALUES('" + username.getText().toString() + "','" + password.getText().toString() + "','" + email.getText().toString() + "',1");
                         ResultSet res = ps.executeQuery();
 
-                        if(!res.next()){
+                        if (!res.next()) {
+                            System.out.println("1");
                             status.set(false);
                         }
                         res.close();
 
                         ResultSet res1 = ps1.executeQuery();
 
-                        if(!res1.next()){
+                        if (!res1.next()) {
+                            System.out.println("2");
                             status1.set(false);
                         }
                         res1.close();
 
-                        if(status.get() == false && status1.get() == false){
-                            System.out.println("Entered to update");
-                            ps2.executeUpdate();
+                        if (status.get() == false && status1.get() == false) {
+                            if (username.getText().toString().equals("") || email.getText().toString().equals("") || email.getText().toString().equals("") || emailConf.getText().toString().equals("")) {
+                                status2.set(true);
+
+                            }else if (!email.getText().toString().contains("@gmail.com")) {
+                                status3.set(true);
+                            } else if (!emailConf.getText().toString().equals(email.getText().toString())) {
+                                status4.set(true);
+                            } else {
+                                System.out.println("Entered to update");
+                                ps2.executeUpdate();
+
+                            }
                         }
+                        connection.close();
                         ps.close();
                         ps1.close();
                         ps2.close();
-                        connection.close();
 
                     } catch (SQLException e) {
                         e.printStackTrace();
+                        System.out.println(e);
                     }
                 });
                 dataThread.start();
-                while(dataThread.isAlive()){
+                while (dataThread.isAlive()) {
 
                 }
                 System.out.println("APAKAH");
 
-                if(status.get()){
-                    Toast.makeText(getContext(), "Username has been used. Please enter another username.",Toast.LENGTH_SHORT).show();
+                if (status.get()) {
+                    Toast.makeText(getContext(), "Username has been used. Please enter another username.", Toast.LENGTH_SHORT).show();
 
-                }else if(status1.get()){
-                    Toast.makeText(getContext(), "Email has been used. Please enter another email.",Toast.LENGTH_SHORT).show();
+                } else if (status1.get()) {
+                    Toast.makeText(getContext(), "Email has been used. Please enter another email.", Toast.LENGTH_SHORT).show();
 
-                }else if(username.getText().toString().equals("")){
-                    Toast.makeText(getContext(), "Please fill the username", Toast.LENGTH_SHORT).show();
+                } else if (status2.get()) {
+                    Toast.makeText(getContext(), "Pleaswe fill all the section", Toast.LENGTH_SHORT).show();
 
-                } else if (password.getText().toString().equals("")) {
-                    Toast.makeText(getContext(), "Please fill the password", Toast.LENGTH_SHORT).show();
-
-                } else if (email.getText().toString().equals("")) {
-                    Toast.makeText(getContext(), "Please fill the email", Toast.LENGTH_SHORT).show();
-
-                } else if (emailConf.getText().toString().equals("")) {
-                    Toast.makeText(getContext(), "Please fill the confirmation email", Toast.LENGTH_SHORT).show();
-
-                } else if (!email.getText().toString().contains("@")) {
+                } else if (status3.get()) {
                     Toast.makeText(getContext(), "Please enter appropriate email", Toast.LENGTH_SHORT).show();
 
-                } else if (!emailConf.getText().toString().equals(email.getText().toString())) {
+                } else if (status4.get()) {
                     Toast.makeText(getContext(), "Please fill email confirmation same with email", Toast.LENGTH_SHORT).show();
 
-                }else {
+                } else {
                     Toast.makeText(getContext(), "You have register.", Toast.LENGTH_SHORT).show();
                     Navigation.findNavController(view).navigate(R.id.loginPage);
                 }
-
-
 
 
 //

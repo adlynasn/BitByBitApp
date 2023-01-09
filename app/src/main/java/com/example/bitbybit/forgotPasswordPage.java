@@ -18,6 +18,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -77,50 +78,77 @@ public class forgotPasswordPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-         Button BtnCancel = view.findViewById(R.id.returnToLoginPageButtonPageButton);
-         View.OnClickListener OCLChgPass = v -> Navigation.findNavController(view).navigate(R.id.loginPage);
-         BtnCancel.setOnClickListener(OCLChgPass);
+        Button BtnCancel = view.findViewById(R.id.returnToLoginPageButtonPageButton);
+        View.OnClickListener OCLChgPass = v -> Navigation.findNavController(view).navigate(R.id.loginPage);
+        BtnCancel.setOnClickListener(OCLChgPass);
 
-         EditText password = view.findViewById(R.id.newPassword);
-         EditText RePassword = view.findViewById(R.id.reEnteredPassword);
-         EditText email = view.findViewById(R.id.email);
-         Button BtnResetPass = view.findViewById(R.id.resetPasswordButton);
-         View.OnClickListener OCLReset = v -> {
-             // TODO integrate with database
+        EditText password = view.findViewById(R.id.newPassword);
+        EditText RePassword = view.findViewById(R.id.reEnteredPassword);
+        EditText email = view.findViewById(R.id.email);
+        Button BtnResetPass = view.findViewById(R.id.resetPasswordButton);
+        View.OnClickListener OCLReset = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-             try{
-                 Connection connection = Line.getConnection();
-                 PreparedStatement ps = connection.prepareStatement("SELECT * FROM user where email = '" +email.getText().toString()+ "'");
-                 PreparedStatement ps1 = connection.prepareStatement("INSERT INTO user(password)VALUES('" +password.getText().toString()+ "'");
-                 ResultSet res = ps.executeQuery();
+                AtomicReference<Boolean> status = new AtomicReference<>();
+                AtomicReference<Boolean> status1 = new AtomicReference<>(false);
+                AtomicReference<Boolean> status2 = new AtomicReference<>(false);
+                Thread dataThread = new Thread(() -> {
 
-                 if(res.next()){
-                     int executeUpdate = ps1.executeUpdate();
-                     Navigation.findNavController(view).navigate(R.id.loginPage);
-                     Toast.makeText(getContext(), "PASSWORD HAS BEEN SUCCESSFULLY CHANGED!!", Toast.LENGTH_SHORT).show();
+                    try {
+                        Connection connection = Line.getConnection();
+                        PreparedStatement ps = connection.prepareStatement("SELECT * FROM user where email = '" + email.getText().toString() + "'");
+                        PreparedStatement ps1 = connection.prepareStatement("INSERT INTO user(password)VALUES('" + password.getText().toString() + "'");
+                        ResultSet res = ps.executeQuery();
 
-                 }else {
-                     Toast.makeText(getContext(), "WRONG EMAIL!", Toast.LENGTH_SHORT).show();
+                        if (res.next()) {
+                            status.set(false);
 
-                 }
+                            if (password.getText().toString().isEmpty() || RePassword.getText().toString().isEmpty()) {
+                                status1.set(true);
+
+                            }else if (!password.getText().toString().equals(RePassword.getText().toString())){
+                                status2.set(true);
+                            }else {
+                                int executeUpdate = ps1.executeUpdate();
+
+                            }
+
+                        } else {
+                            status.set(true);
+                        }
+                        res.close();
+                        ps.close();
+                        ps1.close();
 
 
-             }catch (SQLException e){
-                 e.printStackTrace();
-             }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                });
+                dataThread.start();
+                while (dataThread.isAlive()) {
 
-             if(password.getText().toString().isEmpty() || RePassword.getText().toString().isEmpty()){
-                 Toast.makeText(getContext(),"Please fill both Password and re-Entered Password section", Toast.LENGTH_SHORT).show();
+                }
 
-             }else if(!password.getText().toString().equals(RePassword.getText().toString())) {
-                 Toast.makeText(getContext(), "Please make sure that password and reEntered password is same", Toast.LENGTH_SHORT).show();
+                if (status.get()) {
+                    Toast.makeText(getContext(), "WRONG EMAIL!", Toast.LENGTH_SHORT).show();
 
-             }else {
-                 Navigation.findNavController(view).navigate(R.id.loginPage);
-                 Toast.makeText(getContext(), "PASSWORD HAS BEEN SUCCESSFULLY CHANGED!!", Toast.LENGTH_SHORT).show();
-             }
-         };
-         BtnResetPass.setOnClickListener(OCLReset);
+                }else if(status1.get()){
+                    Toast.makeText(getContext(), "Please fill both Password and re-Entered Password section", Toast.LENGTH_SHORT).show();
+
+                }else if(status2.get()){
+                    Toast.makeText(getContext(), "Please make sure that password and reEntered password is same", Toast.LENGTH_SHORT).show();
+
+                }
+                else {
+                    Navigation.findNavController(view).navigate(R.id.loginPage);
+                    Toast.makeText(getContext(), "PASSWORD HAS BEEN SUCCESSFULLY CHANGED!!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        };
+        BtnResetPass.setOnClickListener(OCLReset);
     }
 
 }
