@@ -26,6 +26,8 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public class loginPage extends Fragment {
 
+
+
     Button buttonLogin, buttonRegister, buttonChgPass;
 
 

@@ -66,7 +66,8 @@
         android:gravity="left"
         android:text="Edit Profile"
         android:textColor="@color/pastel_red"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        tools:ignore="UnknownIdInLayout" />
 
     <TextView
         android:id="@+id/editProfileDesc"

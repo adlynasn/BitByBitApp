@@ -12,10 +12,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -86,13 +93,58 @@ public class editProfilePage extends Fragment {
         };
         btnUpdateProf.setOnClickListener(OCLUpdate);
 
+
+        EditText username = view.findViewById(R.id.username);
+        EditText biodata = view.findViewById(R.id.userBio);
+
         Button BtnChangePass = view.findViewById(R.id.ChangePassBut);
-        View.OnClickListener OCLCngPass = v -> Navigation.findNavController(view).navigate(R.id.changePasswordPage);
+        View.OnClickListener OCLCngPass = v -> {
+
+            AtomicReference<Boolean> status = new AtomicReference<>();
+            AtomicReference<Boolean> status1 = new AtomicReference<>(false);
+
+            try {
+                Connection connection = Line.getConnection();
+                PreparedStatement ps = connection.prepareStatement("SELECT * FROM user where user_id = '" + username.getText().toString() + "'");
+//                PreparedStatement ps1 = connection.prepareStatement("UPDATE user SET user_id = '" + username.getText().toString() + "' WHERE user = '" + this.username + "'");
+//                PreparedStatement ps2 = connection.prepareStatement("UPDATE user SET profile_bio = '" + biodata.getText().toString() + "' WHERE user = '" + this.username + "'");
+                ResultSet res = ps.executeQuery();
+
+                if (!res.next()) {
+                    status.set(false);
+//                    ps1.executeUpdate();
+//                    ps2.executeUpdate();
+
+                } else {
+                    status.set(true);
+                }
+                res.close();
+                ps.close();
+//                ps1.close();
+//                ps2.close();
+                connection.close();
+
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            if (status.get()) {
+                Toast.makeText(getContext(), "username has already been used. Please enter another username", Toast.LENGTH_SHORT).show();
+
+
+            } else {
+                Navigation.findNavController(view).navigate(R.id.changePasswordPage);
+                Toast.makeText(getContext(), "Update Successful!", Toast.LENGTH_SHORT).show();
+
+            }
+
+        };
         BtnChangePass.setOnClickListener(OCLCngPass);
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            switch(item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.home:
                     Navigation.findNavController(view).navigate(R.id.homePage);
                     return true;

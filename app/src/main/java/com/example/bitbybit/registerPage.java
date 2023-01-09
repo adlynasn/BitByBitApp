@@ -100,7 +100,7 @@ public class registerPage extends Fragment {
                         Connection connection = Line.getConnection();
                         PreparedStatement ps = connection.prepareStatement("SELECT * FROM user where user_id = '" + username.getText().toString() + "'");
                         PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM user where email  = '" + email.getText().toString() + "'");
-                        PreparedStatement ps2 = connection.prepareStatement("INSERT INTO user(user_id, password, email, status) VALUES('" + username.getText().toString() + "','" + password.getText().toString() + "','" + email.getText().toString() + "',1");
+                        PreparedStatement ps2 = connection.prepareStatement("INSERT INTO user(user_id, password, email, status) VALUES('" + username.getText().toString() + "','" + password.getText().toString() + "','" + email.getText().toString() + "',1)");
                         ResultSet res = ps.executeQuery();
 
                         if (!res.next()) {
