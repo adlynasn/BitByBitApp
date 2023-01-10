@@ -16,6 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link homePage#newInstance} factory method to
@@ -79,6 +84,32 @@ public class homePage extends Fragment {
         String name = bundle.getString("username");
         bundle.putString("username", name);
 
+        ImageView recipeImage = view.findViewById(R.id.LatestRecipeImage);
+
+        Thread dataThread = new Thread(() -> {
+
+            try{
+                Connection connection = Line.getConnection();
+                PreparedStatement ps = connection.prepareStatement("SELECT recipe_picture FROM recipe ORDER BY recipe_pitcure DESC LIMIT 1 ");
+                ResultSet res = ps.executeQuery();
+
+
+
+
+
+                res.close();
+
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        });
+        dataThread.start();
+        while (dataThread.isAlive()){
+
+        }
+
+
+
         Button BtnAllRecipe = view.findViewById(R.id.buttonAllReceipe);
         View.OnClickListener OCLAllRecipe = v -> Navigation.findNavController(view).navigate(R.id.action_homePage_to_allRecipesPage, bundle);
         BtnAllRecipe.setOnClickListener(OCLAllRecipe);
@@ -111,7 +142,7 @@ public class homePage extends Fragment {
         View.OnClickListener OCLFloatButton = v -> Navigation.findNavController(view).navigate(R.id.calorieCounterPage, bundle);
         floatButton.setOnClickListener(OCLFloatButton);
 
-        ImageView recipeImage = view.findViewById(R.id.LatestRecipeImage);
+//        ImageView recipeImage = view.findViewById(R.id.LatestRecipeImage);
         View.OnClickListener OCLRecipeImage = v -> Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
         recipeImage.setOnClickListener(OCLRecipeImage);
     }
