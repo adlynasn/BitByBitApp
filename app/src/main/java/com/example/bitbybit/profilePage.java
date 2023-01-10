@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +20,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class profilePage extends Fragment {
 
@@ -124,7 +122,7 @@ public class profilePage extends Fragment {
         View.OnClickListener OCLCalIntake = v -> Navigation.findNavController(view).navigate(R.id.caloriesIntakePage, bundle);
         BtnViewCal.setOnClickListener(OCLCalIntake);
 
-        Button BtnReport = view.findViewById(R.id.reportButtonn);
+        Button BtnReport = view.findViewById(R.id.reportButton);
         View.OnClickListener OCLReport = v -> {
             System.out.println("report button pressed");
             Navigation.findNavController(view).navigate(R.id.customerSupportPage, bundle);

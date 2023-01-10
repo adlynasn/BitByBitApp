@@ -45,13 +45,13 @@ public class customerSupportPage extends Fragment {
         String name=bundle.getString("username");
         bundle.putString("username", name);
 
-        Button BtnSubmit = view.findViewById(R.id.submitReportButton);
-        View.OnClickListener OCLAllRecipe = v -> Navigation.findNavController(view).navigate(R.id.homePage, bundle);
-        BtnSubmit.setOnClickListener(OCLAllRecipe);
+        Button BtnCancelNew = view.findViewById(R.id.cancelReportButton);
+        View.OnClickListener OCLCancel = v -> Navigation.findNavController(view).navigate(R.id.profilePage, bundle);
+        BtnCancelNew.setOnClickListener(OCLCancel);
 
         EditText report = view.findViewById(R.id.problemDescription);
-        Button BtnCancel = view.findViewById(R.id.backToProfilePageButton);
-        View.OnClickListener OCLCancel = v -> {
+        Button BtnSubmit = view.findViewById(R.id.submitReportButton);
+        View.OnClickListener OCLSubmit = v -> {
 
             AtomicReference<Boolean> status = new AtomicReference<>();
             Thread dataThread = new Thread(() -> {
@@ -83,11 +83,11 @@ public class customerSupportPage extends Fragment {
                 Toast.makeText(getContext(), "Please fill the report description section", Toast.LENGTH_SHORT).show();
 
             }else {
-                Toast.makeText(getContext(), "Report submited", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Report submitted", Toast.LENGTH_SHORT).show();
                 Navigation.findNavController(view).navigate(R.id.profilePage, bundle);
             }
-        }; Navigation.findNavController(view).navigate(R.id.profilePage, bundle);
-        BtnCancel.setOnClickListener(OCLCancel);
+        };
+        BtnSubmit.setOnClickListener(OCLSubmit);
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
