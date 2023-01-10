@@ -89,7 +89,6 @@ public class editProfilePage extends Fragment {
 
         Button BtnChangePass = view.findViewById(R.id.ChangePassBut);
         View.OnClickListener OCLCngPAss = v -> {
-            Toast.makeText(getContext(), "Update Successful!", Toast.LENGTH_SHORT).show();
             Navigation.findNavController(view).navigate(R.id.changePasswordPage);
         };
         BtnChangePass.setOnClickListener(OCLCngPAss);
