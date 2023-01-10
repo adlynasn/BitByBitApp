@@ -53,7 +53,7 @@ public class customerSupportPage extends Fragment {
         Button BtnSubmit = view.findViewById(R.id.submitReportButton);
         View.OnClickListener OCLSubmit = v -> {
 
-            AtomicReference<Boolean> status = new AtomicReference<>();
+            AtomicReference<Boolean> status = new AtomicReference<>(false);
             Thread dataThread = new Thread(() -> {
 
                 try {
@@ -79,6 +79,7 @@ public class customerSupportPage extends Fragment {
             while (dataThread.isAlive()){
 
             }
+
             if (status.get()){
                 Toast.makeText(getContext(), "Please fill the report description section", Toast.LENGTH_SHORT).show();
 
