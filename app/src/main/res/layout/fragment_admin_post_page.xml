@@ -117,6 +117,14 @@
             android:textColor="@color/pastel_red"
             android:textSize="14sp" />
 
+        <ImageView
+            android:id="@+id/PostPicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="30dp"
+            android:src="@mipmap/ic_launcher" />
+
     </LinearLayout>
 
 </RelativeLayout>
