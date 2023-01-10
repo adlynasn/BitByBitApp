@@ -44,29 +44,20 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
                     android:textSize="16sp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     android:textColor="@color/black"
                     android:text="username" />
 
                 <TextView
-                    android:id="@+id/reportEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:textSize="16sp"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/black"
-                    android:text="email" />
-
-                <TextView
                     android:id="@+id/reportDesc"
-                    android:layout_margin="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
                     android:textSize="16sp"
-                    android:textColor="@color/pastel_red"
+                    android:layout_margin="10dp"
                     android:text="description" />
+
+
             </LinearLayout>
         </LinearLayout>
 
