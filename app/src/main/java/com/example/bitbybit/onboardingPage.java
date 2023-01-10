@@ -66,6 +66,12 @@ public class onboardingPage extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState);
+
+        Bundle bundle = new Bundle();
+        String name=bundle.getString("username");
+        bundle.putString("username", name);
+
         Button BtnOnBoard = view.findViewById(R.id.onboardingButton);
         View.OnClickListener OCLonBoard = v -> Navigation.findNavController(view).navigate(R.id.onBoard_to_login);
         BtnOnBoard.setOnClickListener(OCLonBoard);

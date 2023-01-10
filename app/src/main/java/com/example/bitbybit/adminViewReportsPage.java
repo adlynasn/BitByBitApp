@@ -70,6 +70,10 @@ public class adminViewReportsPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Bundle bundle = new Bundle();
+        String name=bundle.getString("username");
+        bundle.putString("username", name);
+
         Button BtnBack = view.findViewById(R.id.returnToAdminHomePageButton);
         View.OnClickListener OCLBtnBack = v -> Navigation.findNavController(view).navigate(R.id.adminHomePage);
         BtnBack.setOnClickListener(OCLBtnBack);

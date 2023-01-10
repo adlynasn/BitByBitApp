@@ -75,6 +75,10 @@ public class homePage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Bundle bundle = new Bundle();
+        String name=bundle.getString("username");
+        bundle.putString("username", name);
+
         Button BtnAllRecipe = view.findViewById(R.id.buttonAllReceipe);
         View.OnClickListener OCLAllRecipe = v -> Navigation.findNavController(view).navigate(R.id.action_homePage_to_allRecipesPage);
         BtnAllRecipe.setOnClickListener(OCLAllRecipe);

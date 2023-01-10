@@ -75,6 +75,10 @@ public class profilePage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Bundle bundle = new Bundle();
+        String name=bundle.getString("username");
+        bundle.putString("username", name);
+
 
         Button BtnEditProf = view.findViewById(R.id.editProfilePageButton);
         View.OnClickListener OCLEditProf = v -> Navigation.findNavController(view).navigate(R.id.editProfilePage);

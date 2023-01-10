@@ -69,12 +69,15 @@ public class foodStepsPage extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_food_steps_page, container, false);
 
-
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Bundle bundle = new Bundle();
+        String name=bundle.getString("username");
+        bundle.putString("username", name);
 
         Button BtnBackFoodIng = view.findViewById(R.id.foodIngredientsPageButton);
         View.OnClickListener OCLBackIngredient = v -> Navigation.findNavController(view).navigate(R.id.action_foodStepsPage_to_foodIngredientPage);

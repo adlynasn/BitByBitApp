@@ -82,6 +82,10 @@ public class editProfilePage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Bundle bundle = new Bundle();
+        String name=bundle.getString("username");
+        bundle.putString("username", name);
+
         Button btnCancelToProf = view.findViewById(R.id.CancelToProfilePage);
         View.OnClickListener OCLCancelProfile = v -> Navigation.findNavController(view).navigate(R.id.profilePage);
         btnCancelToProf.setOnClickListener(OCLCancelProfile);

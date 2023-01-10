@@ -73,6 +73,9 @@ public class viewCaloriesPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Bundle bundle = new Bundle();
+        String name=bundle.getString("username");
+        bundle.putString("username", name);
 
         Button BtnBackToIntake = view.findViewById(R.id.backToCalorieIntakePageButton);
         View.OnClickListener OCLBtnBack = v -> Navigation.findNavController(view).navigate(R.id.action_viewCaloriesPage_to_caloriesIntakePage);

@@ -71,6 +71,10 @@ public class adminPostPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Bundle bundle = new Bundle();
+        String name=bundle.getString("username");
+        bundle.putString("username", name);
+
         Button btnBackToAdminHP = view.findViewById(R.id.returnToAdminHomePageButton);
         View.OnClickListener OCLBackAdminHP = v -> Navigation.findNavController(view).navigate(R.id.adminHomePage);
         btnBackToAdminHP.setOnClickListener(OCLBackAdminHP);

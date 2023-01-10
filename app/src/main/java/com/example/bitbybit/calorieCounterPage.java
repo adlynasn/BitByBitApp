@@ -68,6 +68,11 @@ public class calorieCounterPage extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState );
+
+        Bundle bundle = new Bundle();
+        String name=bundle.getString("username");
+        bundle.putString("username", name);
 
         Button BtnCancel = view.findViewById(R.id.cancelButton);
         View.OnClickListener OCLCancelBut = v -> Navigation.findNavController(view).navigate(R.id.homePage);

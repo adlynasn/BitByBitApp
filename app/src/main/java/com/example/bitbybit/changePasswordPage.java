@@ -77,6 +77,10 @@ public class changePasswordPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Bundle bundle = new Bundle();
+        String name=bundle.getString("username");
+        bundle.putString("username", name);
+
         Button btnCancel = view.findViewById(R.id.returnToProfilePageButton);
         View.OnClickListener OCLCancel = v -> {
             Navigation.findNavController(view).navigate(R.id.editProfilePage);

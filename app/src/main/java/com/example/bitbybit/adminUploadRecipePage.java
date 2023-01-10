@@ -71,6 +71,10 @@ public class adminUploadRecipePage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Bundle bundle = new Bundle();
+        String name=bundle.getString("username");
+        bundle.putString("username", name);
+
         Button BtnAddRecipe = view.findViewById(R.id.addRecipeButton);
         View.OnClickListener OCLAddRecipe = v -> {
             Toast.makeText(getContext(),"The Recipe has been uploaded",Toast.LENGTH_SHORT).show();

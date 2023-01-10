@@ -74,6 +74,10 @@ public class savedRecipesPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Bundle bundle = new Bundle();
+        String name=bundle.getString("username");
+        bundle.putString("username", name);
+
         Button btnBackToHp = view.findViewById(R.id.btnBackAllRecipeToHomePage);
         View.OnClickListener OCLBackSavedHP = v -> Navigation.findNavController(view).navigate(R.id.homePage);
         btnBackToHp.setOnClickListener(OCLBackSavedHP);

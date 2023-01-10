@@ -77,13 +77,18 @@ public class loginPage extends Fragment {
 
             }
 
+            Bundle bundle = new Bundle();
+            bundle.putString("username", String.valueOf(username));
+            bundle.putString("password", String.valueOf(password));
+
+
             if (status.get()) {
                 Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
-                Navigation.findNavController(view).navigate(R.id.homePage);
+                Navigation.findNavController(view).navigate(R.id.homePage, bundle);
             }
             else if (status2.get()){
                 Toast.makeText(getContext(), "SUCCESSFULLY LOGIN", Toast.LENGTH_SHORT).show();
-                Navigation.findNavController(view).navigate(R.id.adminHomePage);
+                Navigation.findNavController(view).navigate(R.id.adminHomePage, bundle);
             }
             else {
                 Toast.makeText(getContext(), "LOGIN FAILED!!PLEASE TRY AGAIN", Toast.LENGTH_SHORT).show();

@@ -69,6 +69,11 @@ public class missionsPage extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState);
+
+        Bundle bundle = new Bundle();
+        String name=bundle.getString("username");
+        bundle.putString("username", name);
 
         Button BtnExMis = view.findViewById(R.id.exerciseMissionCompleteButton);
         View.OnClickListener OCLExMis = v -> {

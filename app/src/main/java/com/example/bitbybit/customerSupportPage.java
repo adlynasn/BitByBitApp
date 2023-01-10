@@ -73,6 +73,10 @@ public class customerSupportPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Bundle bundle = new Bundle();
+        String name=bundle.getString("username");
+        bundle.putString("username", name);
+
         Button BtnSubmit = view.findViewById(R.id.submitReportButton);
         View.OnClickListener OCLAllRecipe = v -> Navigation.findNavController(view).navigate(R.id.homePage);
         BtnSubmit.setOnClickListener(OCLAllRecipe);
