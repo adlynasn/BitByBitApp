@@ -86,19 +86,20 @@ public class editProfilePage extends Fragment {
         View.OnClickListener OCLCancelProfile = v -> Navigation.findNavController(view).navigate(R.id.profilePage);
         btnCancelToProf.setOnClickListener(OCLCancelProfile);
 
-        Button btnUpdateProf = view.findViewById(R.id.updateProfileButton);
-        View.OnClickListener OCLUpdate = v -> {
+
+        Button BtnChangePass = view.findViewById(R.id.ChangePassBut);
+        View.OnClickListener OCLCngPAss = v -> {
             Toast.makeText(getContext(), "Update Successful!", Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(view).navigate(R.id.profilePage);
+            Navigation.findNavController(view).navigate(R.id.changePasswordPage);
         };
-        btnUpdateProf.setOnClickListener(OCLUpdate);
+        BtnChangePass.setOnClickListener(OCLCngPAss);
 
 
         EditText username = view.findViewById(R.id.username);
         EditText biodata = view.findViewById(R.id.userBio);
 
-        Button BtnChangePass = view.findViewById(R.id.ChangePassBut);
-        View.OnClickListener OCLCngPass = v -> {
+        Button btnUpdateProf = view.findViewById(R.id.updateProfileButton);
+        View.OnClickListener OCLUpdate = v -> {
 
             AtomicReference<Boolean> status = new AtomicReference<>();
             AtomicReference<Boolean> status1 = new AtomicReference<>(false);
@@ -134,13 +135,13 @@ public class editProfilePage extends Fragment {
 
 
             } else {
-                Navigation.findNavController(view).navigate(R.id.changePasswordPage);
+                Navigation.findNavController(view).navigate(R.id.profilePage);
                 Toast.makeText(getContext(), "Update Successful!", Toast.LENGTH_SHORT).show();
 
             }
 
         };
-        BtnChangePass.setOnClickListener(OCLCngPass);
+        btnUpdateProf.setOnClickListener(OCLUpdate);
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
