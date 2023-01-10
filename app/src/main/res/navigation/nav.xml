@@ -51,7 +51,11 @@
         android:id="@+id/customerSupportPage"
         android:name="com.example.bitbybit.customerSupportPage"
         android:label="fragment_customer_support_page"
-        tools:layout="@layout/fragment_customer_support_page" />
+        tools:layout="@layout/fragment_customer_support_page" >
+        <action
+            android:id="@+id/action_customerSupportPage_to_profilePage"
+            app:destination="@id/profilePage" />
+    </fragment>
     <fragment
         android:id="@+id/missionsPage"
         android:name="com.example.bitbybit.missionsPage"
@@ -77,6 +81,9 @@
         <action
             android:id="@+id/action_profilePage_to_caloriesIntakePage"
             app:destination="@id/caloriesIntakePage" />
+        <action
+            android:id="@+id/action_profilePage_to_customerSupportPage"
+            app:destination="@id/customerSupportPage" />
     </fragment>
     <fragment
         android:id="@+id/registerPage"

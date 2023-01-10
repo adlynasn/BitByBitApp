@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -95,8 +94,15 @@ public class profilePage extends Fragment {
 
 
         Button BtnViewCal = view.findViewById(R.id.viewCalorieButton);
-        View.OnClickListener OCLCalIntake = view1 -> Navigation.findNavController(view1).navigate(R.id.caloriesIntakePage, bundle);
+        View.OnClickListener OCLCalIntake = v -> Navigation.findNavController(view).navigate(R.id.caloriesIntakePage, bundle);
         BtnViewCal.setOnClickListener(OCLCalIntake);
+
+        Button BtnReport = view.findViewById(R.id.reportButtonn);
+        View.OnClickListener OCLReport = v -> {
+            System.out.println("report button pressed");
+            Navigation.findNavController(view).navigate(R.id.customerSupportPage, bundle);
+        };
+        BtnReport.setOnClickListener(OCLReport);
 
 
         Button btnLogout = view.findViewById(R.id.LogoutButton);
