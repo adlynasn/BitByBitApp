@@ -167,30 +167,6 @@ public class registerPage extends Fragment {
                     Navigation.findNavController(view).navigate(R.id.loginPage);
                 }
 
-
-//
-//                if(username.getText().toString().equals("")){
-//                    Toast.makeText(getContext(), "Please fill the username",Toast.LENGTH_SHORT).show();
-//
-//                }else if(password.getText().toString().equals("")){
-//                    Toast.makeText(getContext(), "Please fill the password",Toast.LENGTH_SHORT).show();
-//
-//                }else if(email.getText().toString().equals("")){
-//                    Toast.makeText(getContext(), "Please fill the email",Toast.LENGTH_SHORT).show();
-//
-//                }else if(emailConf.getText().toString().equals("")){
-//                    Toast.makeText(getContext(), "Please fill the confirmation email",Toast.LENGTH_SHORT).show();
-//
-//                }else if(!email.getText().toString().contains("@")){
-//                    Toast.makeText(getContext(), "Please enter appropriate email",Toast.LENGTH_SHORT).show();
-//
-//                }else if(!emailConf.getText().toString().equals(email.getText().toString())) {
-//                    Toast.makeText(getContext(), "Please fill email confirmation same with email", Toast.LENGTH_SHORT).show();
-//
-//                }else {
-//                    Navigation.findNavController(view).navigate(R.id.loginPage);
-//                }
-//
             }
         };
         BtnReg.setOnClickListener(OCLRegBtn);

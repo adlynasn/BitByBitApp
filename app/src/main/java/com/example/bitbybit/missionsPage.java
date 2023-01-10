@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -12,6 +14,13 @@ import androidx.navigation.Navigation;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,6 +69,8 @@ public class missionsPage extends Fragment {
         }
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -71,6 +82,7 @@ public class missionsPage extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
+
         Bundle bundle = getArguments();
         String name=bundle.getString("username");
         bundle.putString("username", name);
@@ -78,18 +90,89 @@ public class missionsPage extends Fragment {
         Button BtnExMis = view.findViewById(R.id.exerciseMissionCompleteButton);
         View.OnClickListener OCLExMis = v -> {
             //add data to db
+            AtomicReference<Boolean> status = new AtomicReference<>(false);
+            Thread dataThread = new Thread(() -> {
+               try {
+                   Connection connection = Line.getConnection();
+                   PreparedStatement ps = connection.prepareStatement("INSERT INTO mission(user_id, mission_id) VALUES('" +name+ "', 0)");
+                   ps.executeUpdate();
+                   status.set(true);
+
+                   ps.close();
+
+
+               }catch (SQLException e){
+                   e.printStackTrace();
+               }
+            });
+            dataThread.start();
+            while (dataThread.isAlive()){
+
+            }
+            if(status.get()){
+                Toast.makeText(getContext(), "Well Done", Toast.LENGTH_SHORT).show();
+
+            }
         };
         BtnExMis.setOnClickListener(OCLExMis);
 
         Button BtnCook = view.findViewById(R.id.cookingMissionCompleteButton);
         View.OnClickListener OCLCook = v -> {
             //add data to db
+            AtomicReference<Boolean> status = new AtomicReference<>(false);
+            Thread dataThread = new Thread(() -> {
+                try {
+                    Connection connection = Line.getConnection();
+                    PreparedStatement ps = connection.prepareStatement("INSERT INTO mission(user_id, mission_id) VALUES('" +name+ "', 2)");
+                    ps.executeUpdate();
+                    status.set(true);
+
+                    ps.close();
+
+
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            });
+            dataThread.start();
+            while (dataThread.isAlive()){
+
+            }
+
+            if(status.get()){
+                Toast.makeText(getContext(), "Well Done", Toast.LENGTH_SHORT).show();
+
+            }
         };
         BtnCook.setOnClickListener(OCLCook);
 
         Button BtnSelfLove = view.findViewById(R.id.selfLoveMissionCompleteButton);
         View.OnClickListener OCLSelfLove = v -> {
             //add data to db
+            AtomicReference<Boolean> status = new AtomicReference<>(false);
+            Thread dataThread = new Thread(() -> {
+                try {
+                    Connection connection = Line.getConnection();
+                    PreparedStatement ps = connection.prepareStatement("INSERT INTO mission(user_id, mission_id) VALUES('" +name+ "', 1)");
+                    System.out.println("DI SINI");
+                    ps.executeUpdate();
+                    status.set(true);
+
+                    ps.close();
+
+
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            });
+            dataThread.start();
+            while (dataThread.isAlive()){
+
+            }
+            if(status.get()){
+                Toast.makeText(getContext(), "Well Done", Toast.LENGTH_SHORT).show();
+
+            }
         };
         BtnSelfLove.setOnClickListener(OCLSelfLove);
 

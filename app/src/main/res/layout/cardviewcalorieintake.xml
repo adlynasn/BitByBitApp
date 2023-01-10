@@ -37,7 +37,6 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="11:00 am"
                 android:textColor="@color/pastel_red"
                 android:textSize="15sp" />
 

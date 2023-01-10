@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +14,11 @@ import androidx.navigation.Navigation;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,6 +82,50 @@ public class achievementsPage extends Fragment {
         String name=bundle.getString("username");
         bundle.putString("username", name);
 
+
+
+        Thread dataThread = new Thread(() -> {
+        int exercise = 0;
+        int self_of_love = 0;
+        int cooking = 0;
+        TextView exer = view.findViewById(R.id.exerciseAchievementProgress);
+        TextView self = view.findViewById(R.id.cookingAchievementProgress);
+        TextView cook = view.findViewById(R.id.selfLoveAchievementProgress);
+
+            try {
+                Connection connection = Line.getConnection();
+                PreparedStatement ps = connection.prepareStatement("SELECT * FROM mission WHERE user_id =  '" + name + "' and report_id = 0");
+                PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM mission WHERE user_id =  '" + name + "' and report_id = 1");
+                PreparedStatement ps2 = connection.prepareStatement("SELECT * FROM mission WHERE user_id =  '" + name + "' and report_id = 2");
+                ResultSet res = ps.executeQuery();
+                ResultSet res1 = ps1.executeQuery();
+                ResultSet res2 = ps2.executeQuery();
+
+                while(res.next()){
+                    exercise++;
+                }
+
+                while(res1.next()){
+                    self_of_love++;
+                }
+
+                while(res2.next()){
+                    cooking++;
+                }
+
+                exer.setText(Integer.valueOf(exercise).toString());
+                self.setText(Integer.valueOf(self_of_love).toString());
+                cook.setText(Integer.valueOf(cooking).toString());
+
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+
+        });
+        dataThread.start();
+        while (dataThread.isAlive()) {
+
+        }
         Button btnBackToProf = view.findViewById(R.id.backToLoginPageButton);
         View.OnClickListener OCLBackProfile = v -> Navigation.findNavController(view).navigate(R.id.profilePage, bundle);
         btnBackToProf.setOnClickListener(OCLBackProfile);

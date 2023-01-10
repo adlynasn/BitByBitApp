@@ -1,5 +1,8 @@
 package com.example.bitbybit;
 
+import android.content.ContentResolver;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,16 +19,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.ByteArrayInputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link homePage#newInstance} factory method to
  * create an instance of this fragment.
- */
+*/
+
+@SuppressWarnings("deprecation")
 public class homePage extends Fragment {
 
     RecyclerView recyclerView;
@@ -86,25 +94,31 @@ public class homePage extends Fragment {
 
         ImageView recipeImage = view.findViewById(R.id.LatestRecipeImage);
 
+
         Thread dataThread = new Thread(() -> {
 
-            try{
+            try {
                 Connection connection = Line.getConnection();
-                PreparedStatement ps = connection.prepareStatement("SELECT recipe_picture FROM recipe ORDER BY recipe_pitcure DESC LIMIT 1 ");
-                ResultSet res = ps.executeQuery();
+                PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe ORDER BY recipe_id DESC LIMIT 1 ");
+                ResultSet resultSet = ps.executeQuery();
 
+                if(resultSet.next()){
+                    Blob blob = resultSet.getBlob(1);
+                    byte[] data = blob.getBytes(1, (int) blob.length());
+                    ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(data);
+                    Drawable drawable = new BitmapDrawable(byteArrayInputStream);
+                    requireActivity().runOnUiThread(() -> recipeImage.setImageDrawable(drawable));
+                }
+                resultSet.close();
+                ps.close();
+                connection.close();
 
-
-
-
-                res.close();
-
-            }catch(SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         });
         dataThread.start();
-        while (dataThread.isAlive()){
+        while (dataThread.isAlive()) {
 
         }
 
@@ -120,7 +134,7 @@ public class homePage extends Fragment {
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            switch(item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.home:
                     Navigation.findNavController(view).navigate(R.id.homePage, bundle);
                     return true;
@@ -145,5 +159,32 @@ public class homePage extends Fragment {
 //        ImageView recipeImage = view.findViewById(R.id.LatestRecipeImage);
         View.OnClickListener OCLRecipeImage = v -> Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
         recipeImage.setOnClickListener(OCLRecipeImage);
+    }
+
+    // Returns a Drawable object. Requires recipe_id
+    public static Drawable getPicFromDB(String recipe_id, ContentResolver contentResolver, Thread dataThread) {
+        AtomicReference<Drawable> atomicReference = new AtomicReference<>();
+        dataThread = new Thread(() -> {
+            try (
+                    Connection connection = Line.getConnection();
+                    PreparedStatement preparedStatement = connection.prepareStatement("SELECT recipe_picture FROM recipe WHERE recipe_id = ?");
+            ) {
+                preparedStatement.setString(1, recipe_id);
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                if (resultSet.next()) {
+                    Blob blob = resultSet.getBlob(1);
+                    byte[] data = blob.getBytes(1, (int) blob.length());
+                    ByteArrayInputStream inputStream = new ByteArrayInputStream(data);
+                    Drawable drawable = new BitmapDrawable(inputStream);
+                    atomicReference.set(drawable);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        Drawable toReturn = atomicReference.get();
+        return toReturn;
     }
 }

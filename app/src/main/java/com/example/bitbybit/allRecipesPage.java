@@ -1,11 +1,16 @@
 package com.example.bitbybit;
 
+import android.content.ContentResolver;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -14,11 +19,23 @@ import androidx.navigation.Navigation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.ByteArrayInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.sql.Blob;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.concurrent.atomic.AtomicReference;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link allRecipesPage#newInstance} factory method to
  * create an instance of this fragment.
  */
+@SuppressWarnings("deprecation")
 public class allRecipesPage extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -76,6 +93,10 @@ public class allRecipesPage extends Fragment {
         String name=bundle.getString("username");
         bundle.putString("username", name);
 
+        Drawable drawable = getPicFromDB("French Toast", requireActivity().getContentResolver(), new Thread());
+
+
+
         Button btnBackToHP = view.findViewById(R.id.returnToHomePageButton);
         View.OnClickListener OCLBackHP = v -> Navigation.findNavController(view).navigate(R.id.homePage, bundle);
         btnBackToHP.setOnClickListener(OCLBackHP);
@@ -104,4 +125,56 @@ public class allRecipesPage extends Fragment {
         floatButton.setOnClickListener(OCLFloatButton);
 
     }
+
+
+    public static Drawable insertPicIntoDB(Uri imageUri, ContentResolver contentResolver, Thread dataThread){
+        AtomicReference<InputStream> inputStreamAtomicReference = new AtomicReference<>();
+        dataThread = new Thread(() -> {
+            InputStream inputStream = null;
+            try{
+                Connection connection = Line.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO recipe(recipe_picture) VALUES(?)");
+                inputStream = contentResolver.openInputStream(imageUri);
+                preparedStatement.setBlob(1, inputStream);
+                preparedStatement.execute();
+            } catch (SQLException | FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            assert  inputStream != null;
+            inputStreamAtomicReference.set(inputStream);
+        });
+        while(dataThread.isAlive()){
+
+        }
+        return Drawable.createFromStream(inputStreamAtomicReference.get(), imageUri.toString());
+    }
+
+    // Returns a Drawable object. Requires recipe_id
+    public static Drawable getPicFromDB(String recipe_id, ContentResolver contentResolver, Thread dataThread){
+        AtomicReference<Drawable> atomicReference = new AtomicReference<>();
+        dataThread = new Thread(() -> {
+            try(
+                    Connection connection = Line.getConnection();
+                    PreparedStatement preparedStatement = connection.prepareStatement("SELECT recipe_picture FROM recipe WHERE recipe_id = ?");
+                    ){
+                preparedStatement.setString(1, recipe_id);
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                if(resultSet.next()){
+                    Blob blob = resultSet.getBlob(1);
+                    byte[] data = blob.getBytes(1, (int) blob.length());
+                    ByteArrayInputStream inputStream = new ByteArrayInputStream(data);
+                    Drawable drawable = new BitmapDrawable(inputStream);
+                    atomicReference.set(drawable);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        Drawable toReturn = atomicReference.get();
+        assert toReturn != null;
+        return toReturn;
+    }
+
 }
