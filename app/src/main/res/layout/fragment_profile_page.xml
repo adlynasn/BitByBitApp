@@ -192,6 +192,18 @@
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/reportButton"
+                    android:layout_width="56dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="21dp"
+                    android:layout_marginEnd="100dp"
+                    android:backgroundTint="@color/white"
+                    android:drawableEnd="@drawable/ic_baseline_black_report"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <Button
                     android:id="@+id/LogoutButton"
                     android:layout_width="56dp"
                     android:layout_height="47dp"

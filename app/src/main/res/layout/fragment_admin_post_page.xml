@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -35,7 +36,6 @@
             android:layout_marginEnd="30dp"
             android:layout_marginStart="60dp"
             android:layout_marginTop="0dp"
-            android:layout_centerHorizontal="true"
             android:fontFamily="@font/poppins_semibold"
             android:text="Post"
             android:textAlignment="center"
@@ -46,8 +46,7 @@
             android:id="@+id/publishPostButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginEnd="0dp"
+            android:layout_marginStart="30dp"
             android:backgroundTint="@color/pastel_red"
             android:fontFamily="@font/poppins_semibold"
             android:text="Publish"
@@ -91,16 +90,25 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="Upload Pictures (optional)"
             android:textColor="@color/black"
             android:textSize="16dp" />
 
+        <ImageView
+            android:id="@+id/pickedImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/green_tea_salmon" />
+
         <Button
             android:id="@+id/choosePictureButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:backgroundTint="@color/white"
             android:drawableEnd="@drawable/ic_baseline_pastelred_arrow_forward_ios_24"
