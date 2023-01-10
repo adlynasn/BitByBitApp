@@ -18,6 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -25,59 +26,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.concurrent.atomic.AtomicReference;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link missionsPage#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class missionsPage extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public missionsPage() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment missionsPage.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static missionsPage newInstance(String param1, String param2) {
-        missionsPage fragment = new missionsPage();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     private TextView dateTimeDisplay;
     private Calendar calendar;
     private SimpleDateFormat dateFormat;
     private String date;
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -87,42 +42,60 @@ public class missionsPage extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         calendar = Calendar.getInstance();
         dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
+        date = dateFormat.format(calendar.getTime());
 
         Bundle bundle = getArguments();
-        String name=bundle.getString("username");
+        String name = bundle.getString("username");
         bundle.putString("username", name);
 
         Button BtnExMis = view.findViewById(R.id.exerciseMissionCompleteButton);
         View.OnClickListener OCLExMis = v -> {
             System.out.println(name);
+            System.out.println(date);
             //add data to db
             AtomicReference<Boolean> status = new AtomicReference<>(false);
+            AtomicReference<Boolean> status1 = new AtomicReference<>(false);
             Thread dataThread = new Thread(() -> {
-               try {
-                   Connection connection = Line.getConnection();
-                   PreparedStatement ps = connection.prepareStatement("INSERT INTO mission(user_id, mission_id, date) VALUES('" +name+ "', 0, '" +dtf.format(now))");
-                   ps.executeUpdate();
-                   status.set(true);
+                try {
+                    System.out.println("RUNNN");
+                    Connection connection = Line.getConnection();
+                    PreparedStatement ps = connection.prepareStatement("INSERT INTO mission(user_id, mission_id, date) VALUES('" + name + "', 0, '" + date + "')");
+                    PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM mission WHERE user_id = '" + name + "' AND date = '" + date + "'");
+                    ResultSet res = ps1.executeQuery();
 
-                   ps.close();
+                    if (!res.next()) {
+                        ps.executeUpdate();
+                        status.set(true);
+                    } else {
+                        status1.set(true);
+
+                    }
+
+                    ps.close();
+                    ps1.close();
+                    res.close();
+                    connection.close();
 
 
-               }catch (SQLException e){
-                   e.printStackTrace();
-               }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             });
             dataThread.start();
-            while (dataThread.isAlive()){
+            while (dataThread.isAlive()) {
 
             }
-            if(status.get()){
+            if (status.get()) {
                 Toast.makeText(getContext(), "Well Done", Toast.LENGTH_SHORT).show();
+
+            }
+            if (status1.get()) {
+                Toast.makeText(getContext(), "You can only click the button once per day", Toast.LENGTH_SHORT).show();
 
             }
         };
@@ -133,27 +106,43 @@ public class missionsPage extends Fragment {
             System.out.println(name);
             //add data to db
             AtomicReference<Boolean> status = new AtomicReference<>(false);
+            AtomicReference<Boolean> status1 = new AtomicReference<>(false);
             Thread dataThread = new Thread(() -> {
                 try {
                     Connection connection = Line.getConnection();
-                    PreparedStatement ps = connection.prepareStatement("INSERT INTO mission(user_id, mission_id) VALUES('" +name+ "', 2)");
-                    ps.executeUpdate();
-                    status.set(true);
+                    PreparedStatement ps = connection.prepareStatement("INSERT INTO mission(user_id, mission_id, date) VALUES('" + name + "', 2, '" + date + "')");
+                    PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM mission WHERE user_id = '" + name + "' AND date = '" + date + "'");
+                    ResultSet res = ps1.executeQuery();
+
+                    if (!res.next()) {
+                        ps.executeUpdate();
+                        status.set(true);
+                    } else {
+                        status1.set(true);
+
+                    }
 
                     ps.close();
+                    ps1.close();
+                    res.close();
+                    connection.close();
 
 
-                }catch (SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             });
             dataThread.start();
-            while (dataThread.isAlive()){
+            while (dataThread.isAlive()) {
 
             }
 
-            if(status.get()){
+            if (status.get()) {
                 Toast.makeText(getContext(), "Well Done", Toast.LENGTH_SHORT).show();
+
+            }
+            if (status1.get()) {
+                Toast.makeText(getContext(), "You can only click the button once per day", Toast.LENGTH_SHORT).show();
 
             }
         };
@@ -164,27 +153,43 @@ public class missionsPage extends Fragment {
             System.out.println(name);
             //add data to db
             AtomicReference<Boolean> status = new AtomicReference<>(false);
+            AtomicReference<Boolean> status1 = new AtomicReference<>(false);
             Thread dataThread = new Thread(() -> {
                 try {
                     Connection connection = Line.getConnection();
-                    PreparedStatement ps = connection.prepareStatement("INSERT INTO mission(user_id, mission_id) VALUES('" +name+ "', 1)");
-                    System.out.println("DI SINI");
-                    ps.executeUpdate();
-                    status.set(true);
+                    PreparedStatement ps = connection.prepareStatement("INSERT INTO mission(user_id, mission_id, date) VALUES('" + name + "', 1, '" + date + "')");
+                    PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM mission WHERE user_id = '" + name + "' AND date = '" + date + "'");
+                    ResultSet res = ps1.executeQuery();
+
+                    if (!res.next()) {
+                        ps.executeUpdate();
+                        status.set(true);
+                    } else {
+                        status1.set(true);
+
+                    }
+
 
                     ps.close();
+                    ps1.close();
+                    res.close();
+                    connection.close();
 
 
-                }catch (SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             });
             dataThread.start();
-            while (dataThread.isAlive()){
+            while (dataThread.isAlive()) {
 
             }
-            if(status.get()){
+            if (status.get()) {
                 Toast.makeText(getContext(), "Well Done", Toast.LENGTH_SHORT).show();
+
+            }
+            if (status1.get()) {
+                Toast.makeText(getContext(), "You can only click the button once per day", Toast.LENGTH_SHORT).show();
 
             }
         };
@@ -192,7 +197,7 @@ public class missionsPage extends Fragment {
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            switch(item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.home:
                     Navigation.findNavController(view).navigate(R.id.homePage, bundle);
                     return true;
