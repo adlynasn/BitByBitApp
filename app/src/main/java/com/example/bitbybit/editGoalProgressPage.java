@@ -1,21 +1,27 @@
 package com.example.bitbybit;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.math.RoundingMode;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DecimalFormat;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -85,10 +91,71 @@ public class editGoalProgressPage extends Fragment {
 
         Button btnUpdateGoal = view.findViewById(R.id.updateProgressButton);
         View.OnClickListener OCLProgress = v -> {
-            Toast.makeText(getContext(), "Update Progress Successful!", Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(view).navigate(R.id.profilePage, bundle);
+
+            //create variables
+            EditText currentWeight = view.findViewById(R.id.currentWeight);
+            EditText currentHeight = view.findViewById(R.id.currentHeight);
+            Double newWeight = Double.parseDouble(currentWeight.getText().toString());
+            Double newHeight = Double.parseDouble(currentHeight.getText().toString());
+            Double BMI = newWeight/(Math.pow((newHeight/100.00),2));
+            Double formattedBMI = Double.parseDouble(String.format("%.2f", BMI));
+
+
+            //connect to database
+            Thread dataThread = new Thread(() -> {
+                try{
+                    Connection connection = Line.getConnection();
+                    PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM progress WHERE user_id = '" + name.trim() + "'");
+                    ResultSet res = preparedStatement.executeQuery();
+                    PreparedStatement preparedStatement2 = connection.prepareStatement("UPDATE progress SET weight = "
+                            + newWeight
+                            + ", height = " + newHeight
+                            + ", body_mass_index = " + formattedBMI);
+                    PreparedStatement preparedStatement3 = connection.prepareStatement("INSERT INTO progress (user_id, weight, height, body_mass_index) VALUES ('"
+                            + name + "',"
+                            + newWeight + ","
+                            + newHeight + ","
+                            + formattedBMI + ")");
+
+                    //if have past values
+                    if (res.next()){
+                        System.out.println("there is previous data");
+                        //update to new values
+                        preparedStatement2.executeUpdate();
+
+                    }
+
+                    //if no past values
+                    else {
+                        System.out.println("there is no past data");
+                        //insert values
+
+                        preparedStatement3.executeUpdate();
+
+                    }
+                    preparedStatement2.close();
+                    preparedStatement3.close();
+
+                    res.close();
+                    preparedStatement.close();
+                    connection.close();
+
+                    requireActivity().runOnUiThread(() -> {
+                        Navigation.findNavController(view).navigate(R.id.profilePage, bundle);
+                    });
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            });
+            dataThread.start();
+
+            while(dataThread.isAlive()){
+
+            }
         };
         btnUpdateGoal.setOnClickListener(OCLProgress);
+
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
