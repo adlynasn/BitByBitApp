@@ -94,15 +94,16 @@ public class achievementsPage extends Fragment {
 
             try {
                 Connection connection = Line.getConnection();
-                PreparedStatement ps = connection.prepareStatement("SELECT * FROM mission WHERE user_id =  '" + name + "' and report_id = 0");
-                PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM mission WHERE user_id =  '" + name + "' and report_id = 1");
-                PreparedStatement ps2 = connection.prepareStatement("SELECT * FROM mission WHERE user_id =  '" + name + "' and report_id = 2");
+                PreparedStatement ps = connection.prepareStatement("SELECT * FROM mission WHERE user_id =  '" + name + "' and mission_id = 0");
+                PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM mission WHERE user_id =  '" + name + "' and mission_id = 1");
+                PreparedStatement ps2 = connection.prepareStatement("SELECT * FROM mission WHERE user_id =  '" + name + "' and mission_id = 2");
                 ResultSet res = ps.executeQuery();
                 ResultSet res1 = ps1.executeQuery();
                 ResultSet res2 = ps2.executeQuery();
 
                 while(res.next()){
                     exercise++;
+
                 }
 
                 while(res1.next()){
@@ -112,6 +113,7 @@ public class achievementsPage extends Fragment {
                 while(res2.next()){
                     cooking++;
                 }
+
 
                 exer.setText(Integer.valueOf(exercise).toString());
                 self.setText(Integer.valueOf(self_of_love).toString());

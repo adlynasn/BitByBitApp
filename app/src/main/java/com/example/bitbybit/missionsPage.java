@@ -1,5 +1,6 @@
 package com.example.bitbybit;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -69,6 +72,11 @@ public class missionsPage extends Fragment {
         }
     }
 
+    private TextView dateTimeDisplay;
+    private Calendar calendar;
+    private SimpleDateFormat dateFormat;
+    private String date;
+
 
 
     @Override
@@ -82,6 +90,9 @@ public class missionsPage extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
+        calendar = Calendar.getInstance();
+        dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
 
         Bundle bundle = getArguments();
         String name=bundle.getString("username");
@@ -89,12 +100,13 @@ public class missionsPage extends Fragment {
 
         Button BtnExMis = view.findViewById(R.id.exerciseMissionCompleteButton);
         View.OnClickListener OCLExMis = v -> {
+            System.out.println(name);
             //add data to db
             AtomicReference<Boolean> status = new AtomicReference<>(false);
             Thread dataThread = new Thread(() -> {
                try {
                    Connection connection = Line.getConnection();
-                   PreparedStatement ps = connection.prepareStatement("INSERT INTO mission(user_id, mission_id) VALUES('" +name+ "', 0)");
+                   PreparedStatement ps = connection.prepareStatement("INSERT INTO mission(user_id, mission_id, date) VALUES('" +name+ "', 0, '" +dtf.format(now))");
                    ps.executeUpdate();
                    status.set(true);
 
@@ -118,6 +130,7 @@ public class missionsPage extends Fragment {
 
         Button BtnCook = view.findViewById(R.id.cookingMissionCompleteButton);
         View.OnClickListener OCLCook = v -> {
+            System.out.println(name);
             //add data to db
             AtomicReference<Boolean> status = new AtomicReference<>(false);
             Thread dataThread = new Thread(() -> {
@@ -148,6 +161,7 @@ public class missionsPage extends Fragment {
 
         Button BtnSelfLove = view.findViewById(R.id.selfLoveMissionCompleteButton);
         View.OnClickListener OCLSelfLove = v -> {
+            System.out.println(name);
             //add data to db
             AtomicReference<Boolean> status = new AtomicReference<>(false);
             Thread dataThread = new Thread(() -> {
