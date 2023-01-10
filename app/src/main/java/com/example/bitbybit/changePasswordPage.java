@@ -96,37 +96,43 @@ public class changePasswordPage extends Fragment {
             AtomicReference<Boolean> status = new AtomicReference<>();
             AtomicReference<Boolean> status1 = new AtomicReference<>(false);
             AtomicReference<Boolean> status2 = new AtomicReference<>(false);
+            Thread dataThread = new Thread(() ->{
 
-            try{
-                Connection connection = Line.getConnection();
-                PreparedStatement ps = connection.prepareStatement("SELECT * FROM user where password = '" + previousPass.getText().toString() + "'");
-                PreparedStatement ps1 = connection.prepareStatement("UPDATE user SET password = '" + NewPass.getText().toString() + "' WHERE password = '" + previousPass.getText().toString() + "'");
-                ResultSet res = ps.executeQuery();
+                try {
+                    Connection connection = Line.getConnection();
+                    PreparedStatement ps = connection.prepareStatement("SELECT * FROM user WHERE password = '" + previousPass.getText().toString() + "'");
+                    PreparedStatement ps1 = connection.prepareStatement("UPDATE user SET password = '" + NewPass.getText().toString() + "' WHERE password = '" + previousPass.getText().toString() + "'");
+                    ResultSet res = ps.executeQuery();
 
-                if(res.next()){
-                    status.set(false);
+                    if (res.next()) {
+                        status.set(false);
 
-                    if (NewPass.getText().toString().isEmpty() || ReEntersPass.getText().toString().isEmpty()) {
-                        status1.set(true);
+                        if (NewPass.getText().toString().isEmpty() || ReEntersPass.getText().toString().isEmpty()) {
+                            status1.set(true);
 
-                    }else if (!NewPass.getText().toString().equals(ReEntersPass.getText().toString())){
-                        status2.set(true);
+                        } else if (!NewPass.getText().toString().equals(ReEntersPass.getText().toString())) {
+                            status2.set(true);
 
-                    }else {
-                        boolean executeUpdate = ps1.execute();
+                        } else {
+                            ps1.execute();
 
+                        }
+
+                    } else {
+                        status.set(true);
                     }
+                    res.close();
+                    ps.close();
+                    ps1.close();
+                    connection.close();
 
-                }else {
-                    status.set(true);
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
-                res.close();
-                ps.close();
-                ps1.close();
-                connection.close();
+            });
+            dataThread.start();
+            while (dataThread.isAlive()){
 
-            }catch (SQLException e){
-                e.printStackTrace();
             }
 
             if (status.get()) {

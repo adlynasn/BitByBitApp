@@ -136,7 +136,6 @@ public class editProfilePage extends Fragment {
 
             } else {
                 Navigation.findNavController(view).navigate(R.id.profilePage);
-                Toast.makeText(getContext(), "Update Successful!", Toast.LENGTH_SHORT).show();
 
             }
 
