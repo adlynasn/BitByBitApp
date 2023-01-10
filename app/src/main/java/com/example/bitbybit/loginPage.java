@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.ListFragment;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -78,8 +79,9 @@ public class loginPage extends Fragment {
             }
 
             Bundle bundle = new Bundle();
-            bundle.putString("username", String.valueOf(username));
-            bundle.putString("password", String.valueOf(password));
+            bundle.putString("username", username.getText().toString());
+            ListFragment newFragment =  new ListFragment();
+            newFragment.setArguments(bundle);
 
 
             if (status.get()) {

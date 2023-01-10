@@ -73,12 +73,12 @@ public class viewCaloriesPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Bundle bundle = new Bundle();
+        Bundle bundle = getArguments();
         String name=bundle.getString("username");
         bundle.putString("username", name);
 
         Button BtnBackToIntake = view.findViewById(R.id.backToCalorieIntakePageButton);
-        View.OnClickListener OCLBtnBack = v -> Navigation.findNavController(view).navigate(R.id.action_viewCaloriesPage_to_caloriesIntakePage);
+        View.OnClickListener OCLBtnBack = v -> Navigation.findNavController(view).navigate(R.id.action_viewCaloriesPage_to_caloriesIntakePage, bundle);
         BtnBackToIntake.setOnClickListener(OCLBtnBack);
 
 
@@ -86,16 +86,16 @@ public class viewCaloriesPage extends Fragment {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch(item.getItemId()){
                 case R.id.home:
-                    Navigation.findNavController(view).navigate(R.id.homePage);
+                    Navigation.findNavController(view).navigate(R.id.homePage, bundle);
                     return true;
                 case R.id.savedRecipes:
-                    Navigation.findNavController(view).navigate(R.id.savedRecipesPage);
+                    Navigation.findNavController(view).navigate(R.id.savedRecipesPage, bundle);
                     return true;
                 case R.id.missions:
-                    Navigation.findNavController(view).navigate(R.id.missionsPage);
+                    Navigation.findNavController(view).navigate(R.id.missionsPage, bundle);
                     return true;
                 case R.id.profile:
-                    Navigation.findNavController(view).navigate(R.id.profilePage);
+                    Navigation.findNavController(view).navigate(R.id.profilePage, bundle);
                     return true;
             }
             return false;
@@ -103,7 +103,7 @@ public class viewCaloriesPage extends Fragment {
 
 
         FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton);
-        View.OnClickListener OCLFloatButton = v -> Navigation.findNavController(view).navigate(R.id.calorieCounterPage);
+        View.OnClickListener OCLFloatButton = v -> Navigation.findNavController(view).navigate(R.id.calorieCounterPage, bundle);
         floatButton.setOnClickListener(OCLFloatButton);
 
     }

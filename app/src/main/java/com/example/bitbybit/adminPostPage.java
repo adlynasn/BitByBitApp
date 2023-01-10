@@ -71,18 +71,18 @@ public class adminPostPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Bundle bundle = new Bundle();
+        Bundle bundle = getArguments();
         String name=bundle.getString("username");
         bundle.putString("username", name);
 
         Button btnBackToAdminHP = view.findViewById(R.id.returnToAdminHomePageButton);
-        View.OnClickListener OCLBackAdminHP = v -> Navigation.findNavController(view).navigate(R.id.adminHomePage);
+        View.OnClickListener OCLBackAdminHP = v -> Navigation.findNavController(view).navigate(R.id.adminHomePage, bundle);
         btnBackToAdminHP.setOnClickListener(OCLBackAdminHP);
 
         Button btnAdminPublish = view.findViewById(R.id.publishPostButton);
         View.OnClickListener OCLAdminPublish = v -> {
             Toast.makeText(getContext(),"The post has been published",Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(view).navigate(R.id.adminHomePage);
+            Navigation.findNavController(view).navigate(R.id.adminHomePage, bundle);
         };
         btnAdminPublish.setOnClickListener(OCLAdminPublish);
 

@@ -74,39 +74,39 @@ public class foodIngredientPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Bundle bundle = new Bundle();
+        Bundle bundle = getArguments();
         String name=bundle.getString("username");
         bundle.putString("username", name);
 
         Button btnBackIngredient = view.findViewById(R.id.foodDetailsPageButton);
-        View.OnClickListener OCLBackIngredient = v -> Navigation.findNavController(view).navigate(R.id.foodDetailsPage);
+        View.OnClickListener OCLBackIngredient = v -> Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
         btnBackIngredient.setOnClickListener(OCLBackIngredient);
 
         Button BtnListIngredientToStep = view.findViewById(R.id.recipeStepsPageButton);
-        View.OnClickListener OCLListIngredient = v -> Navigation.findNavController(view).navigate(R.id.foodStepsPage);
+        View.OnClickListener OCLListIngredient = v -> Navigation.findNavController(view).navigate(R.id.foodStepsPage, bundle);
         BtnListIngredientToStep.setOnClickListener(OCLListIngredient);
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch(item.getItemId()){
                 case R.id.home:
-                    Navigation.findNavController(view).navigate(R.id.homePage);
+                    Navigation.findNavController(view).navigate(R.id.homePage, bundle);
                     return true;
                 case R.id.savedRecipes:
-                    Navigation.findNavController(view).navigate(R.id.savedRecipesPage);
+                    Navigation.findNavController(view).navigate(R.id.savedRecipesPage, bundle);
                     return true;
                 case R.id.missions:
-                    Navigation.findNavController(view).navigate(R.id.missionsPage);
+                    Navigation.findNavController(view).navigate(R.id.missionsPage, bundle);
                     return true;
                 case R.id.profile:
-                    Navigation.findNavController(view).navigate(R.id.profilePage);
+                    Navigation.findNavController(view).navigate(R.id.profilePage, bundle);
                     return true;
             }
             return false;
         });
 
         FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton2);
-        View.OnClickListener OCLFloatButton = v -> Navigation.findNavController(view).navigate(R.id.calorieCounterPage);
+        View.OnClickListener OCLFloatButton = v -> Navigation.findNavController(view).navigate(R.id.calorieCounterPage, bundle);
         floatButton.setOnClickListener(OCLFloatButton);
 
     }

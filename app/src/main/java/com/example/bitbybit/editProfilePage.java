@@ -82,18 +82,18 @@ public class editProfilePage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Bundle bundle = new Bundle();
-        String name=bundle.getString("username");
+        Bundle bundle = getArguments();
+        String name = bundle.getString("username");
         bundle.putString("username", name);
 
         Button btnCancelToProf = view.findViewById(R.id.CancelToProfilePage);
-        View.OnClickListener OCLCancelProfile = v -> Navigation.findNavController(view).navigate(R.id.profilePage);
+        View.OnClickListener OCLCancelProfile = v -> Navigation.findNavController(view).navigate(R.id.profilePage, bundle);
         btnCancelToProf.setOnClickListener(OCLCancelProfile);
 
 
         Button BtnChangePass = view.findViewById(R.id.ChangePassBut);
         View.OnClickListener OCLCngPAss = v -> {
-            Navigation.findNavController(view).navigate(R.id.changePasswordPage);
+            Navigation.findNavController(view).navigate(R.id.changePasswordPage, bundle);
         };
         BtnChangePass.setOnClickListener(OCLCngPAss);
 
@@ -103,42 +103,53 @@ public class editProfilePage extends Fragment {
 
         Button btnUpdateProf = view.findViewById(R.id.updateProfileButton);
         View.OnClickListener OCLUpdate = v -> {
+            System.out.println(name);
+            System.out.println(name.getClass());
 
-            AtomicReference<Boolean> status = new AtomicReference<>();
-            AtomicReference<Boolean> status1 = new AtomicReference<>(false);
+            AtomicReference<Boolean> status = new AtomicReference<>(true);
+//            AtomicReference<Boolean> status1 = new AtomicReference<>(false);
+            Thread dataThread = new Thread(() -> {
 
-            try {
-                Connection connection = Line.getConnection();
-                PreparedStatement ps = connection.prepareStatement("SELECT * FROM user where user_id = '" + username.getText().toString() + "'");
-//                PreparedStatement ps1 = connection.prepareStatement("UPDATE user SET user_id = '" + username.getText().toString() + "' WHERE user = '" + this.username + "'");
-//                PreparedStatement ps2 = connection.prepareStatement("UPDATE user SET profile_bio = '" + biodata.getText().toString() + "' WHERE user = '" + this.username + "'");
-                ResultSet res = ps.executeQuery();
+                try {
+                    Connection connection = Line.getConnection();
+                    PreparedStatement ps = connection.prepareStatement("SELECT * FROM user where user_id = '" + username.getText().toString() + "'");
+                    PreparedStatement ps1 = connection.prepareStatement("UPDATE user SET user_id = '" + username.getText().toString() + "' where user_id = '" + name + "'");
+                    PreparedStatement ps2 = connection.prepareStatement("UPDATE user SET profile_bio = '" + biodata.getText().toString() + "' where user_id = '" + name + "'");
+                    ResultSet res = ps.executeQuery();
 
-                if (!res.next()) {
-                    status.set(false);
-//                    ps1.executeUpdate();
-//                    ps2.executeUpdate();
+                    if (!res.next()) {
+                        status.set(false);
+                        ps2.executeUpdate();
 
-                } else {
-                    status.set(true);
+                        if (!username.getText().toString().equals("")) {
+                            ps1.executeUpdate();
+                        }
+
+                    } else {
+                        status.set(true);
+                    }
+                    res.close();
+                    ps.close();
+                    ps1.close();
+                    ps2.close();
+                    connection.close();
+
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
-                res.close();
-                ps.close();
-//                ps1.close();
-//                ps2.close();
-                connection.close();
+            });
+            dataThread.start();
+            while (dataThread.isAlive()){
 
-
-            } catch (SQLException e) {
-                e.printStackTrace();
             }
 
             if (status.get()) {
                 Toast.makeText(getContext(), "username has already been used. Please enter another username", Toast.LENGTH_SHORT).show();
 
-
             } else {
-                Navigation.findNavController(view).navigate(R.id.profilePage);
+                Toast.makeText(getContext(), "Your profile has been update", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(view).navigate(R.id.profilePage, bundle);
 
             }
 
@@ -149,23 +160,23 @@ public class editProfilePage extends Fragment {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.home:
-                    Navigation.findNavController(view).navigate(R.id.homePage);
+                    Navigation.findNavController(view).navigate(R.id.homePage, bundle);
                     return true;
                 case R.id.savedRecipes:
-                    Navigation.findNavController(view).navigate(R.id.savedRecipesPage);
+                    Navigation.findNavController(view).navigate(R.id.savedRecipesPage, bundle);
                     return true;
                 case R.id.missions:
-                    Navigation.findNavController(view).navigate(R.id.missionsPage);
+                    Navigation.findNavController(view).navigate(R.id.missionsPage, bundle);
                     return true;
                 case R.id.profile:
-                    Navigation.findNavController(view).navigate(R.id.profilePage);
+                    Navigation.findNavController(view).navigate(R.id.profilePage, bundle);
                     return true;
             }
             return false;
         });
 
         FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton2);
-        View.OnClickListener OCLFloatButton = v -> Navigation.findNavController(view).navigate(R.id.calorieCounterPage);
+        View.OnClickListener OCLFloatButton = v -> Navigation.findNavController(view).navigate(R.id.calorieCounterPage, bundle);
         floatButton.setOnClickListener(OCLFloatButton);
 
     }

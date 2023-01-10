@@ -75,18 +75,18 @@ public class editGoalProgressPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Bundle bundle = new Bundle();
+        Bundle bundle = getArguments();
         String name=bundle.getString("username");
         bundle.putString("username", name);
 
         Button btnCancelToProf = view.findViewById(R.id.cancelToProfilePageButton);
-        View.OnClickListener OCLCancelProfile = v -> Navigation.findNavController(view).navigate(R.id.profilePage);
+        View.OnClickListener OCLCancelProfile = v -> Navigation.findNavController(view).navigate(R.id.profilePage, bundle);
         btnCancelToProf.setOnClickListener(OCLCancelProfile);
 
         Button btnUpdateGoal = view.findViewById(R.id.updateProgressButton);
         View.OnClickListener OCLProgress = v -> {
             Toast.makeText(getContext(), "Update Progress Successful!", Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(view).navigate(R.id.profilePage);
+            Navigation.findNavController(view).navigate(R.id.profilePage, bundle);
         };
         btnUpdateGoal.setOnClickListener(OCLProgress);
 
@@ -94,23 +94,23 @@ public class editGoalProgressPage extends Fragment {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch(item.getItemId()){
                 case R.id.home:
-                    Navigation.findNavController(view).navigate(R.id.homePage);
+                    Navigation.findNavController(view).navigate(R.id.homePage, bundle);
                     return true;
                 case R.id.savedRecipes:
-                    Navigation.findNavController(view).navigate(R.id.savedRecipesPage);
+                    Navigation.findNavController(view).navigate(R.id.savedRecipesPage, bundle);
                     return true;
                 case R.id.missions:
-                    Navigation.findNavController(view).navigate(R.id.missionsPage);
+                    Navigation.findNavController(view).navigate(R.id.missionsPage, bundle);
                     return true;
                 case R.id.profile:
-                    Navigation.findNavController(view).navigate(R.id.profilePage);
+                    Navigation.findNavController(view).navigate(R.id.profilePage, bundle);
                     return true;
             }
             return false;
         });
 
         FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton2);
-        View.OnClickListener OCLFloatButton = v -> Navigation.findNavController(view).navigate(R.id.calorieCounterPage);
+        View.OnClickListener OCLFloatButton = v -> Navigation.findNavController(view).navigate(R.id.calorieCounterPage, bundle);
         floatButton.setOnClickListener(OCLFloatButton);
 
     }

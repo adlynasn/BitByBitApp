@@ -77,13 +77,13 @@ public class changePasswordPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Bundle bundle = new Bundle();
+        Bundle bundle = getArguments();
         String name=bundle.getString("username");
         bundle.putString("username", name);
 
         Button btnCancel = view.findViewById(R.id.returnToProfilePageButton);
         View.OnClickListener OCLCancel = v -> {
-            Navigation.findNavController(view).navigate(R.id.editProfilePage);
+            Navigation.findNavController(view).navigate(R.id.editProfilePage, bundle);
 
         };
         btnCancel.setOnClickListener(OCLCancel);
@@ -150,7 +150,7 @@ public class changePasswordPage extends Fragment {
 
             }
             else {
-                Navigation.findNavController(view).navigate(R.id.editProfilePage);
+                Navigation.findNavController(view).navigate(R.id.editProfilePage, bundle);
                 Toast.makeText(getContext(), "PASSWORD HAS BEEN SUCCESSFULLY CHANGED!!", Toast.LENGTH_SHORT).show();
             }
 

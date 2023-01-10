@@ -70,19 +70,19 @@ public class calorieCounterPage extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState );
 
-        Bundle bundle = new Bundle();
+        Bundle bundle = getArguments();
         String name=bundle.getString("username");
         bundle.putString("username", name);
 
         Button BtnCancel = view.findViewById(R.id.cancelButton);
-        View.OnClickListener OCLCancelBut = v -> Navigation.findNavController(view).navigate(R.id.homePage);
+        View.OnClickListener OCLCancelBut = v -> Navigation.findNavController(view).navigate(R.id.homePage, bundle);
         BtnCancel.setOnClickListener(OCLCancelBut);
 
 
         Button BtnAddMeal = view.findViewById(R.id.addMealsButton);
         View.OnClickListener OCLAddMeal = v -> {
             Toast.makeText(getContext(), "MEAL ADDED", Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(view).navigate(R.id.homePage);
+            Navigation.findNavController(view).navigate(R.id.homePage, bundle);
         };
         BtnAddMeal.setOnClickListener(OCLAddMeal);
     }

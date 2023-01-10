@@ -75,53 +75,57 @@ public class profilePage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Bundle bundle = new Bundle();
-        String name=bundle.getString("username");
+        Bundle bundle = getArguments();
+        String name = bundle.getString("username");
         bundle.putString("username", name);
 
 
         Button BtnEditProf = view.findViewById(R.id.editProfilePageButton);
-        View.OnClickListener OCLEditProf = v -> Navigation.findNavController(view).navigate(R.id.editProfilePage);
+        View.OnClickListener OCLEditProf = v -> {
+            System.out.println(name);
+            Navigation.findNavController(view).navigate(R.id.editProfilePage, bundle);
+
+        };
         BtnEditProf.setOnClickListener(OCLEditProf);
 
 
         Button BtnAchievement = view.findViewById(R.id.gotoAchievementsPageButton);
-        View.OnClickListener OCLAchievement = v -> Navigation.findNavController(view).navigate(R.id.achievementsPage);
+        View.OnClickListener OCLAchievement = v -> Navigation.findNavController(view).navigate(R.id.achievementsPage, bundle);
         BtnAchievement.setOnClickListener(OCLAchievement);
 
 
         Button BtnViewCal = view.findViewById(R.id.viewCalorieButton);
-        View.OnClickListener OCLCalIntake = view1 -> Navigation.findNavController(view1).navigate(R.id.caloriesIntakePage);
+        View.OnClickListener OCLCalIntake = view1 -> Navigation.findNavController(view1).navigate(R.id.caloriesIntakePage, bundle);
         BtnViewCal.setOnClickListener(OCLCalIntake);
 
 
         Button btnLogout = view.findViewById(R.id.LogoutButton);
         View.OnClickListener OCLLogOut = v -> {
-            Navigation.findNavController(view).navigate(R.id.loginPage);
-            Toast.makeText(getContext(),"You have log out",Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(view).navigate(R.id.loginPage, bundle);
+            Toast.makeText(getContext(), "You have log out", Toast.LENGTH_SHORT).show();
         };
         btnLogout.setOnClickListener(OCLLogOut);
 
 
         Button btnUpdateProgress = view.findViewById(R.id.editProgressButton);
-        View.OnClickListener OCLUpdateProgress = v -> Navigation.findNavController(view).navigate(R.id.action_profilePage_to_editGoalProgressPage);
+        View.OnClickListener OCLUpdateProgress = v -> Navigation.findNavController(view).navigate(R.id.action_profilePage_to_editGoalProgressPage, bundle);
         btnUpdateProgress.setOnClickListener(OCLUpdateProgress);
 
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            switch(item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.home:
-                    Navigation.findNavController(view).navigate(R.id.homePage);
+                    Navigation.findNavController(view).navigate(R.id.homePage, bundle);
                     return true;
                 case R.id.savedRecipes:
-                    Navigation.findNavController(view).navigate(R.id.savedRecipesPage);
+                    Navigation.findNavController(view).navigate(R.id.savedRecipesPage, bundle);
                     return true;
                 case R.id.missions:
-                    Navigation.findNavController(view).navigate(R.id.missionsPage);
+                    Navigation.findNavController(view).navigate(R.id.missionsPage, bundle);
                     return true;
                 case R.id.profile:
-                    Navigation.findNavController(view).navigate(R.id.profilePage);
+                    Navigation.findNavController(view).navigate(R.id.profilePage, bundle);
                     return true;
             }
             return false;
@@ -129,7 +133,7 @@ public class profilePage extends Fragment {
 
 
         FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton2);
-        View.OnClickListener OCLFloatButton = v -> Navigation.findNavController(view).navigate(R.id.calorieCounterPage);
+        View.OnClickListener OCLFloatButton = v -> Navigation.findNavController(view).navigate(R.id.calorieCounterPage, bundle);
         floatButton.setOnClickListener(OCLFloatButton);
 
     }

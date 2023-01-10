@@ -71,25 +71,25 @@ public class adminHomePage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Bundle bundle = new Bundle();
+        Bundle bundle = getArguments();
         String name=bundle.getString("username");
         bundle.putString("username", name);
 
         Button btnAdminPostPage = view.findViewById(R.id.adminPostPageButton);
-        View.OnClickListener OCLAdminPostPage = v -> Navigation.findNavController(view).navigate(R.id.adminPostPage);
+        View.OnClickListener OCLAdminPostPage = v -> Navigation.findNavController(view).navigate(R.id.adminPostPage, bundle);
         btnAdminPostPage.setOnClickListener(OCLAdminPostPage);
 
         Button btnAdminUpload = view.findViewById(R.id.adminUploadRecipeButton);
-        View.OnClickListener OCLUploadAdmin = v -> Navigation.findNavController(view).navigate(R.id.adminUploadRecipePage);
+        View.OnClickListener OCLUploadAdmin = v -> Navigation.findNavController(view).navigate(R.id.adminUploadRecipePage, bundle);
         btnAdminUpload.setOnClickListener(OCLUploadAdmin);
 
         Button btnAdminViewRep = view.findViewById(R.id.adminViewReportsButton);
-        View.OnClickListener OCLViewRep = v -> Navigation.findNavController(view).navigate(R.id.adminViewReportsPage);
+        View.OnClickListener OCLViewRep = v -> Navigation.findNavController(view).navigate(R.id.adminViewReportsPage, bundle);
         btnAdminViewRep.setOnClickListener(OCLViewRep);
 
         Button btnLogoutAdmin = view.findViewById(R.id.adminLogoutButton);
         View.OnClickListener OCLLogOut = v -> {
-            Navigation.findNavController(view).navigate(R.id.loginPage);
+            Navigation.findNavController(view).navigate(R.id.loginPage, bundle);
             Toast.makeText(getContext(),"You have log out",Toast.LENGTH_SHORT).show();
         };
         btnLogoutAdmin.setOnClickListener(OCLLogOut);
