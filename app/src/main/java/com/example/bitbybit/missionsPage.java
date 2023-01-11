@@ -52,6 +52,7 @@ public class missionsPage extends Fragment {
         Bundle bundle = getArguments();
         String name = bundle.getString("username");
         bundle.putString("username", name);
+        System.out.println(date);
 
         Button BtnExMis = view.findViewById(R.id.exerciseMissionCompleteButton);
         View.OnClickListener OCLExMis = v -> {
@@ -65,7 +66,7 @@ public class missionsPage extends Fragment {
                     System.out.println("RUNNN");
                     Connection connection = Line.getConnection();
                     PreparedStatement ps = connection.prepareStatement("INSERT INTO mission(user_id, mission_id, date) VALUES('" + name + "', 0, '" + date + "')");
-                    PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM mission WHERE user_id = '" + name + "' AND date = '" + date + "'");
+                    PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM mission WHERE user_id = '" + name + "' AND date = '" + date + "' AND mission_id = 0");
                     ResultSet res = ps1.executeQuery();
 
                     if (!res.next()) {
@@ -111,7 +112,7 @@ public class missionsPage extends Fragment {
                 try {
                     Connection connection = Line.getConnection();
                     PreparedStatement ps = connection.prepareStatement("INSERT INTO mission(user_id, mission_id, date) VALUES('" + name + "', 2, '" + date + "')");
-                    PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM mission WHERE user_id = '" + name + "' AND date = '" + date + "'");
+                    PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM mission WHERE user_id = '" + name + "' AND date = '" + date + "' AND mission_id = 2");
                     ResultSet res = ps1.executeQuery();
 
                     if (!res.next()) {
@@ -158,7 +159,7 @@ public class missionsPage extends Fragment {
                 try {
                     Connection connection = Line.getConnection();
                     PreparedStatement ps = connection.prepareStatement("INSERT INTO mission(user_id, mission_id, date) VALUES('" + name + "', 1, '" + date + "')");
-                    PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM mission WHERE user_id = '" + name + "' AND date = '" + date + "'");
+                    PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM mission WHERE user_id = '" + name + "' AND date = '" + date + "' AND mission_id = 1");
                     ResultSet res = ps1.executeQuery();
 
                     if (!res.next()) {
