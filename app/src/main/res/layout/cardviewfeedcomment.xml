@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         app:cardElevation="10dp"
         app:cardCornerRadius="5dp"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="188dp"
         >
@@ -21,7 +21,8 @@
             android:id="@+id/textFeedLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="15dp"
+            android:layout_margin="10dp"
+            android:padding="5dp"
             android:orientation="vertical">
 
             <TextView
@@ -41,7 +42,7 @@
                 android:id="@+id/postDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
+                android:fontFamily="@font/poppins_semibold"
                 android:text="\'To ensure good health: eat lightly, breathe deeply, live moderately, cultivate cgeerfulness, and maintain an interest in life\' - William Londen"
                 android:textColor="@color/pastel_red"
                 android:textSize="14dp">
