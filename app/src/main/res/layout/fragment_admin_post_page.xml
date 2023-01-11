@@ -96,13 +96,6 @@
             android:textColor="@color/black"
             android:textSize="16dp" />
 
-        <ImageView
-            android:id="@+id/pickedImage"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_margin="10dp"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/green_tea_salmon" />
 
         <Button
             android:id="@+id/choosePictureButton"

@@ -9,51 +9,49 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.imageview.ShapeableImageView;
-
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class AdaptorStepsRecipe extends RecyclerView.Adapter<AdaptorStepsRecipe.MyViewHolder> {
 
     Context context;
-    ArrayList<News> newsArrayList;
+    ArrayList<NewsStep> newsStepArrayList;
 
-    public MyAdapter(Context context, ArrayList<News> newsArrayList){
+    public AdaptorStepsRecipe(Context context, ArrayList<NewsStep> newsStepArrayList){
 
         this.context = context;
-        this.newsArrayList = newsArrayList;
+        this.newsStepArrayList = newsStepArrayList;
+
+
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(context).inflate(R.layout.cardviewfoodlistingridient, parent, false);
+        View v = LayoutInflater.from(context).inflate(R.layout.cardviewfoodliststeps, parent, false);
         return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
-        News news = newsArrayList.get(position);
-        holder.textTitle.setText(news.heading);
+        NewsStep newsStep = newsStepArrayList.get(position);
+        holder.foodStep.setText(newsStep.step);
 
     }
 
     @Override
     public int getItemCount() {
-
-        return newsArrayList.size();
+        return newsStepArrayList.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView textTitle;
+
+        TextView foodStep;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            textTitle = itemView.findViewById(R.id.recipeIngredient);
-
+            foodStep = itemView.findViewById(R.id.recipeStep);
         }
     }
 }
