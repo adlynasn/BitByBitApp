@@ -1,62 +1,34 @@
 package com.example.bitbybit;
 
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link calorieCounterPage#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.concurrent.atomic.AtomicReference;
+
 public class calorieCounterPage extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public calorieCounterPage() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment calorieCounterPage.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static calorieCounterPage newInstance(String param1, String param2) {
-        calorieCounterPage fragment = new calorieCounterPage();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -67,12 +39,15 @@ public class calorieCounterPage extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState );
 
         Bundle bundle = getArguments();
+        assert bundle != null;
         String name=bundle.getString("username");
         bundle.putString("username", name);
+
+
 
         Button BtnCancel = view.findViewById(R.id.cancelButton);
         View.OnClickListener OCLCancelBut = v -> Navigation.findNavController(view).navigate(R.id.homePage, bundle);
@@ -82,14 +57,70 @@ public class calorieCounterPage extends Fragment {
         Button BtnAddMeal = view.findViewById(R.id.addMealsButton);
         View.OnClickListener OCLAddMeal = v -> {
 
+            //Initialise variables
+            EditText entryDate = view.findViewById(R.id.entryDate);
+            EditText entryTime = view.findViewById(R.id.entryTime);
+            EditText recipeName = view.findViewById(R.id.recipeName);
+            EditText calories = view.findViewById(R.id.calories);
+            EditText recipeCarbohydrate = view.findViewById(R.id.recipeCarbohydrate);
+            EditText recipeFat = view.findViewById(R.id.recipeFat);
+            EditText recipeProtein = view.findViewById(R.id.recipeProtein);
 
+
+            AtomicReference<Boolean> status = new AtomicReference<>(false);
 
             Thread dataThread = new Thread(() -> {
 
-            });
+                try {
+                    //init variables
+                    String DateString = entryDate.getText().toString();
+                    String TimeString = entryTime.getText().toString();
+                    String recipeString = recipeName.getText().toString();
 
-            Toast.makeText(getContext(), "MEAL ADDED", Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(view).navigate(R.id.homePage, bundle);
+                    if (DateString.equals("") || TimeString.equals("") || recipeString.equals("") || calories.getText().toString().equals("") || recipeCarbohydrate.getText().toString().equals("") || recipeProtein.getText().toString().equals("") || recipeFat.getText().toString().equals(""))
+                        status.set(true);
+
+                    if (status.get() == false){
+                        int IntCal = Integer.parseInt(calories.getText().toString().trim());
+                        int IntCarb = Integer.parseInt(recipeCarbohydrate.getText().toString().trim());
+                        int IntFat = Integer.parseInt(recipeFat.getText().toString().trim());
+                        int IntProtein = Integer.parseInt(recipeProtein.getText().toString().trim());
+                        System.out.println("Trying to access calorie_nutrition db");
+                        Connection connection = Line.getConnection();
+                        assert connection != null;
+                        PreparedStatement ps = connection.prepareStatement("INSERT INTO calorie_nutrition (entry_date, entry_time, mealCalorie, mealCarbohydrate, mealProtein, mealFat, recipe_id, user_id) VALUES ('"
+                                + DateString + "', '"
+                                + TimeString + "', "
+                                + IntCal + ", "
+                                + IntCarb + ", "
+                                + IntProtein + ", "
+                                + IntFat + ", '"
+                                + recipeString + "', '"
+                                + name +"')");
+                        ps.executeUpdate();
+                        ps.close();
+                        connection.close();
+                        System.out.println("button pressed");
+                        requireActivity().runOnUiThread(() -> Navigation.findNavController(view).navigate(R.id.homePage, bundle));
+                    }
+
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+            });
+            dataThread.start();
+            while (dataThread.isAlive()) {
+
+            }
+
+            if (status.get()) {
+                Toast.makeText(getContext(), "Please fill in all the details!", Toast.LENGTH_SHORT).show();
+            }
+            else
+                Toast.makeText(getContext(), "MEAL ADDED", Toast.LENGTH_SHORT).show();
+
         };
         BtnAddMeal.setOnClickListener(OCLAddMeal);
     }
