@@ -24,18 +24,6 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/savedAllRecipesbutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/circle"
-                android:backgroundTint="#FFFFFF"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:layout_gravity="right"
-                android:src="@drawable/ic_baseline_pastelred_bookmark_border_24"
-                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-
-            <ImageButton
                 android:id="@+id/recipeImage"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
