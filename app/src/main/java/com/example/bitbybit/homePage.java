@@ -95,32 +95,32 @@ public class homePage extends Fragment {
         ImageView recipeImage = view.findViewById(R.id.LatestRecipeImage);
 
 
-        Thread dataThread = new Thread(() -> {
-
-            try {
-                Connection connection = Line.getConnection();
-                PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe ORDER BY recipe_id DESC LIMIT 1 ");
-                ResultSet resultSet = ps.executeQuery();
-
-                if(resultSet.next()){
-                    Blob blob = resultSet.getBlob(1);
-                    byte[] data = blob.getBytes(1, (int) blob.length());
-                    ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(data);
-                    Drawable drawable = new BitmapDrawable(byteArrayInputStream);
-                    requireActivity().runOnUiThread(() -> recipeImage.setImageDrawable(drawable));
-                }
-                resultSet.close();
-                ps.close();
-                connection.close();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        });
-        dataThread.start();
-        while (dataThread.isAlive()) {
-
-        }
+//        Thread dataThread = new Thread(() -> {
+//
+//            try {
+//                Connection connection = Line.getConnection();
+//                PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe ORDER BY recipe_id DESC LIMIT 1 ");
+//                ResultSet resultSet = ps.executeQuery();
+//
+//                if(resultSet.next()){
+//                    Blob blob = resultSet.getBlob(1);
+//                    byte[] data = blob.getBytes(1, (int) blob.length());
+//                    ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(data);
+//                    Drawable drawable = new BitmapDrawable(byteArrayInputStream);
+//                    requireActivity().runOnUiThread(() -> recipeImage.setImageDrawable(drawable));
+//                }
+//                resultSet.close();
+//                ps.close();
+//                connection.close();
+//
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        });
+//        dataThread.start();
+//        while (dataThread.isAlive()) {
+//
+//        }
 
 
 

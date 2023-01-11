@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -16,52 +18,19 @@ import android.widget.Button;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link foodIngredientPage#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+
 public class foodIngredientPage extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public foodIngredientPage() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment foodIngredientPage.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static foodIngredientPage newInstance(String param1, String param2) {
-        foodIngredientPage fragment = new foodIngredientPage();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private ArrayList<News> newsArraylist;
+    private RecyclerView recyclerview;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,7 +45,21 @@ public class foodIngredientPage extends Fragment {
 
         Bundle bundle = getArguments();
         String name=bundle.getString("username");
+        String food = bundle.getString("foodbundle");
+        bundle.putString("foodbundle", food);
         bundle.putString("username", name);
+        System.out.println(food);
+        System.out.println(name);
+
+        dataInitialize(food);
+
+        recyclerview = view.findViewById(R.id.recyclerViewListIngredient);
+        System.out.println("kat sini");
+        recyclerview.setLayoutManager(new LinearLayoutManager((getContext())));
+        recyclerview.setHasFixedSize(true);
+        MyAdapter myAdapter = new MyAdapter(getContext(), newsArraylist);
+        recyclerview.setAdapter(myAdapter);
+        myAdapter.notifyDataSetChanged();
 
         Button btnBackIngredient = view.findViewById(R.id.foodDetailsPageButton);
         View.OnClickListener OCLBackIngredient = v -> Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
@@ -109,6 +92,36 @@ public class foodIngredientPage extends Fragment {
         View.OnClickListener OCLFloatButton = v -> Navigation.findNavController(view).navigate(R.id.calorieCounterPage, bundle);
         floatButton.setOnClickListener(OCLFloatButton);
 
+    }
+
+    private void dataInitialize(String obj) {
+        newsArraylist = new ArrayList<>();
+
+
+        Thread dataThread = new Thread(() -> {
+           try {
+               Connection connection = Line.getConnection();
+               PreparedStatement ps = connection.prepareStatement("SELECT recipe_ingredient FROM recipe WHERE recipe_id = '" +obj+ "'");
+               PreparedStatement ps1 = connection.prepareStatement("SELECT SUBSTRING_INDEX(recipe_ingredient, '>', 1) FROM recipe");
+               ResultSet res = ps.executeQuery();
+
+               String ingredient = res.getString(1);
+               List<String> list = new ArrayList<String>(Arrays.asList(ingredient.split(">")));
+
+               for (int i=0; i<list.size(); i++){
+                   News news = new News(list.get(i));
+                   newsArraylist.add(news);
+               }
+
+
+           }catch (SQLException e){
+               e.printStackTrace();
+           }
+        });
+        dataThread.start();
+        while (dataThread.isAlive()){
+
+        }
     }
 
 }

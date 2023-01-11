@@ -12,9 +12,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -77,6 +84,50 @@ public class foodDetailsPage extends Fragment {
         Bundle bundle = getArguments();
         String name=bundle.getString("username");
         bundle.putString("username", name);
+
+
+        TextView foodTitle = view.findViewById(R.id.foodTitle);
+        TextView calories = view.findViewById(R.id.Calories);
+        TextView carbohydrates = view.findViewById(R.id.Carbo);
+        TextView protein = view.findViewById(R.id.Protein);
+        TextView fat = view.findViewById(R.id.Fat);
+        ImageView foodImage = view.findViewById(R.id.foodImage);
+
+        Thread dataThread = new Thread(() -> {
+            try {
+                Connection connection = Line.getConnection();
+                PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe WHERE recipe_id = 'Burger'");
+                ResultSet res = ps.executeQuery();
+
+                if(res.next()){
+                    foodTitle.setText(res.getString(1));
+                    calories.setText(String.valueOf(res.getDouble(6)));
+                    carbohydrates.setText(String.valueOf(res.getDouble(7)));
+                    protein.setText(String.valueOf(res.getDouble(8)));
+                    fat.setText(String.valueOf(res.getDouble(9)));
+
+                }else {
+                    foodTitle.setText("");
+                    calories.setText("");
+                    carbohydrates.setText("");
+                    protein.setText("");
+                    fat.setText("");
+
+                }
+                res.close();
+                connection.close();
+
+
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        });
+        dataThread.start();
+        while (dataThread.isAlive()){
+
+        }
+
+        bundle.putString("foodbundle", foodTitle.getText().toString());
 
         Button btnBackFoodDetails = view.findViewById(R.id.returnToHomePageButton);
         View.OnClickListener OCLBackHP = v -> Navigation.findNavController(view).navigate(R.id.homePage, bundle);

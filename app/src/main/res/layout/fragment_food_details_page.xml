@@ -24,30 +24,30 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/frenchToastTitle"
-        android:layout_below="@id/returnToHomePageButton"
+        android:id="@+id/foodTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/returnToHomePageButton"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="left"
         android:text="Low Calorie French Toast"
-        android:textSize="20sp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/frenchToastTitle"
+        android:layout_below="@id/foodTitle"
         android:orientation="vertical"
 
         >
 
 
         <ImageView
-            android:id="@+id/frenchToastImage"
+            android:id="@+id/foodImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/french_toast" />
@@ -132,7 +132,7 @@
                         android:textAlignment="center" />
 
                     <TextView
-                        android:id="@+id/frenchToastProtein"
+                        android:id="@+id/Protein"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
@@ -161,7 +161,7 @@
                         android:textAlignment="center" />
 
                     <TextView
-                        android:id="@+id/frenchToastFat"
+                        android:id="@+id/Fat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
@@ -190,7 +190,7 @@
                         android:textAlignment="center" />
 
                     <TextView
-                        android:id="@+id/frenchToastCalories"
+                        android:id="@+id/Calories"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
@@ -219,7 +219,7 @@
                         android:textAlignment="center" />
 
                     <TextView
-                        android:id="@+id/frenchToastCarbo"
+                        android:id="@+id/Carbo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"

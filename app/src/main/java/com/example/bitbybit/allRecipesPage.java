@@ -173,7 +173,6 @@ public class allRecipesPage extends Fragment {
             }
         });
         Drawable toReturn = atomicReference.get();
-        assert toReturn != null;
         return toReturn;
     }
 
