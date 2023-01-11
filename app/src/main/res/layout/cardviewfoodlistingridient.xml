@@ -7,33 +7,21 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="5dp"
-        android:layout_margin = "10dp">
+        android:layout_margin='10dp'
+        >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rectangle"
-            android:orientation="vertical">
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/recipeIngredient"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="horizontal">
+                android:background="@drawable/rectangle"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/black"
+                android:padding="15dp"
+                android:text="Honeywheat bread"
+                android:textSize="16dp" />
 
-                <TextView
-                    android:id="@+id/recipeIngredient"
-                    android:layout_width="346dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:padding="10dp"
-                    android:text="Honeywheat bread"
-                    android:textSize="16dp" />
 
-            </LinearLayout>
-        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
