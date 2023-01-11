@@ -70,7 +70,7 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:fontFamily="@font/poppins"
-                    android:hint="date"
+                    android:hint="DD/MM/YYYY"
                     android:inputType="date"
                     android:textAlignment="center"
                     android:textColorHint="@color/pastel_red"
@@ -102,7 +102,7 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:fontFamily="@font/poppins"
-                    android:hint="time"
+                    android:hint="HH::MM"
                     android:inputType="time"
                     android:textAlignment="center"
                     android:textColorHint="@color/pastel_red"
@@ -170,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Calories"
+                    android:text="Calories (in kcal)"
                     android:textSize="14sp" />
 
                 <EditText
@@ -199,7 +199,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Carbohydrate"
+                    android:text="Carbohydrate (in grams)"
                     android:textSize="14sp" />
 
                 <EditText
@@ -228,7 +228,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Fat"
+                    android:text="Fat (in grams)"
                     android:textSize="14sp" />
 
                 <EditText
@@ -257,7 +257,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Protein"
+                    android:text="Protein (in grams)"
                     android:textSize="14sp" />
 
                 <EditText
