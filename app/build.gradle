@@ -42,5 +42,7 @@ dependencies {
     //database dependencies
     implementation 'mysql:mysql-connector-java:5.1.49'
 
+    implementation 'com.google.android.material:material:1.0.0'
+
 
 }
