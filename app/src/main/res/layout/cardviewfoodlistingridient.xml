@@ -24,26 +24,13 @@
 
                 <TextView
                     android:id="@+id/recipeIngredient"
-                    android:layout_width="wrap_content"
+                    android:layout_width="346dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:fontFamily="@font/poppins_semibold"
                     android:padding="10dp"
                     android:text="Honeywheat bread"
-                    android:textSize="16dp"/>
-
-                <TextView
-                    android:id="@+id/recipeQuantity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:padding="10dp"
-                    android:textColor="@color/pastel_red"
-                    android:textSize="16dp"
-                    android:text="2 slices" />
+                    android:textSize="16dp" />
 
             </LinearLayout>
         </LinearLayout>

@@ -96,22 +96,31 @@ public class foodIngredientPage extends Fragment {
 
     private void dataInitialize(String obj) {
         newsArraylist = new ArrayList<>();
+        System.out.println("dalam ni");
 
 
         Thread dataThread = new Thread(() -> {
+
            try {
+               System.out.println("dalam connection");
                Connection connection = Line.getConnection();
                PreparedStatement ps = connection.prepareStatement("SELECT recipe_ingredient FROM recipe WHERE recipe_id = '" +obj+ "'");
-               PreparedStatement ps1 = connection.prepareStatement("SELECT SUBSTRING_INDEX(recipe_ingredient, '>', 1) FROM recipe");
                ResultSet res = ps.executeQuery();
 
-               String ingredient = res.getString(1);
-               List<String> list = new ArrayList<String>(Arrays.asList(ingredient.split(">")));
+               if(res.next()){
+                   String ingredient = res.getString(1);
+                   System.out.println(ingredient);
+                   List<String> list = new ArrayList<String>(Arrays.asList(ingredient.split(">")));
 
-               for (int i=0; i<list.size(); i++){
-                   News news = new News(list.get(i));
-                   newsArraylist.add(news);
+                   for (int i = 0; i < list.size(); i++) {
+                       News news = new News(list.get(i));
+                       newsArraylist.add(news);
+                   }
+
                }
+               res.close();
+               connection.close();
+
 
 
            }catch (SQLException e){
