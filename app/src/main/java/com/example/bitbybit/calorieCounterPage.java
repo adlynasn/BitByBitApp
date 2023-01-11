@@ -18,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicReference;
 
+@SuppressWarnings("ALL")
 public class calorieCounterPage extends Fragment {
 
 
@@ -80,7 +81,7 @@ public class calorieCounterPage extends Fragment {
                     if (DateString.equals("") || TimeString.equals("") || recipeString.equals("") || calories.getText().toString().equals("") || recipeCarbohydrate.getText().toString().equals("") || recipeProtein.getText().toString().equals("") || recipeFat.getText().toString().equals(""))
                         status.set(true);
 
-                    if (status.get() == false){
+                    if (!status.get()){
                         int IntCal = Integer.parseInt(calories.getText().toString().trim());
                         int IntCarb = Integer.parseInt(recipeCarbohydrate.getText().toString().trim());
                         int IntFat = Integer.parseInt(recipeFat.getText().toString().trim());

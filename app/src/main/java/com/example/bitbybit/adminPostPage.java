@@ -5,12 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class adminPostPage extends Fragment {
 
@@ -52,8 +59,41 @@ public class adminPostPage extends Fragment {
         Button btnAdminPublish = view.findViewById(R.id.publishPostButton);
         View.OnClickListener OCLAdminPublish = v -> {
 
-            Toast.makeText(getContext(),"The post has been published",Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(view).navigate(R.id.adminHomePage, bundle);
+            EditText postTitle = view.findViewById(R.id.postTitleName);
+            EditText postDescription = view.findViewById(R.id.postDescription);
+            ImageView postImage = view.findViewById(R.id.PostPicture);
+
+            AtomicReference<Boolean> status = new AtomicReference<>(false);
+
+            Thread dataThread = new Thread(() -> {
+                try {
+                    Connection connection = Line.getConnection();
+                    PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO post (post_title, post_description) VALUES ('"
+                            + postTitle.getText().toString() + "', '"
+                            + postDescription.getText().toString() + "')");
+
+                    if (postTitle.getText().toString().equals("") || postDescription.getText().toString().equals(""))
+                        status.set(true);
+
+                    if (!status.get()) {
+                        preparedStatement.executeUpdate();
+                        requireActivity().runOnUiThread(() -> Navigation.findNavController(view).navigate(R.id.adminHomePage, bundle));
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+            dataThread.start();
+            while (dataThread.isAlive()){
+
+            }
+
+            if (status.get())
+                Toast.makeText(getContext(),"Please fill all the info!",Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(getContext(),"The post has been published",Toast.LENGTH_SHORT).show();
+
         };
         btnAdminPublish.setOnClickListener(OCLAdminPublish);
 
