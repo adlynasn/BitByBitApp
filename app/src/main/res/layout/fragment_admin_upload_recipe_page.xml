@@ -1,73 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".adminUploadRecipePage">
 
+    <LinearLayout
+        android:id="@+id/linearLayoutAdmin2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/returnToAdminHomePageButton"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/ic_baseline_black_arrow_back_24"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/pastel_red"
+            android:textSize="14sp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/newRecipeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Create"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/addRecipeButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="60dp"
+            android:background="@drawable/ic_baseline_black_post_add_24"
+            android:backgroundTint="@color/pastel_red"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayoutAdmin2"
         android:fillViewport="true"
-        android:layout_marginBottom="40dp">
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="30dp"
             >
-
-            <LinearLayout
-                android:id="@+id/linearLayoutAdmin2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/returnToAdminHomePageButton"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="30dp"
-                    android:backgroundTint="@color/white"
-                    android:drawableLeft="@drawable/ic_baseline_black_arrow_back_24"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:textColor="@color/pastel_red"
-                    android:textSize="14sp"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-                <TextView
-                    android:id="@+id/newRecipeTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginEnd="30dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="Create"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
-
-                <Button
-                    android:id="@+id/addRecipeButton"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="60dp"
-                    android:background="@drawable/ic_baseline_black_post_add_24"
-                    android:backgroundTint="@color/pastel_red"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-            </LinearLayout>
 
             <TextView
                 android:id="@+id/recipeNameTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/linearLayoutAdmin2"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="10dp"
@@ -240,23 +243,59 @@
                 android:textColor="@color/pastel_red"
                 android:textSize="16sp" />
 
-            <ListView
-                android:id="@+id/listViewIngredients"
+            <EditText
+                android:id="@+id/recipeIngredients"
+                android:background="@drawable/white_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:minHeight="120dp"
+                android:layout_marginTop="10dp"
                 android:layout_below="@id/ingredientsTitle"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                tools:listitem="@layout/listviewingredients">
+                >
 
-            </ListView>
+            </EditText>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayoutAdminRecipe1"
+                    android:layout_below="@id/recipeIngredients"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/ingredientsDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="left"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:text="Use the format below to input the ingredients : -"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="left"
+                        android:padding="5dp"
+                        android:textSize="12dp"
+                        android:text="Ingredient 1 (quantity) > Ingredient 2 (quantity) > Ingredient 3 (quantity) > ..." />
+                </LinearLayout>
 
 
             <TextView
                 android:id="@+id/stepsTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/listViewIngredients"
+                android:layout_below="@id/linearLayoutAdminRecipe1"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins_semibold"
@@ -265,17 +304,53 @@
                 android:textColor="@color/pastel_red"
                 android:textSize="16sp" />
 
-            <ListView
-                android:id="@+id/listViewSteps"
+            <EditText
+                android:id="@+id/recipeSteps"
+                android:background="@drawable/white_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:minHeight="120dp"
+                android:layout_marginTop="10dp"
                 android:layout_below="@id/stepsTitle"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                tools:listitem="@layout/listviewsteps"
                 >
 
-            </ListView>
+            </EditText>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayoutAdminRecipe2"
+                android:layout_below="@id/recipeSteps"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/stepsDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="left"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:text="Use the format below to input the ingredients : -"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="left"
+                    android:padding="5dp"
+                    android:textSize="12dp"
+                    android:layout_marginBottom="80dp"
+                    android:text="Step 1 > Step 2 > Step 3 > ..." />
+            </LinearLayout>
+
 
 
         </RelativeLayout>
