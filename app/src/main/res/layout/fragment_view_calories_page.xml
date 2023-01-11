@@ -44,9 +44,9 @@
         <ScrollView
             android:layout_width="match_parent"
             android:id="@+id/scrollViewCaloriesPage1"
-            android:layout_height="wrap_content"
+            android:layout_height="350dp"
             android:fillViewport="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_below="@id/viewMealsText"
             >
 
@@ -194,7 +194,6 @@
                     android:textSize="16dp" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </RelativeLayout>
 
