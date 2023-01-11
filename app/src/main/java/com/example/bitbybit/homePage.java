@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -159,6 +160,12 @@ public class homePage extends Fragment {
 //        ImageView recipeImage = view.findViewById(R.id.LatestRecipeImage);
         View.OnClickListener OCLRecipeImage = v -> Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
         recipeImage.setOnClickListener(OCLRecipeImage);
+
+        LinearLayout feed = view.findViewById(R.id.feedLinearLayout);
+        View.OnClickListener OCLfeed = v -> Navigation.findNavController(view).navigate(R.id.socialFeedPage, bundle);
+        feed.setOnClickListener(OCLfeed);
+
+
     }
 
     // Returns a Drawable object. Requires recipe_id

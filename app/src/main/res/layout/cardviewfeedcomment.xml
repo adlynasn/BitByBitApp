@@ -8,7 +8,7 @@
     <androidx.cardview.widget.CardView
         android:id = "@+id/CardViewFeedText"
         android:layout_width="match_parent"
-        android:layout_height="173dp"
+        android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="188dp"
         >
@@ -22,6 +22,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/titleFeed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -34,6 +35,7 @@
             </TextView>
 
             <TextView
+                android:id="@+id/feedContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
