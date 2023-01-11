@@ -101,6 +101,8 @@ public class homePage extends Fragment {
         TextView latestRecipeName = view.findViewById(R.id.latestRecipeName);
         TextView recipeName1 = view.findViewById(R.id.recipeName1);
         TextView recipeName2 = view.findViewById(R.id.recipeName2);
+        TextView feedTitle = view.findViewById(R.id.FeedTitle);
+        TextView feedDescription = view.findViewById(R.id.FeedText);
 
 
         Thread dataThread = new Thread(() -> {
@@ -113,6 +115,8 @@ public class homePage extends Fragment {
                 ResultSet resultSet = ps.executeQuery();
                 PreparedStatement ps1 = connection.prepareStatement("SELECT recipe_id FROM recipe LIMIT 2");
                 ResultSet resultSet1 = ps1.executeQuery();
+                PreparedStatement ps2 = connection.prepareStatement("SELECT * FROM post ORDER BY post_id DESC LIMIT 1");
+                ResultSet resultSet2 = ps2.executeQuery();
 
                 if(resultSet.next()){
                     System.out.println("Recipe db accessed");
@@ -140,6 +144,15 @@ public class homePage extends Fragment {
 
                 resultSet1.close();
                 ps1.close();
+
+                if (resultSet2.next()){
+                    System.out.println("Post db accessed");
+                    feedTitle.setText(resultSet2.getString(2));
+                    feedDescription.setText(resultSet2.getString(3));
+                }
+
+                resultSet2.close();
+                ps2.close();
                 connection.close();
 
             } catch (SQLException e) {

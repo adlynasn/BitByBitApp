@@ -222,6 +222,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/FeedTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
@@ -234,13 +235,14 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/FeedText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:textColor="@color/white"
                     android:layout_marginLeft="15dp"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="\'To ensure good health: eat lightly, breathe deeply, live moderately, cultivate cgeerfulness, and maintain an interest in life\' - William Londen"></TextView>
+                    android:text="\'To ensure good health: eat lightly, breathe deeply, live moderately, cultivate cgeerfulness, and maintain an interest in life\' - William Londen"
+                    android:textColor="@color/white"></TextView>
             </LinearLayout>
 
         </LinearLayout>
