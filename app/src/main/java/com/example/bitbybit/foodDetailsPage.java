@@ -84,6 +84,10 @@ public class foodDetailsPage extends Fragment {
         Bundle bundle = getArguments();
         String name=bundle.getString("username");
         bundle.putString("username", name);
+        String food = bundle.getString("foodbundle");
+        bundle.putString("foodbundle", food);
+
+        System.out.println(food);
 
 
         TextView foodTitle = view.findViewById(R.id.foodTitle);
@@ -96,7 +100,7 @@ public class foodDetailsPage extends Fragment {
         Thread dataThread = new Thread(() -> {
             try {
                 Connection connection = Line.getConnection();
-                PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe WHERE recipe_id = 'Pretzel'");
+                PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe WHERE recipe_id = '" +food+ "'");
                 ResultSet res = ps.executeQuery();
 
                 if(res.next()){
@@ -127,7 +131,7 @@ public class foodDetailsPage extends Fragment {
 
         }
 
-        bundle.putString("foodbundle", foodTitle.getText().toString());
+//        bundle.putString("foodbundle", foodTitle.getText().toString());
 
         Button btnBackFoodDetails = view.findViewById(R.id.returnToHomePageButton);
         View.OnClickListener OCLBackHP = v -> Navigation.findNavController(view).navigate(R.id.homePage, bundle);

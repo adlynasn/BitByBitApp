@@ -81,6 +81,13 @@ public class calorieCounterPage extends Fragment {
 
         Button BtnAddMeal = view.findViewById(R.id.addMealsButton);
         View.OnClickListener OCLAddMeal = v -> {
+
+
+
+            Thread dataThread = new Thread(() -> {
+
+            });
+
             Toast.makeText(getContext(), "MEAL ADDED", Toast.LENGTH_SHORT).show();
             Navigation.findNavController(view).navigate(R.id.homePage, bundle);
         };

@@ -30,56 +30,10 @@ import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link homePage#newInstance} factory method to
- * create an instance of this fragment.
-*/
+
 
 @SuppressWarnings("deprecation")
 public class homePage extends Fragment {
-
-    RecyclerView recyclerView;
-    //UserPlacedApplicationAdapter adapter;
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public homePage() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment homePage.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static homePage newInstance(String param1, String param2) {
-        homePage fragment = new homePage();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -119,7 +73,7 @@ public class homePage extends Fragment {
                 PreparedStatement ps2 = connection.prepareStatement("SELECT * FROM post ORDER BY post_id DESC LIMIT 1");
                 ResultSet resultSet2 = ps2.executeQuery();
 
-                if(resultSet.next()){
+                if (resultSet.next()) {
                     System.out.println("Recipe db accessed");
                     //set name of latest recipe
                     latestRecipeName.setText(resultSet.getString(1));
@@ -133,12 +87,12 @@ public class homePage extends Fragment {
                 ps.close();
 
                 //set name of the 2 recipes
-                while (resultSet1.next()){
+                while (resultSet1.next()) {
                     System.out.println(i.get());
                     System.out.println("Recipe db accessed again");
-                    if (i.get() ==1)
+                    if (i.get() == 1)
                         recipeName1.setText(resultSet1.getString(1));
-                    else if (i.get() ==2)
+                    else if (i.get() == 2)
                         recipeName2.setText(resultSet1.getString(1));
                     i.getAndIncrement();
                 }
@@ -146,7 +100,7 @@ public class homePage extends Fragment {
                 resultSet1.close();
                 ps1.close();
 
-                if (resultSet2.next()){
+                if (resultSet2.next()) {
                     System.out.println("Post db accessed");
                     feedTitle.setText(resultSet2.getString(2));
                     feedDescription.setText(resultSet2.getString(3));
@@ -215,11 +169,14 @@ public class homePage extends Fragment {
                     PreparedStatement ps = connection.prepareStatement("SELECT recipe_id FROM recipe ORDER BY recipe_id DESC LIMIT 1");
                     ResultSet resultSet = ps.executeQuery();
 
-                    if(resultSet.next()){
+                    if (resultSet.next()) {
                         System.out.println("Recipe db accessed");
                         //get recipe_id
-                       recipe_id.set(resultSet.getString(1));
-                        System.out.println(recipe_id.get());
+
+                        recipe_id.set(resultSet.getString(1));
+                        String foodname = recipe_id.get();
+                        bundle.putString("foodbundle", foodname);
+
                     }
                     resultSet.close();
                     ps.close();
@@ -239,7 +196,6 @@ public class homePage extends Fragment {
         LatestRecipeImage.setOnClickListener(OCLLatestRecipeImage);
 
 
-
         //Recipe 1 pic
         View.OnClickListener OCLRecipeImage1 = v -> {
             AtomicReference<String> recipe_id = new AtomicReference<>();
@@ -253,12 +209,14 @@ public class homePage extends Fragment {
                     ResultSet resultSet1 = ps1.executeQuery();
                     i.set(1);
                     //set name of the 2 recipes
-                    while (resultSet1.next()){
+                    while (resultSet1.next()) {
                         System.out.println("Recipe db accessed again");
                         //get recipe_id
-                        if (i.get() ==1){
+                        if (i.get() == 1) {
                             recipe_id.set(resultSet1.getString(1));
-                            System.out.println(recipe_id.get());
+                            String foodname = recipe_id.get();
+                            bundle.putString("foodbundle", foodname);
+
                         }
                         i.getAndIncrement();
                     }
@@ -293,12 +251,14 @@ public class homePage extends Fragment {
                     ResultSet resultSet1 = ps1.executeQuery();
                     i.set(1);
                     //set name of the 2 recipes
-                    while (resultSet1.next()){
+                    while (resultSet1.next()) {
                         System.out.println("Recipe db accessed again");
                         //get recipe_id
-                        if (i.get() ==2){
+                        if (i.get() == 2) {
                             recipe_id.set(resultSet1.getString(1));
-                            System.out.println(recipe_id.get());
+                            String foodname = recipe_id.get();
+                            bundle.putString("foodbundle", foodname);
+
                         }
                         i.getAndIncrement();
                     }
