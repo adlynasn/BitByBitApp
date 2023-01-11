@@ -73,10 +73,10 @@ public class foodDetailsPage extends Fragment {
 
                 if(res.next()){
                     foodTitle.setText(res.getString(1));
-                    calories.setText(String.valueOf(res.getDouble(6)));
-                    carbohydrates.setText(String.valueOf(res.getDouble(7)));
-                    protein.setText(String.valueOf(res.getDouble(8)));
-                    fat.setText(String.valueOf(res.getDouble(9)));
+                    calories.setText(String.valueOf(res.getInt(6)) + " kcal");
+                    carbohydrates.setText(String.valueOf(res.getInt(7)) + "g");
+                    protein.setText(String.valueOf(res.getInt(8)) + "g");
+                    fat.setText(String.valueOf(res.getInt(9)) + "g");
 
                 }else {
                     foodTitle.setText("");

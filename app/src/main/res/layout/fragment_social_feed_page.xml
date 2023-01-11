@@ -37,18 +37,18 @@
             android:textSize="14sp" />
 
     </LinearLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RecyclerFeedRecipe"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/linearLayoutSocialFeed1"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            tools:listitem="@layout/cardviewfeedcomment"
-            >
 
-        </androidx.recyclerview.widget.RecyclerView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerFeedRecipe"
+        android:layout_width="401dp"
+        android:layout_height="584dp"
+        android:layout_below="@+id/linearLayoutSocialFeed1"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        tools:listitem="@layout/cardviewfeedcomment">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 
