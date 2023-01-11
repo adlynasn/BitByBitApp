@@ -96,7 +96,7 @@ public class foodDetailsPage extends Fragment {
         Thread dataThread = new Thread(() -> {
             try {
                 Connection connection = Line.getConnection();
-                PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe WHERE recipe_id = 'Burger'");
+                PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe WHERE recipe_id = 'Pretzel'");
                 ResultSet res = ps.executeQuery();
 
                 if(res.next()){

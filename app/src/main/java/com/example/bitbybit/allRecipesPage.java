@@ -120,7 +120,7 @@ public class allRecipesPage extends Fragment {
             return false;
         });
 
-        FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton2);
+        FloatingActionButton floatButton = view.findViewById(R.id.floatingActionButton);
         View.OnClickListener OCLFloatButton = v -> Navigation.findNavController(view).navigate(R.id.calorieCounterPage, bundle);
         floatButton.setOnClickListener(OCLFloatButton);
 

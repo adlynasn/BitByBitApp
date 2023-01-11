@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -172,6 +173,10 @@ public class homePage extends Fragment {
         Button btnFeed = view.findViewById(R.id.buttonFeed);
         View.OnClickListener OCLFeed = v -> Navigation.findNavController(view).navigate(R.id.socialFeedPage, bundle);
         btnFeed.setOnClickListener(OCLFeed);
+
+        LinearLayout feed = view.findViewById(R.id.feedLinearLayout);
+        View.OnClickListener OCLfeed = v -> Navigation.findNavController(view).navigate(R.id.socialFeedPage, bundle);
+        feed.setOnClickListener(OCLfeed);
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
