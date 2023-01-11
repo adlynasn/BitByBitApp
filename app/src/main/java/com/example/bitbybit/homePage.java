@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +26,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -92,35 +94,60 @@ public class homePage extends Fragment {
         String name = bundle.getString("username");
         bundle.putString("username", name);
 
+        AtomicInteger i = new AtomicInteger(1);
         ImageView recipeImage = view.findViewById(R.id.LatestRecipeImage);
+        TextView latestRecipeName = view.findViewById(R.id.latestRecipeName);
+        TextView recipeName1 = view.findViewById(R.id.recipeName1);
+        TextView recipeName2 = view.findViewById(R.id.recipeName2);
 
 
-//        Thread dataThread = new Thread(() -> {
-//
-//            try {
-//                Connection connection = Line.getConnection();
-//                PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe ORDER BY recipe_id DESC LIMIT 1 ");
-//                ResultSet resultSet = ps.executeQuery();
-//
-//                if(resultSet.next()){
+        Thread dataThread = new Thread(() -> {
+
+            try {
+                //get info from db
+                System.out.println("Trying to access recipe db");
+                Connection connection = Line.getConnection();
+                PreparedStatement ps = connection.prepareStatement("SELECT recipe_id FROM recipe ORDER BY recipe_id DESC LIMIT 1");
+                ResultSet resultSet = ps.executeQuery();
+                PreparedStatement ps1 = connection.prepareStatement("SELECT recipe_id FROM recipe LIMIT 2");
+                ResultSet resultSet1 = ps1.executeQuery();
+
+                if(resultSet.next()){
+                    System.out.println("Recipe db accessed");
+                    //set name of latest recipe
+                    latestRecipeName.setText(resultSet.getString(1));
 //                    Blob blob = resultSet.getBlob(1);
 //                    byte[] data = blob.getBytes(1, (int) blob.length());
 //                    ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(data);
 //                    Drawable drawable = new BitmapDrawable(byteArrayInputStream);
 //                    requireActivity().runOnUiThread(() -> recipeImage.setImageDrawable(drawable));
-//                }
-//                resultSet.close();
-//                ps.close();
-//                connection.close();
-//
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        });
-//        dataThread.start();
-//        while (dataThread.isAlive()) {
-//
-//        }
+                }
+                resultSet.close();
+                ps.close();
+
+                //set name of the 2 recipes
+                while (resultSet1.next()){
+                    System.out.println(i.get());
+                    System.out.println("Recipe db accessed again");
+                    if (i.get() ==1)
+                        recipeName1.setText(resultSet1.getString(1));
+                    else if (i.get() ==2)
+                        recipeName2.setText(resultSet1.getString(1));
+                    i.getAndIncrement();
+                }
+
+                resultSet1.close();
+                ps1.close();
+                connection.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        dataThread.start();
+        while (dataThread.isAlive()) {
+
+        }
 
 
 
