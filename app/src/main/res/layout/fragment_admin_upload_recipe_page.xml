@@ -249,6 +249,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="120dp"
+                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:layout_below="@id/ingredientsTitle"
                 android:layout_marginStart="10dp"
