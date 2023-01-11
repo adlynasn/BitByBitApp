@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fillViewport="true"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginStart="30dp"
-    android:layout_marginEnd="30dp"
-    android:layout_marginTop="20dp"
     tools:context=".adminUploadRecipePage">
 
     <LinearLayout
+        android:id="@+id/linearLayoutAdmin2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayoutAdmin2"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
         android:orientation="horizontal">
 
         <Button
@@ -36,9 +32,9 @@
             android:id="@+id/newRecipeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="40dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="30dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="Create"
             android:textAlignment="center"
@@ -50,281 +46,313 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="60dp"
+            android:background="@drawable/ic_baseline_black_post_add_24"
             android:backgroundTint="@color/pastel_red"
             android:fontFamily="@font/poppins_semibold"
-            android:background="@drawable/ic_baseline_black_post_add_24"
             android:textColor="@color/white"
             android:textSize="14sp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/recipeNameTitle"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayoutAdmin2"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="10dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:gravity="left"
-        android:text="Recipe Name"
-        android:textColor="@color/pastel_red"
-        android:textSize="16sp" />
-
-    <EditText
-        android:id="@+id/recipeName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/recipeNameTitle"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/white_field"
-        android:minHeight="48dp"
-        android:padding="10dp"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/nutritionalTitle"
-        android:layout_below="@id/recipeName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:gravity="left"
-        android:text="Nutritional Values"
-        android:textColor="@color/pastel_red"
-        android:textSize="16sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/linearLayoutadmin3"
-        android:layout_below="@id/nutritionalTitle"
+        android:fillViewport="true"
         >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/caloriesText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Calories"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/calories"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="calories"
-                android:inputType="number"
-                android:textAlignment="center"
-                android:textColorHint="@color/pastel_red"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/CarboText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Carbohydrate"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/recipeCarbohydrate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="grams"
-                android:inputType="number"
-                android:textAlignment="center"
-                android:textColorHint="@color/pastel_red"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/fatText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Fat"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/recipeFat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="grams"
-                android:inputType="number"
-                android:textAlignment="center"
-                android:textColorHint="@color/pastel_red"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            >
 
             <TextView
-                android:id="@+id/proteinText"
+                android:id="@+id/recipeNameTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:textSize="14sp"
-                android:text="Protein" />
+                android:gravity="left"
+                android:text="Recipe Name"
+                android:textColor="@color/pastel_red"
+                android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/recipeProtein"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="grams"
-                android:textColorHint="@color/pastel_red"
-                android:textAlignment="center"
-                android:textSize="14sp"
-                android:ems="10"
-                android:inputType="number" />
-        </LinearLayout>
-    </LinearLayout>
-
-
-    <TextView
-        android:id="@+id/ingredientsTitle"
-        android:layout_below="@id/linearLayoutadmin3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:gravity="left"
-        android:text="Recipe Ingredients"
-        android:textColor="@color/pastel_red"
-        android:textSize="16sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/linearLayoutAdmin4"
-        android:layout_below="@id/ingredientsTitle"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/recipeIngredient"
+                android:id="@+id/recipeName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_below="@id/recipeNameTitle"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/white_field"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/nutritionalTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/recipeName"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:hint="Ingredient"
-                android:textSize="14sp" />
+                android:gravity="left"
+                android:text="Nutritional Values"
+                android:textColor="@color/pastel_red"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/linearLayoutadmin3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/nutritionalTitle"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/caloriesText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Calories"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/calories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="calories"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColorHint="@color/pastel_red"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/CarboText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Carbohydrate"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/recipeCarbohydrate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="grams"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColorHint="@color/pastel_red"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/fatText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Fat"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/recipeFat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="grams"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColorHint="@color/pastel_red"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/proteinText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Protein"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/recipeProtein"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="grams"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColorHint="@color/pastel_red"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/ingredientsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linearLayoutadmin3"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="left"
+                android:text="Recipe Ingredients"
+                android:textColor="@color/pastel_red"
+                android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/ingredientQuantity"
+                android:id="@+id/recipeIngredients"
+                android:background="@drawable/white_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="120dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/ingredientsTitle"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                >
+
+            </EditText>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayoutAdminRecipe1"
+                    android:layout_below="@id/recipeIngredients"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/ingredientsDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="left"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:text="Use the format below to input the ingredients : -"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="left"
+                        android:padding="5dp"
+                        android:textSize="12dp"
+                        android:text="Ingredient 1 (quantity) > Ingredient 2 (quantity) > Ingredient 3 (quantity) > ..." />
+                </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/stepsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linearLayoutAdminRecipe1"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="left"
+                android:text="Recipe Steps"
+                android:textColor="@color/pastel_red"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/recipeSteps"
+                android:background="@drawable/white_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="120dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/stepsTitle"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                >
+
+            </EditText>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="quantity"
-                android:inputType="number"
-                android:textAlignment="center"
-                android:textColorHint="@color/pastel_red"
-                android:textSize="14sp" />
-        </LinearLayout>
-    </LinearLayout>
+                android:id="@+id/linearLayoutAdminRecipe2"
+                android:layout_below="@id/recipeSteps"
+                android:orientation="vertical">
 
-    <Button
-        android:id="@+id/addIngredientsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linearLayoutAdmin4"
-        android:layout_marginStart="10dp"
-        android:backgroundTint="@color/white"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="ADD INGREDIENTS"
-        android:textColor="@color/pastel_red"
-        android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/stepsDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="left"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:text="Use the format below to input the ingredients : -"
+                    android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/stepsTitle"
-        android:layout_below="@id/addIngredientsButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:gravity="left"
-        android:text="Recipe Steps"
-        android:textColor="@color/pastel_red"
-        android:textSize="16sp" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recipeSteps"
-        android:layout_below="@id/stepsTitle"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:hint="Recipe steps"
-        android:textSize="14sp"
-        />
-
-    <Button
-        android:id="@+id/addStepsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/recipeSteps"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:backgroundTint="@color/white"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="ADD STEPS"
-        android:textColor="@color/pastel_red"
-        android:textSize="12sp"
-        android:layout_marginBottom="50dp"/>
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="left"
+                    android:padding="5dp"
+                    android:textSize="12dp"
+                    android:layout_marginBottom="80dp"
+                    android:text="Step 1 > Step 2 > Step 3 > ..." />
+            </LinearLayout>
 
 
+
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
-</ScrollView>

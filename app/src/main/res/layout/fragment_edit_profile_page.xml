@@ -83,19 +83,6 @@
         android:text="Update your details below."
         android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/userNameTitle"
-        android:layout_below="@id/editProfileDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:gravity="left"
-        android:text="Update your name or username"
-        android:textSize="16sp" />
-
 
     <TextView
         android:id="@+id/userBioTitle"
@@ -114,10 +101,10 @@
         android:id="@+id/ChangePassTitle"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_below="@+id/username"
+        android:layout_below="@+id/editProfileTitle"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="left"
         android:text="Change your password"
@@ -150,23 +137,6 @@
         android:text="CANCEL"
         android:textColor="@color/pastel_red"
         android:textSize="14sp" />
-
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="356dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/userNameTitle"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="-11dp"
-        android:background="@drawable/white_field"
-        android:drawablePadding="20dp"
-        android:hint="Username"
-        android:minHeight="48dp"
-        android:padding="10dp"
-        android:textColorHint="@color/pastel_red"
-        android:textSize="16sp" />
 
     <EditText
 
@@ -204,12 +174,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/choosePictureTitle"
         android:layout_alignParentStart="true"
-        android:gravity="left"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="-10dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/white"
         android:drawableEnd="@drawable/ic_baseline_pastelred_arrow_forward_ios_24"
         android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
         android:text="Select"
         android:textColor="@color/pastel_red"
         android:textSize="14sp" />
@@ -218,9 +188,9 @@
         android:id="@+id/ChangePassBut"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/username"
+        android:layout_below="@+id/editProfileTitle"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:backgroundTint="@color/white"
         android:drawableEnd="@drawable/ic_baseline_pastelred_arrow_forward_ios_24"
