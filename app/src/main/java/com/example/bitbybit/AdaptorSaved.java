@@ -61,7 +61,6 @@ public class AdaptorSaved extends RecyclerView.Adapter<AdaptorSaved.MyViewHolder
             super(itemView);
 
             recipeName = itemView.findViewById(R.id.recipeName);
-            recipeImage = itemView.findViewById(R.id.imageSavedRecipes);
             delete = itemView.findViewById(R.id.ButtonDeleteRecipe);
 
         }

@@ -96,18 +96,24 @@ public class caloriesIntakePage extends Fragment {
             try {
                 System.out.println("dalam connection");
                 Connection connection = Line.getConnection();
-                PreparedStatement ps = connection.prepareStatement("SELECT * FROM calorie_nutrition ");
+                PreparedStatement ps = connection.prepareStatement("SELECT * FROM calorie_nutrition WHERE user_id = '" + name + "'");
                 ResultSet res = ps.executeQuery();
 
 
                 while (res.next()) {
-                    String Date = res.getString(2);
-                    NewsMeal newsMeal = new NewsMeal(Date);
-                    newsMealArraylist.add(newsMeal);
 
+                    String Date = res.getString(2);
+                        if (newsMealArraylist.contains(Date)){
+                            System.out.println("Date already in arraylist");
+                        }
+                        else {
+                            System.out.println(Date + " added");
+                            NewsMeal newsMeal = new NewsMeal(Date);
+                            newsMealArraylist.add(newsMeal);
+                        }
                 }
-                res.close();
-                connection.close();
+//                res.close();
+//                connection.close();
 
                 if(res.next()){
                     String ingredient = res.getString(1);

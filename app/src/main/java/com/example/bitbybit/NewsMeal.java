@@ -7,4 +7,12 @@ public class NewsMeal {
     public NewsMeal(String Date){
         this.Date = Date;
     }
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
 }
