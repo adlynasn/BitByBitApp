@@ -81,7 +81,7 @@ public class adminUploadRecipePage extends Fragment {
                     }
                     if (!status.get()) {
                         System.out.println("no recipe with that name");
-                        if (recipeName.getText().toString().equals("") || Ingredients.getText().toString().equals("") || Steps.getText().toString().equals("") || calories.getText().toString().equals("") || fat.getText().toString().equals("") || carbohydrates.getText().toString().equals("") || protein.getText().toString().equals("")) {
+                        if (recipeName.getText().toString().equals("") || Ingredients.getText().toString().equals("") || Steps.getText().toString().equals("") || calories.getText().toString().equals("") || fat.getText().toString().equals("") || carbohydrates.getText().toString().equals("") || protein.getText().toString().equals("") || Ingredients.getText().toString().equals("") || Steps.getText().toString().equals("")){
                             status1.set(true);
                             System.out.println(status1.get().toString());
                             System.out.println("Empty fields detected");
