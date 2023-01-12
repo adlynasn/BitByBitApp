@@ -44,7 +44,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:id="@+id/scrollViewCaloriesPage1"
-            android:layout_height="350dp"
+            android:layout_height="360dp"
             android:fillViewport="true"
             android:layout_marginTop="10dp"
             android:layout_below="@id/viewMealsText"

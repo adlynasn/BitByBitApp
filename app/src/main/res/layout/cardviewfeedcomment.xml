@@ -3,34 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:id = "@+id/CardViewFeedText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="5dp"
+        android:layout_margin="10dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="188dp"
         >
 
         <LinearLayout
-            android:id="@+id/textFeed"
+            android:id="@+id/textFeedLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="15dp"
-            android:background="@drawable/rectangular_lightgrey"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/titleFeed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/poppins_semibold"
                 android:text="Quote of the day!"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:textStyle="bold">
+                android:textColor="@color/pastel_red"
+                android:textSize="18dp"
+                >
 
             </TextView>
 
@@ -38,38 +41,13 @@
                 android:id="@+id/feedContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_marginLeft="15dp"
-                android:fontFamily="@font/poppins_semibold"
+                android:fontFamily="@font/poppins_medium"
                 android:text="\'To ensure good health: eat lightly, breathe deeply, live moderately, cultivate cgeerfulness, and maintain an interest in life\' - William Londen"
-                android:textColor="@color/white">
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                >
 
             </TextView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textFeed"
-                    android:background="@color/light_pitch"
-                    android:src="@drawable/ic_baseline_star_24"
-                    android:clickable="true">
-
-                </ImageButton>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="10"
-                    android:textSize="15dp"
-                    android:textStyle="bold"></TextView>
-
-            </LinearLayout>
 
         </LinearLayout>
 
