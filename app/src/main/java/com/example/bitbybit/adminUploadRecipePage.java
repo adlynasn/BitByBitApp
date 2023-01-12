@@ -120,7 +120,7 @@ public class adminUploadRecipePage extends Fragment {
                 Toast.makeText(getContext(), "Please fill all the section", Toast.LENGTH_SHORT).show();
 
             }
-            if (!status.get() && !status1.get()){
+            else if (!status.get() && !status1.get()){
                 System.out.println(status.get().toString() + status1.get().toString());
                 Toast.makeText(getContext(), "The recipe has been uploaded", Toast.LENGTH_SHORT).show();
             }
