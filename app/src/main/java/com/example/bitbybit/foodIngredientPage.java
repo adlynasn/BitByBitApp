@@ -48,10 +48,12 @@ public class foodIngredientPage extends Fragment {
         String food = bundle.getString("foodbundle");
         bundle.putString("foodbundle", food);
         bundle.putString("username", name);
-        System.out.println(food);
+        String foodName = bundle.getString("FoodName");
+        bundle.putString("FoodName", foodName);
+        System.out.println(foodName);
         System.out.println(name);
 
-        dataInitialize(food);
+        dataInitialize(foodName);
 
         recyclerview = view.findViewById(R.id.recyclerViewListIngredient);
         System.out.println("kat sini");

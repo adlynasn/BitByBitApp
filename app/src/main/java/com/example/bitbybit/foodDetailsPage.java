@@ -71,7 +71,7 @@ public class foodDetailsPage extends Fragment {
         Thread dataThread = new Thread(() -> {
             try {
                 Connection connection = Line.getConnection();
-                PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe WHERE recipe_id = '" +food+ "'");
+                PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe WHERE recipe_id = '" +foodName+ "'");
                 ResultSet res = ps.executeQuery();
 
                 if(res.next()){
@@ -103,7 +103,7 @@ public class foodDetailsPage extends Fragment {
         }
 
         Button btnBackFoodDetails = view.findViewById(R.id.returnToHomePageButton);
-        View.OnClickListener OCLBackHP = v -> Navigation.findNavController(view).navigate(R.id.homePage, bundle);
+        View.OnClickListener OCLBackHP = v -> Navigation.findNavController(view).navigate(R.id.allRecipesPage, bundle);
         btnBackFoodDetails.setOnClickListener(OCLBackHP);
 
         Button btnPrepareIng = view.findViewById(R.id.frenchToastIngredientsPageButton);
