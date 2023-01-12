@@ -51,13 +51,13 @@ public class homePage extends Fragment {
 
         AtomicInteger i = new AtomicInteger(1);
         ImageView LatestRecipeImage = view.findViewById(R.id.LatestRecipeImage);
-        ImageView RecipeImage1 = view.findViewById(R.id.recipe1);
-        ImageView RecipeImage2 = view.findViewById(R.id.recipe2);
+//        ImageView RecipeImage1 = view.findViewById(R.id.recipe1);
+//        ImageView RecipeImage2 = view.findViewById(R.id.recipe2);
         TextView latestRecipeName = view.findViewById(R.id.latestRecipeName);
-        TextView recipeName1 = view.findViewById(R.id.recipeName1);
-        TextView recipeName2 = view.findViewById(R.id.recipeName2);
-        TextView feedTitle = view.findViewById(R.id.FeedTitle);
-        TextView feedDescription = view.findViewById(R.id.FeedText);
+//        TextView recipeName1 = view.findViewById(R.id.recipeName1);
+//        TextView recipeName2 = view.findViewById(R.id.recipeName2);
+        TextView feedTitle = view.findViewById(R.id.postTitle);
+        TextView feedDescription = view.findViewById(R.id.postDescription);
 
 
         Thread dataThread = new Thread(() -> {
@@ -87,15 +87,15 @@ public class homePage extends Fragment {
                 ps.close();
 
                 //set name of the 2 recipes
-                while (resultSet1.next()) {
-                    System.out.println(i.get());
-                    System.out.println("Recipe db accessed again");
-                    if (i.get() == 1)
-                        recipeName1.setText(resultSet1.getString(1));
-                    else if (i.get() == 2)
-                        recipeName2.setText(resultSet1.getString(1));
-                    i.getAndIncrement();
-                }
+//                while (resultSet1.next()) {
+//                    System.out.println(i.get());
+//                    System.out.println("Recipe db accessed again");
+//                    if (i.get() == 1)
+//                        recipeName1.setText(resultSet1.getString(1));
+//                    else if (i.get() == 2)
+//                        recipeName2.setText(resultSet1.getString(1));
+//                    i.getAndIncrement();
+//                }
 
                 resultSet1.close();
                 ps1.close();
@@ -128,7 +128,7 @@ public class homePage extends Fragment {
         View.OnClickListener OCLFeed = v -> Navigation.findNavController(view).navigate(R.id.socialFeedPage, bundle);
         btnFeed.setOnClickListener(OCLFeed);
 
-        LinearLayout feed = view.findViewById(R.id.feedLinearLayout);
+        LinearLayout feed = view.findViewById(R.id.textFeedLayout);
         View.OnClickListener OCLfeed = v -> Navigation.findNavController(view).navigate(R.id.socialFeedPage, bundle);
         feed.setOnClickListener(OCLfeed);
 
@@ -197,88 +197,88 @@ public class homePage extends Fragment {
 
 
         //Recipe 1 pic
-        View.OnClickListener OCLRecipeImage1 = v -> {
-            AtomicReference<String> recipe_id = new AtomicReference<>();
-            Thread dataThread3 = new Thread(() -> {
-
-                try {
-                    //get info from db
-                    System.out.println("Trying to access recipe db");
-                    Connection connection = Line.getConnection();
-                    PreparedStatement ps1 = connection.prepareStatement("SELECT recipe_id FROM recipe LIMIT 2");
-                    ResultSet resultSet1 = ps1.executeQuery();
-                    i.set(1);
-                    //set name of the 2 recipes
-                    while (resultSet1.next()) {
-                        System.out.println("Recipe db accessed again");
-                        //get recipe_id
-                        if (i.get() == 1) {
-                            recipe_id.set(resultSet1.getString(1));
-                            String foodname = recipe_id.get();
-                            bundle.putString("foodbundle", foodname);
-
-                        }
-                        i.getAndIncrement();
-                    }
-
-                    resultSet1.close();
-                    ps1.close();
-                    connection.close();
-
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            });
-            dataThread3.start();
-            while (dataThread3.isAlive()) {
-
-            }
-            //TODO Carry over recipe_id
-            Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
-        };
-        RecipeImage1.setOnClickListener(OCLRecipeImage1);
-
-        //Recipe 2 pic
-        View.OnClickListener OCLRecipeImage2 = v -> {
-            AtomicReference<String> recipe_id = new AtomicReference<>();
-            Thread dataThread3 = new Thread(() -> {
-
-                try {
-                    //get info from db
-                    System.out.println("Trying to access recipe db");
-                    Connection connection = Line.getConnection();
-                    PreparedStatement ps1 = connection.prepareStatement("SELECT recipe_id FROM recipe LIMIT 2");
-                    ResultSet resultSet1 = ps1.executeQuery();
-                    i.set(1);
-                    //set name of the 2 recipes
-                    while (resultSet1.next()) {
-                        System.out.println("Recipe db accessed again");
-                        //get recipe_id
-                        if (i.get() == 2) {
-                            recipe_id.set(resultSet1.getString(1));
-                            String foodname = recipe_id.get();
-                            bundle.putString("foodbundle", foodname);
-
-                        }
-                        i.getAndIncrement();
-                    }
-
-                    resultSet1.close();
-                    ps1.close();
-                    connection.close();
-
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            });
-            dataThread3.start();
-            while (dataThread3.isAlive()) {
-
-            }
-            //TODO Carry over recipe_id
-            Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
-        };
-        RecipeImage2.setOnClickListener(OCLRecipeImage2);
+//        View.OnClickListener OCLRecipeImage1 = v -> {
+//            AtomicReference<String> recipe_id = new AtomicReference<>();
+//            Thread dataThread3 = new Thread(() -> {
+//
+//                try {
+//                    //get info from db
+//                    System.out.println("Trying to access recipe db");
+//                    Connection connection = Line.getConnection();
+//                    PreparedStatement ps1 = connection.prepareStatement("SELECT recipe_id FROM recipe LIMIT 2");
+//                    ResultSet resultSet1 = ps1.executeQuery();
+//                    i.set(1);
+//                    //set name of the 2 recipes
+//                    while (resultSet1.next()) {
+//                        System.out.println("Recipe db accessed again");
+//                        //get recipe_id
+//                        if (i.get() == 1) {
+//                            recipe_id.set(resultSet1.getString(1));
+//                            String foodname = recipe_id.get();
+//                            bundle.putString("foodbundle", foodname);
+//
+//                        }
+//                        i.getAndIncrement();
+//                    }
+//
+//                    resultSet1.close();
+//                    ps1.close();
+//                    connection.close();
+//
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                }
+//            });
+//            dataThread3.start();
+//            while (dataThread3.isAlive()) {
+//
+//            }
+//            //TODO Carry over recipe_id
+//            Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
+//        };
+//        RecipeImage1.setOnClickListener(OCLRecipeImage1);
+//
+//        //Recipe 2 pic
+//        View.OnClickListener OCLRecipeImage2 = v -> {
+//            AtomicReference<String> recipe_id = new AtomicReference<>();
+//            Thread dataThread3 = new Thread(() -> {
+//
+//                try {
+//                    //get info from db
+//                    System.out.println("Trying to access recipe db");
+//                    Connection connection = Line.getConnection();
+//                    PreparedStatement ps1 = connection.prepareStatement("SELECT recipe_id FROM recipe LIMIT 2");
+//                    ResultSet resultSet1 = ps1.executeQuery();
+//                    i.set(1);
+//                    //set name of the 2 recipes
+//                    while (resultSet1.next()) {
+//                        System.out.println("Recipe db accessed again");
+//                        //get recipe_id
+//                        if (i.get() == 2) {
+//                            recipe_id.set(resultSet1.getString(1));
+//                            String foodname = recipe_id.get();
+//                            bundle.putString("foodbundle", foodname);
+//
+//                        }
+//                        i.getAndIncrement();
+//                    }
+//
+//                    resultSet1.close();
+//                    ps1.close();
+//                    connection.close();
+//
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                }
+//            });
+//            dataThread3.start();
+//            while (dataThread3.isAlive()) {
+//
+//            }
+//            //TODO Carry over recipe_id
+//            Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
+//        };
+//        RecipeImage2.setOnClickListener(OCLRecipeImage2);
     }
 
     // Returns a Drawable object. Requires recipe_id
