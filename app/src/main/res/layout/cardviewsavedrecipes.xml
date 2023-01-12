@@ -8,9 +8,14 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="5dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
 
-        >
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,13 +23,6 @@
             android:layout_margin="5dp"
 
             android:orientation="vertical">
-
-            <RelativeLayout
-                android:id="@+id/relativeLayoutSavedRecipesPage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:padding="10dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,6 +38,7 @@
                     android:clickable="true"
                     android:fontFamily="@font/poppins_semibold"
                     android:linksClickable="true"
+                    android:maxWidth="280dp"
                     android:text="Low Calorie French Toast"
                     android:textColor="@color/black"
                     android:textSize="16sp">
@@ -48,13 +47,15 @@
 
                 <Button
                     android:id="@+id/ButtonDeleteRecipe"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="100dp"
-                    android:layout_marginEnd="5dp"
                     android:background="@drawable/transparent_background"
                     android:backgroundTint="#FFFFFF"
-                    android:drawableLeft="@drawable/ic_baseline_pastelred_bookmark_border_24">
+                    android:drawablePadding="10dp"
+                    android:drawableLeft="@drawable/ic_baseline_pastelred_bookmark_border_24"
+                    android:gravity="center">
+
 
                 </Button>
             </LinearLayout>
