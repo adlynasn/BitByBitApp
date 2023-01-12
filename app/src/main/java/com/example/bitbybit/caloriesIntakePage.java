@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -26,6 +28,7 @@ import java.util.List;
 public class caloriesIntakePage extends Fragment {
 
     private ArrayList<NewsMeal> newsMealArraylist;
+    private RecyclerView recyclerview;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,6 +46,14 @@ public class caloriesIntakePage extends Fragment {
         bundle.putString("username", name);
         
         dataInitialized(name);
+
+        recyclerview = view.findViewById(R.id.recyclerViewCalorieIntake);
+        System.out.println("kat sini");
+        recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerview.setHasFixedSize(true);
+        AdaptorMeal myAdapter = new AdaptorMeal(getContext(), newsMealArraylist);
+        recyclerview.setAdapter(myAdapter);
+        myAdapter.notifyDataSetChanged();
 
         Button BtnBackToIntake = view.findViewById(R.id.backToLoginPageButton);
         View.OnClickListener OCLBtnBack = v -> Navigation.findNavController(view).navigate(R.id.action_caloriesIntakePage_to_profilePage, bundle);

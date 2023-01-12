@@ -62,15 +62,14 @@ public class adminUploadRecipePage extends Fragment {
             EditText Steps = view.findViewById(R.id.recipeSteps);
 
             AtomicReference<Boolean> status = new AtomicReference<>(false);
-            AtomicReference<Boolean> status1 = new AtomicReference<>();
-            status1.set(false);
+            AtomicReference<Boolean> status1 = new AtomicReference<>(false);
 
             Thread dataThread = new Thread(() -> {
 
                 try {
                     Connection connection = Line.getConnection();
                     System.out.println(recipeName.getText().toString());
-                    assert connection != null;
+//                    assert connection != null;
                     PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe WHERE recipe_id = '" + recipeName.getText().toString() + "'");
                     ResultSet res = ps.executeQuery();
 
@@ -81,12 +80,12 @@ public class adminUploadRecipePage extends Fragment {
                     }
                     if (!status.get()) {
                         System.out.println("no recipe with that name");
-                        if (recipeName.getText().toString().equals("") || Ingredients.getText().toString().equals("") || Steps.getText().toString().equals("") || calories.getText().toString().equals("") || fat.getText().toString().equals("") || carbohydrates.getText().toString().equals("") || protein.getText().toString().equals("") || Ingredients.getText().toString().equals("") || Steps.getText().toString().equals("")){
+                        if (recipeName.getText().toString().equals("") || Ingredients.getText().toString().equals("") || Steps.getText().toString().equals("") || calories.getText().toString().equals("") || fat.getText().toString().equals("") || carbohydrates.getText().toString().equals("") || protein.getText().toString().equals("") || Ingredients.getText().toString().equals("") || Steps.getText().toString().equals("")) {
                             status1.set(true);
-                            System.out.println(status1.get().toString());
                             System.out.println("Empty fields detected");
                         }
-                        if (!status1.get()){
+                        System.out.println(status1);
+                        if (!status1.get()) {
                             PreparedStatement ps1 = connection.prepareStatement("INSERT INTO recipe(recipe_id, recipe_ingredient, recipe_instruction, recipe_calorie, recipe_carbohydrate, recipe_protein, recipe_fat) VALUES('"
                                     + recipeName.getText().toString() + "','"
                                     + Ingredients.getText().toString() + "','"
@@ -111,6 +110,9 @@ public class adminUploadRecipePage extends Fragment {
                 }
             });
             dataThread.start();
+            while (dataThread.isAlive()){
+
+            }
 
             if (status.get()) {
                 Toast.makeText(getContext(), "The recipe name has already been used", Toast.LENGTH_SHORT).show();
@@ -120,7 +122,7 @@ public class adminUploadRecipePage extends Fragment {
                 Toast.makeText(getContext(), "Please fill all the section", Toast.LENGTH_SHORT).show();
 
             }
-            if (!status.get() && !status1.get()){
+            if (!status.get() && !status1.get()) {
                 System.out.println(status.get().toString() + status1.get().toString());
                 Toast.makeText(getContext(), "The recipe has been uploaded", Toast.LENGTH_SHORT).show();
             }
