@@ -54,8 +54,10 @@ public class foodStepsPage extends Fragment {
         bundle.putString("username", name);
         System.out.println(food);
         System.out.println(name);
+        String foodName = bundle.getString("FoodName");
+        bundle.putString("FoodName", foodName);
 
-        dataInitialize(food);
+        dataInitialize(foodName);
 
         recyclerview = view.findViewById(R.id.recyclerViewSteps);
         System.out.println("kat sini");
@@ -94,7 +96,7 @@ public class foodStepsPage extends Fragment {
 
     }
 
-    private void dataInitialize(String food) {
+    private void dataInitialize(String foodName) {
 
         newsStepArraylist = new ArrayList<>();
         System.out.println("dalam ni");
@@ -105,7 +107,7 @@ public class foodStepsPage extends Fragment {
             try {
                 System.out.println("dalam connection");
                 Connection connection = Line.getConnection();
-                PreparedStatement ps = connection.prepareStatement("SELECT recipe_instruction FROM recipe WHERE recipe_id = '" +food+ "'");
+                PreparedStatement ps = connection.prepareStatement("SELECT recipe_instruction FROM recipe WHERE recipe_id = '" +foodName+ "'");
                 ResultSet res = ps.executeQuery();
 
                 if(res.next()){
