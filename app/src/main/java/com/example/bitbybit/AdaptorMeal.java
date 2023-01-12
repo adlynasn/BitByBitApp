@@ -40,11 +40,11 @@ public class AdaptorMeal extends  RecyclerView.Adapter<AdaptorMeal.MyViewHolder>
 
         NewsMeal newsMeal = newsMealArrayList.get(position);
         holder.date.setText(newsMeal.Date);
-        String Date = newsMeal.Date.toString();
-        bundle.putString("dateMeal", Date);
         holder.viewCalorie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String Date = newsMeal.Date.toString();
+                bundle.putString("dateMeal", Date);
                 Navigation.findNavController(view).navigate(R.id.viewCaloriesPage, bundle);
 
             }

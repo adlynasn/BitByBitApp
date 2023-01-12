@@ -42,9 +42,9 @@ public class caloriesIntakePage extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
-        String name=bundle.getString("username");
+        String name = bundle.getString("username");
         bundle.putString("username", name);
-        
+
         dataInitialized(name);
 
         recyclerview = view.findViewById(R.id.recyclerViewCalorieIntake);
@@ -62,7 +62,7 @@ public class caloriesIntakePage extends Fragment {
 
         BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            switch(item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.home:
                     Navigation.findNavController(view).navigate(R.id.homePage, bundle);
                     return true;
@@ -103,22 +103,20 @@ public class caloriesIntakePage extends Fragment {
                 while (res.next()) {
 
                     String Date = res.getString(2);
-                        if (newsMealArraylist.contains(Date)){
-                            System.out.println("Date already in arraylist");
-                        }
-                        else {
-                            System.out.println(Date + " added");
-                            NewsMeal newsMeal = new NewsMeal(Date);
-                            newsMealArraylist.add(newsMeal);
-                        }
+                    if (newsMealArraylist.contains(Date)) {
+                        System.out.println("Date already in arraylist");
+                    } else {
+                        System.out.println(Date + " added");
+                        NewsMeal newsMeal = new NewsMeal(Date);
+                        newsMealArraylist.add(newsMeal);
+                    }
                 }
 //                res.close();
 //                connection.close();
 
-                if(res.next()){
+                if (res.next()) {
                     String ingredient = res.getString(1);
                     System.out.println(ingredient);
-
 
 
                 }
@@ -126,13 +124,12 @@ public class caloriesIntakePage extends Fragment {
                 connection.close();
 
 
-
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         });
         dataThread.start();
-        while (dataThread.isAlive()){
+        while (dataThread.isAlive()) {
 
         }
     }

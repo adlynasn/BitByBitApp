@@ -55,7 +55,7 @@ public class viewCaloriesPage extends Fragment {
         String date = bundle.getString("dateMeal");
         bundle.putString("dateMeal", date);
 
-        dataInitialize(caloryTotal, carboTotal, proteinTotal, fatTotal, date);
+        dataInitialize(caloryTotal, carboTotal, proteinTotal, fatTotal, date, name);
 
         recyclerview = view.findViewById(R.id.recyclerViewMeals);
         System.out.println("kat sini");
@@ -96,7 +96,7 @@ public class viewCaloriesPage extends Fragment {
 
     }
 
-    private void dataInitialize(TextView a, TextView b, TextView c, TextView d, String date) {
+    private void dataInitialize(TextView a, TextView b, TextView c, TextView d, String date, String username) {
 
         newsIntakeArraylist = new ArrayList<>();
         System.out.println("dalam ni");
@@ -108,7 +108,7 @@ public class viewCaloriesPage extends Fragment {
             try {
                 System.out.println("dalam connection");
                 Connection connection = Line.getConnection();
-                PreparedStatement ps = connection.prepareStatement("SELECT * FROM calorie_nutrition WHERE entry_date = '" +date+ "'");
+                PreparedStatement ps = connection.prepareStatement("SELECT * FROM calorie_nutrition WHERE entry_date = '" +date+ "' AND user_id = '" +username+ "'");
                 ResultSet res = ps.executeQuery();
                 int total_calory = 0;
                 int total_carbo = 0;
