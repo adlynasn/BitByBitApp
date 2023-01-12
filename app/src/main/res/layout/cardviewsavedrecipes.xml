@@ -6,25 +6,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="5dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
 
-        >
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
 
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/relativeLayoutSavedRecipesPage"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/ButtonDeleteRecipe"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="330dp"
+                android:layout_marginTop="-0dp"
+                android:background="@color/pastel_red"
+                android:backgroundTint="#FFFFFF"
+                app:icon="@drawable/ic_baseline_pastelred_bookmark_border_24"
+                app:iconTint="@color/white">
 
-                android:padding="10dp"/>
+
+            </Button>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -35,28 +46,21 @@
                     android:id="@+id/recipeName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginEnd="10dp"
+                    android:layout_marginTop="-5dp"
                     android:clickable="true"
-                    android:fontFamily="@font/poppins_semibold"
+                    android:fontFamily="@font/poppins_medium"
                     android:linksClickable="true"
+                    android:textStyle="bold"
+                    android:maxWidth="280dp"
                     android:text="Low Calorie French Toast"
                     android:textColor="@color/black"
                     android:textSize="16sp">
 
                 </TextView>
 
-                <Button
-                    android:id="@+id/ButtonDeleteRecipe"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="100dp"
-                    android:layout_marginEnd="5dp"
-                    android:background="@drawable/transparent_background"
-                    android:backgroundTint="#FFFFFF"
-                    android:drawableLeft="@drawable/ic_baseline_pastelred_bookmark_border_24">
-
-                </Button>
             </LinearLayout>
 
         </LinearLayout>
