@@ -97,8 +97,6 @@ public class editProfilePage extends Fragment {
         };
         BtnChangePass.setOnClickListener(OCLCngPAss);
 
-
-        EditText username = view.findViewById(R.id.username);
         EditText biodata = view.findViewById(R.id.userBio);
 
         Button btnUpdateProf = view.findViewById(R.id.updateProfileButton);
@@ -106,31 +104,13 @@ public class editProfilePage extends Fragment {
             System.out.println(name);
             System.out.println(name.getClass());
 
-            AtomicReference<Boolean> status = new AtomicReference<>(true);
-//            AtomicReference<Boolean> status1 = new AtomicReference<>(false);
             Thread dataThread = new Thread(() -> {
 
                 try {
                     Connection connection = Line.getConnection();
-                    PreparedStatement ps = connection.prepareStatement("SELECT * FROM user where user_id = '" + username.getText().toString() + "'");
-                    PreparedStatement ps1 = connection.prepareStatement("UPDATE user SET user_id = '" + username.getText().toString() + "' where user_id = '" + name + "'");
                     PreparedStatement ps2 = connection.prepareStatement("UPDATE user SET profile_bio = '" + biodata.getText().toString() + "' where user_id = '" + name + "'");
-                    ResultSet res = ps.executeQuery();
-
-                    if (!res.next()) {
-                        status.set(false);
-                        ps2.executeUpdate();
-
-                        if (!username.getText().toString().equals("")) {
-                            ps1.executeUpdate();
-                        }
-
-                    } else {
-                        status.set(true);
-                    }
-                    res.close();
-                    ps.close();
-                    ps1.close();
+                    ps2.executeUpdate();
+                    requireActivity().runOnUiThread(() -> Navigation.findNavController(view).navigate(R.id.profilePage, bundle));
                     ps2.close();
                     connection.close();
 
@@ -144,14 +124,7 @@ public class editProfilePage extends Fragment {
 
             }
 
-            if (status.get()) {
-                Toast.makeText(getContext(), "username has already been used. Please enter another username", Toast.LENGTH_SHORT).show();
-
-            } else {
-                Toast.makeText(getContext(), "Your profile has been update", Toast.LENGTH_SHORT).show();
-                Navigation.findNavController(view).navigate(R.id.profilePage, bundle);
-
-            }
+            Toast.makeText(getContext(), "Your profile has been update", Toast.LENGTH_SHORT).show();
 
         };
         btnUpdateProf.setOnClickListener(OCLUpdate);
