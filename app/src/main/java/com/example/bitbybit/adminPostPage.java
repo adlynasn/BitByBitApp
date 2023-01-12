@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,7 +15,6 @@ import androidx.navigation.Navigation;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class adminPostPage extends Fragment {
@@ -43,6 +41,7 @@ public class adminPostPage extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
+        assert bundle != null;
         String name=bundle.getString("username");
         bundle.putString("username", name);
 
@@ -61,13 +60,13 @@ public class adminPostPage extends Fragment {
 
             EditText postTitle = view.findViewById(R.id.postTitleName);
             EditText postDescription = view.findViewById(R.id.postDescription);
-            ImageView postImage = view.findViewById(R.id.PostPicture);
 
             AtomicReference<Boolean> status = new AtomicReference<>(false);
 
             Thread dataThread = new Thread(() -> {
                 try {
                     Connection connection = Line.getConnection();
+                    assert connection != null;
                     PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO post (post_title, post_description) VALUES ('"
                             + postTitle.getText().toString() + "', '"
                             + postDescription.getText().toString() + "')");

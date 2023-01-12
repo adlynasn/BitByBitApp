@@ -20,51 +20,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicReference;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link adminUploadRecipePage#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class adminUploadRecipePage extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public adminUploadRecipePage() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment adminUploadRecipePage.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static adminUploadRecipePage newInstance(String param1, String param2) {
-        adminUploadRecipePage fragment = new adminUploadRecipePage();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -79,6 +46,7 @@ public class adminUploadRecipePage extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
+        assert bundle != null;
         String name = bundle.getString("username");
         bundle.putString("username", name);
 
@@ -94,33 +62,48 @@ public class adminUploadRecipePage extends Fragment {
             EditText Steps = view.findViewById(R.id.recipeSteps);
 
             AtomicReference<Boolean> status = new AtomicReference<>(false);
-            AtomicReference<Boolean> status1 = new AtomicReference<>(false);
+            AtomicReference<Boolean> status1 = new AtomicReference<>();
+            status1.set(false);
 
             Thread dataThread = new Thread(() -> {
 
                 try {
                     Connection connection = Line.getConnection();
                     System.out.println(recipeName.getText().toString());
+                    assert connection != null;
                     PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe WHERE recipe_id = '" + recipeName.getText().toString() + "'");
-                    PreparedStatement ps1 = connection.prepareStatement("INSERT INTO recipe(recipe_id, recipe_ingredient, recipe_instruction, recipe_calorie, recipe_carbohydrate, recipe_protein, recipe_fat) VALUES('" + recipeName.getText().toString() + "','" + Ingredients.getText().toString() + "','" + Steps.getText().toString() + "','" + calories.getText().toString() + "','" + carbohydrates.getText().toString() + "','" + protein.getText().toString() + "','" + fat.getText().toString() + "')");
                     ResultSet res = ps.executeQuery();
 
                     if (res.next()) {
+                        System.out.println("have existing recipe with same name");
                         status.set(true);
 
                     }
                     if (!status.get()) {
+                        System.out.println("no recipe with that name");
                         if (recipeName.getText().toString().equals("") || Ingredients.getText().toString().equals("") || Steps.getText().toString().equals("") || calories.getText().toString().equals("") || fat.getText().toString().equals("") || carbohydrates.getText().toString().equals("") || protein.getText().toString().equals("")) {
                             status1.set(true);
-
-                        } else {
+                            System.out.println(status1.get().toString());
+                            System.out.println("Empty fields detected");
+                        }
+                        if (!status1.get()){
+                            PreparedStatement ps1 = connection.prepareStatement("INSERT INTO recipe(recipe_id, recipe_ingredient, recipe_instruction, recipe_calorie, recipe_carbohydrate, recipe_protein, recipe_fat) VALUES('"
+                                    + recipeName.getText().toString() + "','"
+                                    + Ingredients.getText().toString() + "','"
+                                    + Steps.getText().toString() + "','"
+                                    + calories.getText().toString() + "','"
+                                    + carbohydrates.getText().toString() + "','"
+                                    + protein.getText().toString() + "','"
+                                    + fat.getText().toString() + "')");
                             ps1.executeUpdate();
+                            ps1.close();
+                            System.out.println("data pushed`");
+                            Navigation.findNavController(view).navigate(R.id.adminHomePage, bundle);
                         }
                     }
 
                     res.close();
                     ps.close();
-                    ps1.close();
                     connection.close();
 
                 } catch (SQLException e) {
@@ -128,19 +111,18 @@ public class adminUploadRecipePage extends Fragment {
                 }
             });
             dataThread.start();
-            while (dataThread.isAlive()) {
+
+            if (status.get()) {
+                Toast.makeText(getContext(), "The recipe name has already been used", Toast.LENGTH_SHORT).show();
 
             }
-            if (status.get()) {
-                Toast.makeText(getContext(), "The recipe or recipe name has already been used or uploaded ", Toast.LENGTH_SHORT).show();
-
-            } else if (status1.get()) {
+            if (status1.get()) {
                 Toast.makeText(getContext(), "Please fill all the section", Toast.LENGTH_SHORT).show();
 
-            } else {
+            }
+            if (!status.get() && !status1.get()){
+                System.out.println(status.get().toString() + status1.get().toString());
                 Toast.makeText(getContext(), "The recipe has been uploaded", Toast.LENGTH_SHORT).show();
-                Navigation.findNavController(view).navigate(R.id.adminHomePage, bundle);
-
             }
         };
         BtnAddRecipe.setOnClickListener(OCLAddRecipe);

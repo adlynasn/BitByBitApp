@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -36,12 +35,9 @@ public class AdaptorAllRecipe extends RecyclerView.Adapter<AdaptorAllRecipe.MyVi
         NewsAll newsAll = newsAllArrayList.get(position);
         holder.foodName.setText(newsAll.RecipeName);
         holder.foodImage.setImageResource(newsAll.FoodImage);
-        holder.foodImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        holder.foodImage.setOnClickListener(view -> {
 //                Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
 
-            }
         });
 
     }

@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -38,17 +37,11 @@ public class AdaptorSaved extends RecyclerView.Adapter<AdaptorSaved.MyViewHolder
         NewsSaved newsSaved = newsSavedArrayList.get(position);
         holder.recipeName.setText(newsSaved.RecipeName);
         holder.recipeImage.setImageResource(newsSaved.FoodImage);
-        holder.recipeImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        holder.recipeImage.setOnClickListener(view -> {
 //                Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
-            }
         });
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        holder.delete.setOnClickListener(view -> {
 
-            }
         });
 
     }
