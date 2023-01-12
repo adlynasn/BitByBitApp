@@ -20,7 +20,7 @@ public class AdaptorAllRecipe extends RecyclerView.Adapter<AdaptorAllRecipe.MyVi
     ArrayList<NewsAll> newsAllArrayList;
     Bundle bundle;
 
-    public AdaptorAllRecipe(Context context, ArrayList<NewsAll> newsAllArrayList, Bundle bundle){
+    public AdaptorAllRecipe(Context context, ArrayList<NewsAll> newsAllArrayList, Bundle bundle) {
         this.context = context;
         this.newsAllArrayList = newsAllArrayList;
         this.bundle = bundle;
@@ -34,17 +34,17 @@ public class AdaptorAllRecipe extends RecyclerView.Adapter<AdaptorAllRecipe.MyVi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position ) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         NewsAll newsAll = newsAllArrayList.get(position);
         holder.foodName.setText(newsAll.RecipeName);
-        String foodName = newsAll.RecipeName.toString();
-        bundle.putString("FoodName", foodName);
-        String name=bundle.getString("username");
+        String name = bundle.getString("username");
         bundle.putString("username", name);
         holder.foodImage.setImageResource(newsAll.FoodImage);
         holder.foodImage.setOnClickListener(view -> {
-                Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
+            String foodName = newsAll.RecipeName.toString();
+            bundle.putString("FoodName", foodName);
+            Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
 
         });
 
@@ -57,7 +57,7 @@ public class AdaptorAllRecipe extends RecyclerView.Adapter<AdaptorAllRecipe.MyVi
         return newsAllArrayList.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView foodImage;
         TextView foodName;
