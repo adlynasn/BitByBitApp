@@ -20,6 +20,7 @@
         android:textColor="@color/black"
         android:textSize="20sp" />
 
+
     <TextView
         android:id="@+id/missionsCentreTitle"
         android:layout_width="wrap_content"
@@ -28,15 +29,14 @@
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="21dp"
         android:background="@drawable/field"
         android:backgroundTint="@color/pastel_red"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
-        android:text="Daily Missions"
+        android:text="Small steps every day"
         android:textColor="@color/white"
         android:textSize="18sp" />
-
 
     <TextView
         android:id="@+id/artOfExerciseMissionTitle"
