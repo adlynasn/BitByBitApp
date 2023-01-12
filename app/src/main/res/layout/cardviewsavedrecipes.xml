@@ -24,22 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:padding="10dp">
-
-                <ImageView
-                    android:id="@+id/imageSavedRecipes"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:background="@drawable/roundcorner"
-                    android:clickable="true"
-                    android:onClick="clickNew"
-                    android:padding="5dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/french_toast">
-
-                </ImageView>
-
-            </RelativeLayout>
+                android:padding="10dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -64,12 +49,12 @@
                 <Button
                     android:id="@+id/ButtonDeleteRecipe"
                     android:layout_width="match_parent"
-                    android:layout_marginStart="100dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="100dp"
                     android:layout_marginEnd="5dp"
                     android:background="@drawable/transparent_background"
                     android:backgroundTint="#FFFFFF"
-                    android:drawableLeft="@drawable/ic_baseline_delete_outline_24">
+                    android:drawableLeft="@drawable/ic_baseline_pastelred_bookmark_border_24">
 
                 </Button>
             </LinearLayout>

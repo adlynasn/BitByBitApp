@@ -21,6 +21,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#F4AB87"
             android:orientation="vertical">
 
             <ImageView
@@ -28,9 +29,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="-40dp"
                 android:background="@drawable/roundcorner"
                 android:clickable="true"
-                android:layout_marginBottom="-40dp"
                 android:contentDescription="@string/hello_blank_fragment"
                 android:onClick="clickNew"
                 android:scaleType="fitXY"
@@ -40,15 +41,14 @@
                 android:id="@+id/recipeName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Green Tea Noodles with Sticky Sweet Chili Salmon "
                 android:textColor="@color/black"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="10dp"
-                android:textSize="16sp"
-                 />
+                android:textSize="16sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
