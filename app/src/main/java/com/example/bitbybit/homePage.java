@@ -103,10 +103,12 @@ public class homePage extends Fragment {
 
 
         Button BtnAllRecipe = view.findViewById(R.id.buttonAllReceipe);
+        Toast.makeText(getContext(), "Loading...", Toast.LENGTH_SHORT).show();
         View.OnClickListener OCLAllRecipe = v -> Navigation.findNavController(view).navigate(R.id.action_homePage_to_allRecipesPage, bundle);
         BtnAllRecipe.setOnClickListener(OCLAllRecipe);
 
         Button btnFeed = view.findViewById(R.id.buttonFeed);
+        Toast.makeText(getContext(), "Loading...", Toast.LENGTH_SHORT).show();
         View.OnClickListener OCLFeed = v -> Navigation.findNavController(view).navigate(R.id.socialFeedPage, bundle);
         btnFeed.setOnClickListener(OCLFeed);
 
