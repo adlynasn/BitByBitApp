@@ -1,6 +1,7 @@
 package com.example.bitbybit;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,18 +10,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class AdaptorSaved extends RecyclerView.Adapter<AdaptorSaved.MyViewHolder>{
+public class AdaptorSaved extends RecyclerView.Adapter<AdaptorSaved.MyViewHolder> {
 
     Context context;
     ArrayList<NewsSaved> newsSavedArrayList;
+    Bundle bundle;
 
-    public AdaptorSaved(Context context, ArrayList<NewsSaved> newsSavedArrayList){
+    public AdaptorSaved(Context context, ArrayList<NewsSaved> newsSavedArrayList, Bundle bundle) {
         this.context = context;
         this.newsSavedArrayList = newsSavedArrayList;
+        this.bundle = bundle;
 
     }
 
@@ -36,13 +40,12 @@ public class AdaptorSaved extends RecyclerView.Adapter<AdaptorSaved.MyViewHolder
 
         NewsSaved newsSaved = newsSavedArrayList.get(position);
         holder.recipeName.setText(newsSaved.RecipeName);
-        holder.recipeImage.setImageResource(newsSaved.FoodImage);
-        holder.recipeImage.setOnClickListener(view -> {
-//                Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
+        holder.recipeName.setOnClickListener(view -> {
+            String foodName = newsSaved.RecipeName.toString();
+            bundle.putString("FoodName", foodName);
+            Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
         });
-        holder.delete.setOnClickListener(view -> {
 
-        });
 
     }
 
@@ -54,15 +57,11 @@ public class AdaptorSaved extends RecyclerView.Adapter<AdaptorSaved.MyViewHolder
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView recipeName;
-        ImageView recipeImage;
-        Button delete;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             recipeName = itemView.findViewById(R.id.recipeName);
-            recipeImage = itemView.findViewById(R.id.imageSavedRecipes);
-            delete = itemView.findViewById(R.id.ButtonDeleteRecipe);
 
         }
     }
