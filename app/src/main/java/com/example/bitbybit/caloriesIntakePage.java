@@ -51,7 +51,7 @@ public class caloriesIntakePage extends Fragment {
         System.out.println("kat sini");
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
-        AdaptorMeal myAdapter = new AdaptorMeal(getContext(), newsMealArraylist);
+        AdaptorMeal myAdapter = new AdaptorMeal(getContext(), newsMealArraylist, bundle);
         recyclerview.setAdapter(myAdapter);
         myAdapter.notifyDataSetChanged();
 
@@ -96,8 +96,18 @@ public class caloriesIntakePage extends Fragment {
             try {
                 System.out.println("dalam connection");
                 Connection connection = Line.getConnection();
-                PreparedStatement ps = connection.prepareStatement("SELECT entry_date FROM calorie_nutrition WHERE entry_date = '" +name+ "'");
+                PreparedStatement ps = connection.prepareStatement("SELECT * FROM calorie_nutrition ");
                 ResultSet res = ps.executeQuery();
+
+
+                while (res.next()) {
+                    String Date = res.getString(2);
+                    NewsMeal newsMeal = new NewsMeal(Date);
+                    newsMealArraylist.add(newsMeal);
+
+                }
+                res.close();
+                connection.close();
 
                 if(res.next()){
                     String ingredient = res.getString(1);

@@ -23,6 +23,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 
@@ -51,8 +52,10 @@ public class viewCaloriesPage extends Fragment {
         Bundle bundle = getArguments();
         String name=bundle.getString("username");
         bundle.putString("username", name);
+        String date = bundle.getString("dateMeal");
+        bundle.putString("dateMeal", date);
 
-        dataInitialize(caloryTotal, carboTotal, proteinTotal, fatTotal);
+        dataInitialize(caloryTotal, carboTotal, proteinTotal, fatTotal, date);
 
         recyclerview = view.findViewById(R.id.recyclerViewMeals);
         System.out.println("kat sini");
@@ -93,10 +96,11 @@ public class viewCaloriesPage extends Fragment {
 
     }
 
-    private void dataInitialize(TextView a, TextView b, TextView c, TextView d) {
+    private void dataInitialize(TextView a, TextView b, TextView c, TextView d, String date) {
 
         newsIntakeArraylist = new ArrayList<>();
         System.out.println("dalam ni");
+        System.out.println(date);
 
 
         Thread dataThread = new Thread(() -> {
@@ -104,7 +108,7 @@ public class viewCaloriesPage extends Fragment {
             try {
                 System.out.println("dalam connection");
                 Connection connection = Line.getConnection();
-                PreparedStatement ps = connection.prepareStatement("SELECT * FROM calorie_nutrition ");
+                PreparedStatement ps = connection.prepareStatement("SELECT * FROM calorie_nutrition WHERE entry_date = '" +date+ "'");
                 ResultSet res = ps.executeQuery();
                 int total_calory = 0;
                 int total_carbo = 0;
@@ -136,6 +140,7 @@ public class viewCaloriesPage extends Fragment {
                 b.setText(Integer.toString(total_carbo));
                 c.setText(Integer.toString(total_protein));
                 d.setText(Integer.toString(total_fat));
+                System.out.println(date);
 
                 res.close();
                 connection.close();

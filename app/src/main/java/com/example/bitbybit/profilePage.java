@@ -121,7 +121,7 @@ public class profilePage extends Fragment {
 
         //View calories button
         Button BtnViewCal = view.findViewById(R.id.viewCalorieButton);
-        View.OnClickListener OCLCalIntake = v -> Navigation.findNavController(view).navigate(R.id.viewCaloriesPage, bundle);
+        View.OnClickListener OCLCalIntake = v -> Navigation.findNavController(view).navigate(R.id.caloriesIntakePage, bundle);
         BtnViewCal.setOnClickListener(OCLCalIntake);
 
         //Report Button
