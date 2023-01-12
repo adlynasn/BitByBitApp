@@ -181,7 +181,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="Quote of the day!"
-                        android:textColor="@color/black"
+                        android:textColor="@color/pastel_red"
                         android:textSize="14dp"
                         >
 
@@ -193,7 +193,6 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="\'To ensure good health: eat lightly, breathe deeply, live moderately, cultivate cgeerfulness, and maintain an interest in life\' - William Londen"
-                        android:textColor="@color/pastel_red"
                         android:textSize="13dp">
 
                     </TextView>
