@@ -54,8 +54,11 @@ public class foodDetailsPage extends Fragment {
         bundle.putString("username", name);
         String food = bundle.getString("foodbundle");
         bundle.putString("foodbundle", food);
+        String foodName = bundle.getString("FoodName");
+        bundle.putString("FoodName", foodName);
 
-        System.out.println(food);
+        System.out.println(foodName);
+        System.out.println(name);
 
 
         TextView foodTitle = view.findViewById(R.id.foodTitle);

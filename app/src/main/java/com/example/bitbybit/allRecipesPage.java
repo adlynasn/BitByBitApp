@@ -15,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,55 +30,16 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link allRecipesPage#newInstance} factory method to
- * create an instance of this fragment.
- */
-@SuppressWarnings("deprecation")
+
 public class allRecipesPage extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public allRecipesPage() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment allRecipesPage.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static allRecipesPage newInstance(String param1, String param2) {
-        allRecipesPage fragment = new allRecipesPage();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private ArrayList<NewsAll> newsAllArraylist;
+    private RecyclerView recyclerview;
+    private int[] imageResourceID;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -94,6 +57,16 @@ public class allRecipesPage extends Fragment {
         bundle.putString("username", name);
 
         Drawable drawable = getPicFromDB("French Toast", requireActivity().getContentResolver(), new Thread());
+
+        dataInitialize();
+
+        recyclerview = view.findViewById(R.id.RecyclerAllrecipe);
+        System.out.println("kat sini");
+        recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerview.setHasFixedSize(true);
+        AdaptorAllRecipe myAdapter = new AdaptorAllRecipe(getContext(), newsAllArraylist, bundle);
+        recyclerview.setAdapter(myAdapter);
+        myAdapter.notifyDataSetChanged();
 
 
 
@@ -124,6 +97,62 @@ public class allRecipesPage extends Fragment {
         View.OnClickListener OCLFloatButton = v -> Navigation.findNavController(view).navigate(R.id.calorieCounterPage, bundle);
         floatButton.setOnClickListener(OCLFloatButton);
 
+    }
+
+    private void dataInitialize() {
+        newsAllArraylist = new ArrayList<>();
+        System.out.println("dalam ni");
+
+
+        Thread dataThread = new Thread(() -> {
+
+            try {
+                System.out.println("dalam connection");
+                Connection connection = Line.getConnection();
+                PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe ");
+                ResultSet res = ps.executeQuery();
+
+                int i =0;
+
+                imageResourceID = new int[]{
+                        R.drawable.airfryersalmon,
+                        R.drawable.asiancucumbersalad,
+                        R.drawable.avocadosmoothie,
+                        R.drawable.balsamicglazedsalmon,
+                        R.drawable.blueberrysmoothie,
+                        R.drawable.french_toast_image,
+                        R.drawable.oatmealsmoothie,
+                        R.drawable.peachsmoothie,
+                        R.drawable.pretzel,
+                        R.drawable.ramensalad,
+                        R.drawable.smoothiebowl,
+                        R.drawable.strawberrysalad,
+                        R.drawable.tofustirfry,
+                        R.drawable.veganburger,
+                        R.drawable.veganpancakes
+
+                };
+
+                while (res.next()) {
+                    String foodName = res.getString(1);
+                    NewsAll newsAll = new NewsAll(foodName, imageResourceID[i]);
+                    newsAllArraylist.add(newsAll);
+                    i++;
+
+
+                }
+                res.close();
+                connection.close();
+
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        dataThread.start();
+        while (dataThread.isAlive()) {
+
+        }
     }
 
 

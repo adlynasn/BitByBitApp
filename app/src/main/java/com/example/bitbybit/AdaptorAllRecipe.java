@@ -1,6 +1,7 @@
 package com.example.bitbybit;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -16,10 +18,12 @@ public class AdaptorAllRecipe extends RecyclerView.Adapter<AdaptorAllRecipe.MyVi
 
     Context context;
     ArrayList<NewsAll> newsAllArrayList;
+    Bundle bundle;
 
-    public AdaptorAllRecipe(Context context, ArrayList<NewsAll> newsAllArrayList){
+    public AdaptorAllRecipe(Context context, ArrayList<NewsAll> newsAllArrayList, Bundle bundle){
         this.context = context;
         this.newsAllArrayList = newsAllArrayList;
+        this.bundle = bundle;
     }
 
     @NonNull
@@ -30,13 +34,17 @@ public class AdaptorAllRecipe extends RecyclerView.Adapter<AdaptorAllRecipe.MyVi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position ) {
 
         NewsAll newsAll = newsAllArrayList.get(position);
         holder.foodName.setText(newsAll.RecipeName);
+        String foodName = newsAll.RecipeName.toString();
+        bundle.putString("FoodName", foodName);
+        String name=bundle.getString("username");
+        bundle.putString("username", name);
         holder.foodImage.setImageResource(newsAll.FoodImage);
         holder.foodImage.setOnClickListener(view -> {
-//                Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
+                Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
 
         });
 

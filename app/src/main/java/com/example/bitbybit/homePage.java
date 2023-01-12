@@ -191,7 +191,7 @@ public class homePage extends Fragment {
 
             }
             // TODO Carry over recipe_id
-            Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
+            Navigation.findNavController(view).navigate(R.id.allRecipesPage, bundle);
         };
         LatestRecipeImage.setOnClickListener(OCLLatestRecipeImage);
 
