@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
@@ -44,6 +45,7 @@ public class AdaptorAllRecipe extends RecyclerView.Adapter<AdaptorAllRecipe.MyVi
         holder.foodImage.setOnClickListener(view -> {
             String foodName = newsAll.RecipeName.toString();
             bundle.putString("FoodName", foodName);
+            Toast.makeText(context, "Loading...", Toast.LENGTH_SHORT).show();
             Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
 
         });

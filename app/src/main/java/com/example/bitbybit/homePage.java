@@ -11,12 +11,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -27,7 +27,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 
@@ -46,16 +45,12 @@ public class homePage extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
+        assert bundle != null;
         String name = bundle.getString("username");
         bundle.putString("username", name);
 
-        AtomicInteger i = new AtomicInteger(1);
         ImageView LatestRecipeImage = view.findViewById(R.id.LatestRecipeImage);
-//        ImageView RecipeImage1 = view.findViewById(R.id.recipe1);
-//        ImageView RecipeImage2 = view.findViewById(R.id.recipe2);
         TextView latestRecipeName = view.findViewById(R.id.latestRecipeName);
-//        TextView recipeName1 = view.findViewById(R.id.recipeName1);
-//        TextView recipeName2 = view.findViewById(R.id.recipeName2);
         TextView feedTitle = view.findViewById(R.id.postTitle);
         TextView feedDescription = view.findViewById(R.id.postDescription);
 
@@ -66,6 +61,7 @@ public class homePage extends Fragment {
                 //get info from db
                 System.out.println("Trying to access recipe db");
                 Connection connection = Line.getConnection();
+                assert connection != null;
                 PreparedStatement ps = connection.prepareStatement("SELECT recipe_id FROM recipe ORDER BY recipe_id DESC LIMIT 1");
                 ResultSet resultSet = ps.executeQuery();
                 PreparedStatement ps1 = connection.prepareStatement("SELECT recipe_id FROM recipe LIMIT 2");
@@ -77,25 +73,11 @@ public class homePage extends Fragment {
                     System.out.println("Recipe db accessed");
                     //set name of latest recipe
                     latestRecipeName.setText(resultSet.getString(1));
-//                    Blob blob = resultSet.getBlob(1);
-//                    byte[] data = blob.getBytes(1, (int) blob.length());
-//                    ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(data);
-//                    Drawable drawable = new BitmapDrawable(byteArrayInputStream);
-//                    requireActivity().runOnUiThread(() -> recipeImage.setImageDrawable(drawable));
                 }
                 resultSet.close();
                 ps.close();
 
                 //set name of the 2 recipes
-//                while (resultSet1.next()) {
-//                    System.out.println(i.get());
-//                    System.out.println("Recipe db accessed again");
-//                    if (i.get() == 1)
-//                        recipeName1.setText(resultSet1.getString(1));
-//                    else if (i.get() == 2)
-//                        recipeName2.setText(resultSet1.getString(1));
-//                    i.getAndIncrement();
-//                }
 
                 resultSet1.close();
                 ps1.close();
@@ -190,8 +172,10 @@ public class homePage extends Fragment {
             while (dataThread2.isAlive()) {
 
             }
-            // TODO Carry over recipe_id
-            Navigation.findNavController(view).navigate(R.id.allRecipesPage, bundle);
+
+            Toast.makeText(getContext(), "Loading...", Toast.LENGTH_SHORT).show();
+            bundle.putString("FoodName", recipe_id.get());
+            Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
         };
         LatestRecipeImage.setOnClickListener(OCLLatestRecipeImage);
 
@@ -287,7 +271,7 @@ public class homePage extends Fragment {
         dataThread = new Thread(() -> {
             try (
                     Connection connection = Line.getConnection();
-                    PreparedStatement preparedStatement = connection.prepareStatement("SELECT recipe_picture FROM recipe WHERE recipe_id = ?");
+                    PreparedStatement preparedStatement = connection.prepareStatement("SELECT recipe_picture FROM recipe WHERE recipe_id = ?")
             ) {
                 preparedStatement.setString(1, recipe_id);
                 ResultSet resultSet = preparedStatement.executeQuery();
@@ -304,7 +288,6 @@ public class homePage extends Fragment {
                 e.printStackTrace();
             }
         });
-        Drawable toReturn = atomicReference.get();
-        return toReturn;
+        return atomicReference.get();
     }
 }

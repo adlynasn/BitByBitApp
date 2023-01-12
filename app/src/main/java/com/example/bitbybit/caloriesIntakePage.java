@@ -23,6 +23,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 
 public class caloriesIntakePage extends Fragment {
@@ -96,13 +97,13 @@ public class caloriesIntakePage extends Fragment {
             try {
                 System.out.println("dalam connection");
                 Connection connection = Line.getConnection();
-                PreparedStatement ps = connection.prepareStatement("SELECT * FROM calorie_nutrition WHERE user_id = '" + name + "'");
+                PreparedStatement ps = connection.prepareStatement("SELECT entry_date FROM calorie_nutrition WHERE user_id = '" + name + "'");
                 ResultSet res = ps.executeQuery();
 
 
                 while (res.next()) {
 
-                    String Date = res.getString(2);
+                    String Date = res.getString(1);
                         if (newsMealArraylist.contains(Date)){
                             System.out.println("Date already in arraylist");
                         }
