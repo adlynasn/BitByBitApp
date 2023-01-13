@@ -27,7 +27,7 @@ import java.util.List;
 
 public class caloriesIntakePage extends Fragment {
 
-    private ArrayList<NewsMeal> newsMealArraylist;
+    private ArrayList<NewsMeal> newsMealArraylist   ;
     private RecyclerView recyclerview;
 
     @Override

@@ -58,7 +58,7 @@ public class adminUploadRecipePage extends Fragment {
             EditText carbohydrates = view.findViewById(R.id.recipeCarbohydrate);
             EditText fat = view.findViewById(R.id.recipeFat);
             EditText protein = view.findViewById(R.id.recipeProtein);
-            EditText Ingredients = view.findViewById(R.id.recipeIngredient);
+            EditText Ingredients = view.findViewById(R.id.recipeIngredients);
             EditText Steps = view.findViewById(R.id.recipeSteps);
 
             AtomicReference<Boolean> status = new AtomicReference<>(false);
@@ -97,7 +97,6 @@ public class adminUploadRecipePage extends Fragment {
                             ps1.executeUpdate();
                             ps1.close();
                             System.out.println("data pushed`");
-                            Navigation.findNavController(view).navigate(R.id.adminHomePage, bundle);
                         }
                     }
 
@@ -125,6 +124,8 @@ public class adminUploadRecipePage extends Fragment {
             if (!status.get() && !status1.get()) {
                 System.out.println(status.get().toString() + status1.get().toString());
                 Toast.makeText(getContext(), "The recipe has been uploaded", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(view).navigate(R.id.adminHomePage, bundle);
+
             }
         };
         BtnAddRecipe.setOnClickListener(OCLAddRecipe);
