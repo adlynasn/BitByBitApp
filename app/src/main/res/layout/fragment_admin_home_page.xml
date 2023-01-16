@@ -53,6 +53,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/linearLayoutAdmin10"
             android:orientation="horizontal"
             >
 
@@ -119,7 +120,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="160dp"
+            android:layout_below="@id/linearLayoutAdmin10"
             android:orientation="horizontal"
             >
 
@@ -152,6 +153,36 @@
                     android:textSize="14sp" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="-10dp"
+                android:orientation="vertical"
+                android:padding="30dp"
+
+                >
+
+                <ImageView
+                    android:id="@+id/deleteRecipeIV"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/baseline_delete_outline_24" />
+
+                <Button
+                    android:id="@+id/adminDeleteRecipeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="DELETE"
+                    android:textColor="@color/pastel_red"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </RelativeLayout>
