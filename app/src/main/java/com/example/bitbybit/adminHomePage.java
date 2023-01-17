@@ -37,7 +37,6 @@ public class adminHomePage extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
-        assert bundle != null;
         String name=bundle.getString("username");
         bundle.putString("username", name);
 
@@ -52,6 +51,10 @@ public class adminHomePage extends Fragment {
         Button btnAdminViewRep = view.findViewById(R.id.adminViewReportsButton);
         View.OnClickListener OCLViewRep = v -> Navigation.findNavController(view).navigate(R.id.adminViewReportsPage, bundle);
         btnAdminViewRep.setOnClickListener(OCLViewRep);
+
+        Button btnAdminDeletePage = view.findViewById(R.id.adminDeleteRecipeButton);
+        View.OnClickListener OCLAdminDeletePage = v -> Navigation.findNavController(view).navigate(R.id.adminDeleteRecipePage, bundle);
+        btnAdminDeletePage.setOnClickListener(OCLAdminDeletePage);
 
         Button btnLogoutAdmin = view.findViewById(R.id.adminLogoutButton);
         View.OnClickListener OCLLogOut = v -> {
