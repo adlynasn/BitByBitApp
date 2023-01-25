@@ -1,18 +1,17 @@
 package com.example.bitbybit;
 
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.ListFragment;
-import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.ListFragment;
+import androidx.navigation.Navigation;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,8 +46,10 @@ public class loginPage extends Fragment {
             AtomicReference<Boolean> status2 = new AtomicReference<>();
             Thread dataThread = new Thread(() -> {
                 try{
-                    Connection connection = Line.getConnection();
-                    assert connection != null;
+//                  Connection connection = Line.getConnection();
+
+                    Connection connection = Line.getConnectionLocal();
+
                     PreparedStatement preparedStatement = connection.prepareStatement("SELECT user_id FROM user WHERE user_id = '" + username.getText().toString().trim() + "' AND password = '" + password.getText().toString().trim() + "' AND status = 1");
                     ResultSet res = preparedStatement.executeQuery();
                     PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT user_id FROM user WHERE user_id = '" + username.getText().toString().trim() + "' AND password = '" + password.getText().toString().trim() + "' AND status = 0");

@@ -20,4 +20,16 @@ public class Line {
         return null;
     }
 
+    public static Connection getConnectionLocal(){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/bitbybit", "root", "admin");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
 }
