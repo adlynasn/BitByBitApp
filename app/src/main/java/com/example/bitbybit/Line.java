@@ -13,15 +13,11 @@ public class Line {
 
     public static Connection getConnection(){
         try{
-            Connection connection = DriverManager.getConnection(String.format("jdbc:mysql://%s:%s/%s?user=%s&password=%s&useSSL=false", host, port, database, username, password));
-            return connection;
+            return DriverManager.getConnection(String.format("jdbc:mysql://%s:%s/%s?user=%s&password=%s&useSSL=false", host, port, database, username, password));
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    /**
-     * Connection connection = Line.getConnection();
-     */
 }

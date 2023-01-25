@@ -1,8 +1,11 @@
 package com.example.bitbybit;
 
-import static com.example.bitbybit.AdaptorMeal.bundle;
-
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,11 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,7 +26,6 @@ public class adminDeleteRecipePage extends Fragment {
 
     private int[] imageResourceID;
     private ArrayList<NewsAdminRecipe> newsAdminRecipeArrayList;
-    private RecyclerView recyclerview;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,18 +34,20 @@ public class adminDeleteRecipePage extends Fragment {
         return inflater.inflate(R.layout.fragment_admin_delete_recipe_page, container, false);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
+        assert bundle != null;
         String name=bundle.getString("username");
         bundle.putString("username", name);
 
 
         DataInitialize();
 
-        recyclerview = view.findViewById(R.id.RecyclerAdminAllrecipe);
+        RecyclerView recyclerview = view.findViewById(R.id.RecyclerAdminAllrecipe);
         System.out.println("kat sini");
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
@@ -57,7 +56,7 @@ public class adminDeleteRecipePage extends Fragment {
         myAdapter.notifyDataSetChanged();
 
         Button BtnBackAdminAll = view.findViewById(R.id.returnToAdminHomePageButton);
-        View.OnClickListener OCLBackAdminAll = v -> Navigation.findNavController(view).navigate(R.id.adminHomePage);
+        View.OnClickListener OCLBackAdminAll = v -> Navigation.findNavController(view).navigate(R.id.adminHomePage,bundle);
         BtnBackAdminAll.setOnClickListener(OCLBackAdminAll);
     }
 
@@ -71,6 +70,7 @@ public class adminDeleteRecipePage extends Fragment {
             try {
                 System.out.println("dalam connection");
                 Connection connection = Line.getConnection();
+                assert connection != null;
                 PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe ");
                 ResultSet res = ps.executeQuery();
 

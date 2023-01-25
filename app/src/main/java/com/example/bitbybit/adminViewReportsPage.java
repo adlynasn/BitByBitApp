@@ -1,5 +1,6 @@
 package com.example.bitbybit;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -24,7 +25,6 @@ import java.util.ArrayList;
 public class adminViewReportsPage extends Fragment {
 
     private ArrayList<NewsReport> newsReportArraylist;
-    private RecyclerView recyclerview;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,17 +33,19 @@ public class adminViewReportsPage extends Fragment {
         return inflater.inflate(R.layout.fragment_admin_view_reports_page, container, false);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
+        assert bundle != null;
         String name=bundle.getString("username");
         bundle.putString("username", name);
 
         dataInitialize();
 
-        recyclerview = view.findViewById(R.id.recyclerViewReports);
+        RecyclerView recyclerview = view.findViewById(R.id.recyclerViewReports);
         System.out.println("kat sini");
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
@@ -66,6 +68,7 @@ public class adminViewReportsPage extends Fragment {
             try {
                 System.out.println("dalam connection");
                 Connection connection = Line.getConnection();
+                assert connection != null;
                 PreparedStatement ps = connection.prepareStatement("SELECT * FROM report ");
                 ResultSet res = ps.executeQuery();
 

@@ -1,5 +1,6 @@
 package com.example.bitbybit;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,14 +22,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 
 public class caloriesIntakePage extends Fragment {
 
     private ArrayList<NewsMeal> newsMealArraylist   ;
-    private RecyclerView recyclerview;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,17 +35,19 @@ public class caloriesIntakePage extends Fragment {
         return inflater.inflate(R.layout.fragment_calories_intake_page, container, false);
     }
 
+    @SuppressLint({"NotifyDataSetChanged", "NonConstantResourceId"})
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
+        assert bundle != null;
         String name = bundle.getString("username");
         bundle.putString("username", name);
 
         dataInitialized(name);
 
-        recyclerview = view.findViewById(R.id.recyclerViewCalorieIntake);
+        RecyclerView recyclerview = view.findViewById(R.id.recyclerViewCalorieIntake);
         System.out.println("kat sini");
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
@@ -96,6 +96,7 @@ public class caloriesIntakePage extends Fragment {
             try {
                 System.out.println("dalam connection");
                 Connection connection = Line.getConnection();
+                assert connection != null;
                 PreparedStatement ps = connection.prepareStatement("SELECT * FROM calorie_nutrition WHERE user_id = '" + name + "'");
                 ResultSet res = ps.executeQuery();
 
@@ -111,8 +112,6 @@ public class caloriesIntakePage extends Fragment {
                         newsMealArraylist.add(newsMeal);
                     }
                 }
-//                res.close();
-//                connection.close();
 
                 if (res.next()) {
                     String ingredient = res.getString(1);

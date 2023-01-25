@@ -43,7 +43,7 @@ public class AdaptorAllRecipe extends RecyclerView.Adapter<AdaptorAllRecipe.MyVi
         bundle.putString("username", name);
         holder.foodImage.setImageResource(newsAll.FoodImage);
         holder.foodImage.setOnClickListener(view -> {
-            String foodName = newsAll.RecipeName.toString();
+            String foodName = newsAll.RecipeName;
             bundle.putString("FoodName", foodName);
             Toast.makeText(context, "Loading...", Toast.LENGTH_SHORT).show();
             Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);

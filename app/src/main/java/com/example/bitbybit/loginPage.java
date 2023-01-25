@@ -22,14 +22,10 @@ import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link onboardingPage#newInstance} factory method to
+ * Use the {@link onBoardingPage#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class loginPage extends Fragment {
-
-
-
-    Button buttonLogin, buttonRegister, buttonChgPass;
 
 
     @Override
@@ -52,6 +48,7 @@ public class loginPage extends Fragment {
             Thread dataThread = new Thread(() -> {
                 try{
                     Connection connection = Line.getConnection();
+                    assert connection != null;
                     PreparedStatement preparedStatement = connection.prepareStatement("SELECT user_id FROM user WHERE user_id = '" + username.getText().toString().trim() + "' AND password = '" + password.getText().toString().trim() + "' AND status = 1");
                     ResultSet res = preparedStatement.executeQuery();
                     PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT user_id FROM user WHERE user_id = '" + username.getText().toString().trim() + "' AND password = '" + password.getText().toString().trim() + "' AND status = 0");

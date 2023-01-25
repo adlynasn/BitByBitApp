@@ -37,15 +37,16 @@
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/poppins_semibold"
             android:gravity="left"
-            android:text="All Recipes"
+            android:text="Delete Recipe"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="50dp"
             android:layout_below="@id/allRecipesText"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
             android:fillViewport="true">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -60,44 +61,6 @@
         </ScrollView>
 
     </RelativeLayout>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentBottom="true">
-
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottomAppBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:fabCradleMargin="10dp"
-            app:fabCradleRoundedCornerRadius="10dp"
-            app:fabCradleVerticalOffset="10dp">
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomNavigationView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/transparent_background"
-                app:menu="@menu/bottom_nav_menu"
-
-                />
-        </com.google.android.material.bottomappbar.BottomAppBar>
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/hello_blank_fragment"
-            android:src="@drawable/ic_baseline_white_plus_sign_24"
-
-            app:layout_anchor="@id/bottomAppBar" />
-
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
 </RelativeLayout>

@@ -1,8 +1,8 @@
 package com.example.bitbybit;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -22,15 +22,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 
 public class socialFeedPage extends Fragment {
 
 
     private ArrayList<NewsFeed> newsFeedArraylist;
-    private RecyclerView recyclerview;
 
 
     @Override
@@ -40,17 +37,19 @@ public class socialFeedPage extends Fragment {
         return inflater.inflate(R.layout.fragment_social_feed_page, container, false);
     }
 
+    @SuppressLint({"NotifyDataSetChanged", "NonConstantResourceId"})
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
+        assert bundle != null;
         String name = bundle.getString("username");
         bundle.putString("username", name);
 
         dataInitialize();
 
-        recyclerview = view.findViewById(R.id.RecyclerFeedRecipe);
+        RecyclerView recyclerview = view.findViewById(R.id.RecyclerFeedRecipe);
         System.out.println("kat sini");
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
@@ -97,6 +96,7 @@ public class socialFeedPage extends Fragment {
             try {
                 System.out.println("dalam connection");
                 Connection connection = Line.getConnection();
+                assert connection != null;
                 PreparedStatement ps = connection.prepareStatement("SELECT * FROM post ");
                 ResultSet res = ps.executeQuery();
 

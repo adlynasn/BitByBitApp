@@ -70,6 +70,7 @@ public class adminUploadRecipePage extends Fragment {
                     Connection connection = Line.getConnection();
                     System.out.println(recipeName.getText().toString());
 //                    assert connection != null;
+                    assert connection != null;
                     PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe WHERE recipe_id = '" + recipeName.getText().toString() + "'");
                     ResultSet res = ps.executeQuery();
 

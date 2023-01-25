@@ -1,14 +1,14 @@
 package com.example.bitbybit;
 
-import android.os.Build;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -21,17 +21,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.concurrent.atomic.AtomicReference;
 
 
 public class missionsPage extends Fragment {
 
-    private TextView dateTimeDisplay;
-    private Calendar calendar;
-    private SimpleDateFormat dateFormat;
     private String date;
 
     @Override
@@ -41,15 +36,17 @@ public class missionsPage extends Fragment {
         return inflater.inflate(R.layout.fragment_missions_page, container, false);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        calendar = Calendar.getInstance();
-        dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar calendar = Calendar.getInstance();
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         date = dateFormat.format(calendar.getTime());
 
         Bundle bundle = getArguments();
+        assert bundle != null;
         String name = bundle.getString("username");
         bundle.putString("username", name);
         System.out.println(date);
@@ -65,6 +62,7 @@ public class missionsPage extends Fragment {
                 try {
                     System.out.println("RUNNN");
                     Connection connection = Line.getConnection();
+                    assert connection != null;
                     PreparedStatement ps = connection.prepareStatement("INSERT INTO mission(user_id, mission_id, date) VALUES('" + name + "', 0, '" + date + "')");
                     PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM mission WHERE user_id = '" + name + "' AND date = '" + date + "' AND mission_id = 0");
                     ResultSet res = ps1.executeQuery();
@@ -111,6 +109,7 @@ public class missionsPage extends Fragment {
             Thread dataThread = new Thread(() -> {
                 try {
                     Connection connection = Line.getConnection();
+                    assert connection != null;
                     PreparedStatement ps = connection.prepareStatement("INSERT INTO mission(user_id, mission_id, date) VALUES('" + name + "', 2, '" + date + "')");
                     PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM mission WHERE user_id = '" + name + "' AND date = '" + date + "' AND mission_id = 2");
                     ResultSet res = ps1.executeQuery();
@@ -158,6 +157,7 @@ public class missionsPage extends Fragment {
             Thread dataThread = new Thread(() -> {
                 try {
                     Connection connection = Line.getConnection();
+                    assert connection != null;
                     PreparedStatement ps = connection.prepareStatement("INSERT INTO mission(user_id, mission_id, date) VALUES('" + name + "', 1, '" + date + "')");
                     PreparedStatement ps1 = connection.prepareStatement("SELECT * FROM mission WHERE user_id = '" + name + "' AND date = '" + date + "' AND mission_id = 1");
                     ResultSet res = ps1.executeQuery();

@@ -37,6 +37,7 @@ public class adminHomePage extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
+        assert bundle != null;
         String name=bundle.getString("username");
         bundle.putString("username", name);
 

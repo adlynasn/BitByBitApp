@@ -1,6 +1,11 @@
 package com.example.bitbybit;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,12 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -29,7 +28,6 @@ public class savedRecipesPage extends Fragment {
 
 
     private ArrayList<NewsSaved> newsSavedArraylist;
-    private RecyclerView recyclerview;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,17 +36,19 @@ public class savedRecipesPage extends Fragment {
         return inflater.inflate(R.layout.fragment_saved_recipes_page, container, false);
     }
 
+    @SuppressLint({"NotifyDataSetChanged", "NonConstantResourceId"})
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
+        assert bundle != null;
         String name=bundle.getString("username");
         bundle.putString("username", name);
         
         dataInitialize(name);
 
-        recyclerview = view.findViewById(R.id.RecyclerSavedRecipe);
+        RecyclerView recyclerview = view.findViewById(R.id.RecyclerSavedRecipe);
         System.out.println("kat sini");
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
@@ -95,6 +95,7 @@ public class savedRecipesPage extends Fragment {
             try {
                 System.out.println("dalam connection");
                 Connection connection = Line.getConnection();
+                assert connection != null;
                 PreparedStatement ps = connection.prepareStatement("SELECT * FROM favorite_recipe WHERE user_id = '" +name+ "'");
                 ResultSet res = ps.executeQuery();
 

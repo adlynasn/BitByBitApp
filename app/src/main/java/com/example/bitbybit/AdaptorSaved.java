@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +40,7 @@ public class AdaptorSaved extends RecyclerView.Adapter<AdaptorSaved.MyViewHolder
         NewsSaved newsSaved = newsSavedArrayList.get(position);
         holder.recipeName.setText(newsSaved.RecipeName);
         holder.recipeName.setOnClickListener(view -> {
-            String foodName = newsSaved.RecipeName.toString();
+            String foodName = newsSaved.RecipeName;
             bundle.putString("FoodName", foodName);
             Toast.makeText(context, "Loading...", Toast.LENGTH_SHORT).show();
             Navigation.findNavController(view).navigate(R.id.foodDetailsPage, bundle);
