@@ -41,16 +41,13 @@ public class loginPage extends Fragment {
         EditText password = view.findViewById(R.id.password);
         View.OnClickListener OVLLogin = v -> {
 
-            //bruh
             //connect to database
-            AtomicReference<Boolean> status = new AtomicReference<>();
-            AtomicReference<Boolean> status2 = new AtomicReference<>();
+            AtomicReference<Boolean> status = new AtomicReference<>(false);
+            AtomicReference<Boolean> status2 = new AtomicReference<>(false);
             Thread dataThread = new Thread(() -> {
                 try{
-//                  Connection connection = Line.getConnection();
-
-                    Connection connection = Line.getConnectionLocal();
-
+                    Connection connection = Line.getConnection();
+                    assert connection != null;
                     PreparedStatement preparedStatement = connection.prepareStatement("SELECT user_id FROM user WHERE user_id = '" + username.getText().toString().trim() + "' AND password = '" + password.getText().toString().trim() + "' AND status = 1");
                     ResultSet res = preparedStatement.executeQuery();
                     PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT user_id FROM user WHERE user_id = '" + username.getText().toString().trim() + "' AND password = '" + password.getText().toString().trim() + "' AND status = 0");
@@ -71,6 +68,10 @@ public class loginPage extends Fragment {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+
+//                catch (ClassNotFoundException e) {
+//                    throw new RuntimeException(e);
+//                }
             });
             dataThread.start();
             while(dataThread.isAlive()){
