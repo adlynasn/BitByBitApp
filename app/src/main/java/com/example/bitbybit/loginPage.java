@@ -46,6 +46,7 @@ public class loginPage extends Fragment {
         EditText password = view.findViewById(R.id.password);
         View.OnClickListener OVLLogin = v -> {
 
+            //bruh
             //connect to database
             AtomicReference<Boolean> status = new AtomicReference<>();
             AtomicReference<Boolean> status2 = new AtomicReference<>();

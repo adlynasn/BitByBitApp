@@ -7,15 +7,17 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:id = "@+id/CardViewFeedText"
+        android:id="@+id/CardViewFeedText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         app:cardCornerRadius="5dp"
-        android:layout_margin="10dp"
+        app:cardElevation="10dp"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="188dp"
-        >
+        tools:layout_editor_absoluteY="188dp">
 
         <LinearLayout
             android:id="@+id/textFeedLayout"
@@ -32,8 +34,7 @@
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Quote of the day!"
                 android:textColor="@color/pastel_red"
-                android:textSize="18dp"
-                >
+                android:textSize="18dp">
 
             </TextView>
 
@@ -44,8 +45,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="\'To ensure good health: eat lightly, breathe deeply, live moderately, cultivate cgeerfulness, and maintain an interest in life\' - William Londen"
                 android:textColor="@color/black"
-                android:textSize="14dp"
-                >
+                android:textSize="14dp">
 
             </TextView>
 
