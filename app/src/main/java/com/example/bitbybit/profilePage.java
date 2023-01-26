@@ -1,11 +1,11 @@
 package com.example.bitbybit;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +21,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class profilePage extends Fragment {
 
@@ -43,12 +42,14 @@ public class profilePage extends Fragment {
         return inflater.inflate(R.layout.fragment_profile_page, container, false);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         //carry login info
         Bundle bundle = getArguments();
+        assert bundle != null;
         String name = bundle.getString("username");
         bundle.putString("username", name);
 
@@ -64,13 +65,14 @@ public class profilePage extends Fragment {
         Thread dataThread = new Thread(() -> {
             try{
                 Connection connection = Line.getConnection();
+                assert connection != null;
                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user WHERE user_id = '" + name.trim() + "'");
                 ResultSet res = preparedStatement.executeQuery();
                 PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT * FROM progress WHERE user_id = '" + name.trim() + "'");
                 ResultSet res2 = preparedStatement2.executeQuery();
 
                 while (res.next()){
-                    System.out.println("have data in userdb");
+                    System.out.println("have data in user db");
                     username.setText(res.getString(1));
                     bio.setText(res.getString(6));
                 }
@@ -107,9 +109,7 @@ public class profilePage extends Fragment {
 
         //Edit profile page button
         Button BtnEditProf = view.findViewById(R.id.editProfilePageButton);
-        View.OnClickListener OCLEditProf = v -> {
-            Navigation.findNavController(view).navigate(R.id.editProfilePage, bundle);
-        };
+        View.OnClickListener OCLEditProf = v -> Navigation.findNavController(view).navigate(R.id.editProfilePage, bundle);
         BtnEditProf.setOnClickListener(OCLEditProf);
 
 

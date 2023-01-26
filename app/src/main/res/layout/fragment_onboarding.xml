@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/onboarding_bg_with_tint"
 
-    tools:context=".onboardingPage">
+    tools:context=".onBoardingPage">
 
     <TextView
         android:id="@+id/onboardingTitle"

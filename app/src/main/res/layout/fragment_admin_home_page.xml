@@ -59,7 +59,7 @@
 
             <LinearLayout
 
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:orientation="vertical"
@@ -78,8 +78,9 @@
 
                 <Button
                     android:id="@+id/adminPostPageButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="90dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:backgroundTint="@color/white"
                     android:fontFamily="@font/poppins_semibold"
                     android:gravity="center_horizontal"
@@ -107,6 +108,7 @@
                     android:id="@+id/adminUploadRecipeButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:backgroundTint="@color/white"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="UPLOAD"
@@ -143,8 +145,9 @@
 
                 <Button
                     android:id="@+id/adminViewReportsButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="85dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:backgroundTint="@color/white"
                     android:fontFamily="@font/poppins_semibold"
                     android:gravity="center_horizontal"
@@ -173,10 +176,13 @@
 
                 <Button
                     android:id="@+id/adminDeleteRecipeButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="90dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:backgroundTint="@color/white"
                     android:fontFamily="@font/poppins_semibold"
+                    android:foregroundGravity="center_horizontal"
+                    android:gravity="center_horizontal"
                     android:text="DELETE"
                     android:textColor="@color/pastel_red"
                     android:textSize="14sp" />

@@ -8,11 +8,4 @@ public class NewsMeal {
         this.Date = Date;
     }
 
-    public String getDate() {
-        return Date;
-    }
-
-    public void setDate(String date) {
-        Date = date;
-    }
 }

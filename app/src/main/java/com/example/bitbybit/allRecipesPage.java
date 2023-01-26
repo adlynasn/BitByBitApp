@@ -1,16 +1,12 @@
 package com.example.bitbybit;
 
-import android.content.ContentResolver;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -21,24 +17,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.io.ByteArrayInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.sql.Blob;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicReference;
 
 
 public class allRecipesPage extends Fragment {
 
 
     private ArrayList<NewsAll> newsAllArraylist;
-    private RecyclerView recyclerview;
     private int[] imageResourceID;
 
     @Override
@@ -48,19 +37,19 @@ public class allRecipesPage extends Fragment {
         return inflater.inflate(R.layout.fragment_all_recipes_page, container, false);
     }
 
+    @SuppressLint({"NotifyDataSetChanged", "NonConstantResourceId"})
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
+        assert bundle != null;
         String name=bundle.getString("username");
         bundle.putString("username", name);
 
-        Drawable drawable = getPicFromDB("French Toast", requireActivity().getContentResolver(), new Thread());
-
         dataInitialize();
 
-        recyclerview = view.findViewById(R.id.RecyclerAllrecipe);
+        RecyclerView recyclerview = view.findViewById(R.id.RecyclerAllrecipe);
         System.out.println("kat sini");
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
@@ -109,6 +98,7 @@ public class allRecipesPage extends Fragment {
             try {
                 System.out.println("dalam connection");
                 Connection connection = Line.getConnection();
+                assert connection != null;
                 PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe ");
                 ResultSet res = ps.executeQuery();
 
@@ -155,54 +145,5 @@ public class allRecipesPage extends Fragment {
         }
     }
 
-
-    public static Drawable insertPicIntoDB(Uri imageUri, ContentResolver contentResolver, Thread dataThread){
-        AtomicReference<InputStream> inputStreamAtomicReference = new AtomicReference<>();
-        dataThread = new Thread(() -> {
-            InputStream inputStream = null;
-            try{
-                Connection connection = Line.getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO recipe(recipe_picture) VALUES(?)");
-                inputStream = contentResolver.openInputStream(imageUri);
-                preparedStatement.setBlob(1, inputStream);
-                preparedStatement.execute();
-            } catch (SQLException | FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            assert  inputStream != null;
-            inputStreamAtomicReference.set(inputStream);
-        });
-        while(dataThread.isAlive()){
-
-        }
-        return Drawable.createFromStream(inputStreamAtomicReference.get(), imageUri.toString());
-    }
-
-    // Returns a Drawable object. Requires recipe_id
-    public static Drawable getPicFromDB(String recipe_id, ContentResolver contentResolver, Thread dataThread){
-        AtomicReference<Drawable> atomicReference = new AtomicReference<>();
-        dataThread = new Thread(() -> {
-            try(
-                    Connection connection = Line.getConnection();
-                    PreparedStatement preparedStatement = connection.prepareStatement("SELECT recipe_picture FROM recipe WHERE recipe_id = ?");
-                    ){
-                preparedStatement.setString(1, recipe_id);
-                ResultSet resultSet = preparedStatement.executeQuery();
-
-                if(resultSet.next()){
-                    Blob blob = resultSet.getBlob(1);
-                    byte[] data = blob.getBytes(1, (int) blob.length());
-                    ByteArrayInputStream inputStream = new ByteArrayInputStream(data);
-                    Drawable drawable = new BitmapDrawable(inputStream);
-                    atomicReference.set(drawable);
-                }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        });
-        Drawable toReturn = atomicReference.get();
-        return toReturn;
-    }
 
 }

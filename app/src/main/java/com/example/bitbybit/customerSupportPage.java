@@ -1,5 +1,6 @@
 package com.example.bitbybit;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,11 +38,13 @@ public class customerSupportPage extends Fragment {
         return inflater.inflate(R.layout.fragment_customer_support_page, container, false);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
+        assert bundle != null;
         String name=bundle.getString("username");
         bundle.putString("username", name);
 
@@ -58,6 +61,7 @@ public class customerSupportPage extends Fragment {
 
                 try {
                     Connection connection = Line.getConnection();
+                    assert connection != null;
                     PreparedStatement ps = connection.prepareStatement("INSERT INTO report(report_description, user_id) VALUES('" + report.getText().toString() + "','" + name + "')");
 
                     if (report.getText().toString().equals("")){

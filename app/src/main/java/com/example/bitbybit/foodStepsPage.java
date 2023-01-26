@@ -1,6 +1,11 @@
 package com.example.bitbybit;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,12 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -31,8 +30,6 @@ public class foodStepsPage extends Fragment {
 
 
     private ArrayList<NewsStep> newsStepArraylist;
-    private RecyclerView recyclerview;
-
 
 
     @Override
@@ -43,14 +40,16 @@ public class foodStepsPage extends Fragment {
 
     }
 
+    @SuppressLint({"NotifyDataSetChanged", "NonConstantResourceId"})
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
+        assert bundle != null;
         String name=bundle.getString("username");
-        String food = bundle.getString("foodbundle");
-        bundle.putString("foodbundle", food);
+        String food = bundle.getString("food-bundle");
+        bundle.putString("food-bundle", food);
         bundle.putString("username", name);
         System.out.println(food);
         System.out.println(name);
@@ -59,7 +58,7 @@ public class foodStepsPage extends Fragment {
 
         dataInitialize(foodName);
 
-        recyclerview = view.findViewById(R.id.recyclerViewSteps);
+        RecyclerView recyclerview = view.findViewById(R.id.recyclerViewSteps);
         System.out.println("kat sini");
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
@@ -107,13 +106,14 @@ public class foodStepsPage extends Fragment {
             try {
                 System.out.println("dalam connection");
                 Connection connection = Line.getConnection();
+                assert connection != null;
                 PreparedStatement ps = connection.prepareStatement("SELECT recipe_instruction FROM recipe WHERE recipe_id = '" +foodName+ "'");
                 ResultSet res = ps.executeQuery();
 
                 if(res.next()){
                     String ingredient = res.getString(1);
                     System.out.println(ingredient);
-                    List<String> list = new ArrayList<String>(Arrays.asList(ingredient.split(">")));
+                    List<String> list = new ArrayList<>(Arrays.asList(ingredient.split(">")));
 
                     for (int i = 0; i < list.size(); i++) {
                         NewsStep news = new NewsStep(list.get(i));

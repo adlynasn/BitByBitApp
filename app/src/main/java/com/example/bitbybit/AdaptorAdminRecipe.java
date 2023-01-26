@@ -44,35 +44,36 @@ public class AdaptorAdminRecipe extends RecyclerView.Adapter<AdaptorAdminRecipe.
         String name = bundle.getString("username");
         bundle.putString("username", name);
         holder.foodImage.setImageResource(newsAdminRecipe.FoodImage);
-        holder.foodDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("dalam thread");
-                System.out.println(newsAdminRecipe.FoodName);
-                Thread dataThread = new Thread(() -> {
-                   try {
-                       System.out.println("dalam adaptor");
-                       Connection connection = Line.getConnection();
-                       PreparedStatement ps = connection.prepareStatement("DELETE FROM recipe WHERE recipe_id = '" + newsAdminRecipe.FoodName + "'");
-                       ps.executeUpdate();
+        holder.foodDelete.setOnClickListener(view -> {
+            System.out.println("dalam thread");
+            System.out.println(newsAdminRecipe.FoodName);
+            Thread dataThread = new Thread(() -> {
+               try {
+                   System.out.println("dalam adaptor");
+                   Connection connection = Line.getConnection();
+                   assert connection != null;
+                   PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM favorite_recipe WHERE recipe_id = '" + newsAdminRecipe.FoodName + "'");
+                   preparedStatement.executeUpdate();
+                   preparedStatement.close();
+                   PreparedStatement ps = connection.prepareStatement("DELETE FROM recipe WHERE recipe_id = '" + newsAdminRecipe.FoodName + "'");
+                   ps.executeUpdate();
 
-                       ps.close();
-                       connection.close();
-
-
-                   }catch (SQLException e){
-                       e.printStackTrace();
-                   }
+                   ps.close();
+                   connection.close();
 
 
-                });
-                dataThread.start();
-                while (dataThread.isAlive()){
+               }catch (SQLException e){
+                   e.printStackTrace();
+               }
 
-                }
-                Toast.makeText(context, "Food has been deleted", Toast.LENGTH_SHORT).show();
-                Navigation.findNavController(view).navigate(R.id.adminHomePage, bundle);
+
+            });
+            dataThread.start();
+            while (dataThread.isAlive()){
+
             }
+            Toast.makeText(context, "Food has been deleted", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(view).navigate(R.id.adminHomePage, bundle);
         });
 
     }

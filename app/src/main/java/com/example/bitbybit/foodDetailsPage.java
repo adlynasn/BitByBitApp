@@ -1,21 +1,19 @@
 package com.example.bitbybit;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -45,15 +43,17 @@ public class foodDetailsPage extends Fragment {
         return inflater.inflate(R.layout.fragment_food_details_page, container, false);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
+        assert bundle != null;
         String name=bundle.getString("username");
         bundle.putString("username", name);
-        String food = bundle.getString("foodbundle");
-        bundle.putString("foodbundle", food);
+        String food = bundle.getString("food-bundle");
+        bundle.putString("food-bundle", food);
         String foodName = bundle.getString("FoodName");
         bundle.putString("FoodName", foodName);
 
@@ -66,20 +66,20 @@ public class foodDetailsPage extends Fragment {
         TextView carbohydrates = view.findViewById(R.id.Carbo);
         TextView protein = view.findViewById(R.id.Protein);
         TextView fat = view.findViewById(R.id.Fat);
-        ImageView foodImage = view.findViewById(R.id.foodImage);
 
-        Thread dataThread = new Thread(() -> {
+        @SuppressLint("SetTextI18n") Thread dataThread = new Thread(() -> {
             try {
                 Connection connection = Line.getConnection();
+                assert connection != null;
                 PreparedStatement ps = connection.prepareStatement("SELECT * FROM recipe WHERE recipe_id = '" +foodName+ "'");
                 ResultSet res = ps.executeQuery();
 
                 if(res.next()){
                     foodTitle.setText(res.getString(1));
-                    calories.setText(String.valueOf(res.getInt(6)) + " kcal");
-                    carbohydrates.setText(String.valueOf(res.getInt(7)) + "g");
-                    protein.setText(String.valueOf(res.getInt(8)) + "g");
-                    fat.setText(String.valueOf(res.getInt(9)) + "g");
+                    calories.setText(res.getInt(6) + " kcal");
+                    carbohydrates.setText(res.getInt(7) + "g");
+                    protein.setText(res.getInt(8) + "g");
+                    fat.setText(res.getInt(9) + "g");
 
                 }else {
                     foodTitle.setText("");
@@ -120,6 +120,7 @@ public class foodDetailsPage extends Fragment {
                 try {
                     Connection connection = Line.getConnection();
                     //check if there is data saved
+                    assert connection != null;
                     PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM favorite_recipe WHERE recipe_id = '" + foodTitle.getText().toString().trim() + "' AND user_id = '" + name + "'");
                     ResultSet resultSet = preparedStatement.executeQuery();
 

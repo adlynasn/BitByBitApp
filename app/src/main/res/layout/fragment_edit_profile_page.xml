@@ -114,24 +114,25 @@
         android:id="@+id/updateProfileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/choosePictureButton"
-        android:gravity="left"
+        android:layout_below="@+id/userBio"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:backgroundTint="@color/pastel_red"
         android:fontFamily="@font/poppins_semibold"
+        android:gravity="left"
         android:text="UPDATE PROFILE"
         android:textColor="@color/white"
-        android:textSize="14sp"
-        />
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/CancelToProfilePage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/choosePictureButton"
-        android:layout_marginTop="40dp"
+        android:layout_below="@+id/userBio"
+        android:layout_alignParentEnd="true"
         android:layout_marginLeft="290dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"
         android:backgroundTint="@color/white"
         android:fontFamily="@font/poppins_semibold"
         android:text="CANCEL"
@@ -154,35 +155,6 @@
         android:minHeight="48dp"
         android:padding="10dp"
         android:textSize="16sp"/>
-
-    <TextView
-        android:id="@+id/choosePictureTitle"
-        android:layout_below="@id/userBio"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:gravity="left"
-        android:text="Update your profile picture"
-        android:textSize="16sp" />
-
-    <Button
-        android:id="@+id/choosePictureButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/choosePictureTitle"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/white"
-        android:drawableEnd="@drawable/ic_baseline_pastelred_arrow_forward_ios_24"
-        android:fontFamily="@font/poppins_semibold"
-        android:gravity="left"
-        android:text="Select"
-        android:textColor="@color/pastel_red"
-        android:textSize="14sp" />
 
     <Button
         android:id="@+id/ChangePassBut"

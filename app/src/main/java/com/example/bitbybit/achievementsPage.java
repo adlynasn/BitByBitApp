@@ -1,5 +1,6 @@
 package com.example.bitbybit;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +41,7 @@ public class achievementsPage extends Fragment {
         return inflater.inflate(R.layout.fragment_achievements_page, container, false);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -51,7 +53,7 @@ public class achievementsPage extends Fragment {
 
 
 
-        Thread dataThread = new Thread(() -> {
+        @SuppressLint("SetTextI18n") Thread dataThread = new Thread(() -> {
         int exercise = 0;
         int self_of_love = 0;
         int cooking = 0;

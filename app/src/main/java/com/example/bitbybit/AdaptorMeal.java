@@ -1,7 +1,6 @@
 package com.example.bitbybit;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +24,7 @@ public class AdaptorMeal extends  RecyclerView.Adapter<AdaptorMeal.MyViewHolder>
     public AdaptorMeal(Context context, ArrayList<NewsMeal> newsMealArrayList, Bundle bundle){
         this.context = context;
         this.newsMealArrayList = newsMealArrayList;
-        this.bundle = bundle;
+        AdaptorMeal.bundle = bundle;
     }
 
     @NonNull
@@ -40,14 +39,11 @@ public class AdaptorMeal extends  RecyclerView.Adapter<AdaptorMeal.MyViewHolder>
 
         NewsMeal newsMeal = newsMealArrayList.get(position);
         holder.date.setText(newsMeal.Date);
-        holder.viewCalorie.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String Date = newsMeal.Date.toString();
-                bundle.putString("dateMeal", Date);
-                Navigation.findNavController(view).navigate(R.id.viewCaloriesPage, bundle);
+        holder.viewCalorie.setOnClickListener(view -> {
+            String Date = newsMeal.Date;
+            bundle.putString("dateMeal", Date);
+            Navigation.findNavController(view).navigate(R.id.viewCaloriesPage, bundle);
 
-            }
         });
 
     }
